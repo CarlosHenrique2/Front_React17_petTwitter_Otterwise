@@ -11,7 +11,7 @@ function AuthStatus() {
 
   return (
     <p>
-      Bem vindo(a) {auth.user?.name}!{" "}
+      Bem vindo(a) {auth.user?.name}!
       <button
         onClick={() => {
           auth.signout(() => navigate("/"));

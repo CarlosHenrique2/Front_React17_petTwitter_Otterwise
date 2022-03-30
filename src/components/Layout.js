@@ -9,10 +9,10 @@ function Layout() {
 
       <ul>
         <li>
-          <Link to="/">Public Page</Link>
+          <Link to="/">Bem vindo</Link>
         </li>
         <li>
-          <Link to="/protected">Protected Page</Link>
+          <Link to="/Home">Home</Link>
         </li>
       </ul>
 
