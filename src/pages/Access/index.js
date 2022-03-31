@@ -65,12 +65,11 @@ function Access() {
 
         <Box textAlign="start">
           <form className="form" onSubmit={handleSubmit}>
-            <FormControl gap="15px">
+            <FormControl>
               <FormLabel className="form_label-E-mail" htmlFor="email">
                 E-mail:
                 <Input
                   bg="transparent"
-                  marginTop="10px"
                   focusBorderColor="#00acc1"
                   errorBorderColor="red.300"
                   name="email"
@@ -82,7 +81,6 @@ function Access() {
                 Senha:
                 <InputGroup>
                   <Input
-                    marginTop="10px"
                     focusBorderColor="#00acc1"
                     errorBorderColor="red.300"
                     name="password"
@@ -90,7 +88,13 @@ function Access() {
                     placeholder="Senha:"
                   />
                   <InputRightElement>
-                    <Button border="none" onClick={handleClick}>
+                    <Button
+                      _hover={{ background: "none" }}
+                      _active={{ background: "none" }}
+                      _focus={{ boxShadow: "none" }}
+                      border="none"
+                      onClick={handleClick}
+                    >
                       {show ? (
                         <Icon as={ViewIcon} />
                       ) : (
@@ -101,14 +105,14 @@ function Access() {
                 </InputGroup>
               </FormLabel>
               <Button
+                _hover={{ background: "#00acc1" }}
+                _active={{ background: "#00acc1" }}
+                _focus={{ boxShadow: "none" }}
+                backgroundColor="#00acc1"
                 color="white"
-                colorScheme="teal"
-                isActive="none"
-                w="full"
-                background="#00acc1"
                 className="form_btn"
                 type="submit"
-                borderColor="none"
+                w="full"
               >
                 Entrar
               </Button>

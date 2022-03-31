@@ -73,7 +73,6 @@ function Create() {
                 Nome:
                 <Input
                   bg="transparent"
-                  marginTop="10px"
                   focusBorderColor="#00acc1"
                   errorBorderColor="red.300"
                   name="name"
@@ -85,7 +84,6 @@ function Create() {
                 E-mail:
                 <Input
                   bg="transparent"
-                  marginTop="10px"
                   focusBorderColor="#00acc1"
                   errorBorderColor="red.300"
                   name="email"
@@ -97,7 +95,6 @@ function Create() {
                 Nome de usuário:
                 <Input
                   bg="transparent"
-                  marginTop="10px"
                   focusBorderColor="#00acc1"
                   errorBorderColor="red.300"
                   name="username"
@@ -109,7 +106,6 @@ function Create() {
                 Senha:
                 <InputGroup>
                   <Input
-                    marginTop="10px"
                     focusBorderColor="#00acc1"
                     errorBorderColor="red.300"
                     name="password"
@@ -128,13 +124,14 @@ function Create() {
                 </InputGroup>
               </FormLabel>
               <Button
+                _hover={{ background: "#00acc1" }}
+                _active={{ background: "#00acc1" }}
+                _focus={{ boxShadow: "none" }}
+                backgroundColor="#00acc1"
                 color="white"
-                w="full"
-                focusBorderColor="#00acc1"
-                border="none"
-                background="#00acc1"
                 className="form_btn"
                 type="submit"
+                w="full"
               >
                 Cadastrar-se
               </Button>
