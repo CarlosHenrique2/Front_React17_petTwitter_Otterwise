@@ -3,7 +3,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useState } from "react";
 import React from "react";
 
-import { useAuth } from "../../context/auth-context";
+import { useAuth, register } from "../../context/auth-context";
 
 import img00 from "../../assets/img/background.jpg";
 
@@ -22,7 +22,6 @@ import {
   Button,
   InputRightElement,
   InputGroup,
-  Flex,
   Box,
 } from "@chakra-ui/react";
 
@@ -33,22 +32,26 @@ import { Icon } from "@chakra-ui/react";
 function Create() {
   const navigate = useNavigate();
   const location = useLocation();
-  const { signin } = useAuth();
+  const { register } = useAuth();
 
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/login";
 
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    const formData = new FormData(event.target);
+    const name = formData.get("name");
     const email = formData.get("email");
+    const username = formData.get("email");
     const password = formData.get("password");
 
-    await signin({ email, password });
+    await register({ name, email, username, password });
     navigate(from, { replace: true });
+    console.log(formData);
+    console.log(event);
   }
 
   return (
@@ -63,70 +66,81 @@ function Create() {
       <div className="login-form">
         <h1 className="info_page">Cadastro</h1>
 
-        <Flex>
-          <FormControl gap="15px" className="form" onSubmit={handleSubmit}>
-            <FormLabel className="form_label-E-mail" htmlFor="email">
-              Nome:
-              <Input
-                bg="transparent"
-                marginTop="10px"
-                focusBorderColor="#00acc1"
-                errorBorderColor="red.300"
-                type="text"
-                placeholder="Nome"
-              />
-            </FormLabel>
-            <FormLabel className="form_label-E-mail" htmlFor="email">
-              E-mail:
-              <Input
-                bg="transparent"
-                marginTop="10px"
-                focusBorderColor="#00acc1"
-                errorBorderColor="red.300"
-                type="text"
-                placeholder="E-mail"
-              />
-            </FormLabel>
-            <FormLabel className="form_label-E-mail" htmlFor="email">
-              Nome de usuário:
-              <Input
-                bg="transparent"
-                marginTop="10px"
-                focusBorderColor="#00acc1"
-                errorBorderColor="red.300"
-                type="text"
-                placeholder="Ex.: @billbulldog"
-              />
-            </FormLabel>
-            <FormLabel className="form_label-Senha" htmlFor="senha">
-              Senha:
-              <InputGroup>
+        <Box>
+          <form className="form" onSubmit={handleSubmit}>
+            <FormControl gap="15px">
+              <FormLabel className="form_label-E-mail" htmlFor="name">
+                Nome:
                 <Input
+                  bg="transparent"
                   marginTop="10px"
                   focusBorderColor="#00acc1"
                   errorBorderColor="red.300"
-                  type={show ? "text" : "password"}
-                  placeholder="Senha:"
+                  name="name"
+                  type="text"
+                  placeholder="Nome"
                 />
-                <InputRightElement>
-                  <Button border="none" onClick={handleClick}>
-                    {show ? <Icon as={ViewIcon} /> : <Icon as={ViewOffIcon} />}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
-            </FormLabel>
-            <Button
-              color="white"
-              focusBorderColor="#00acc1"
-              border="none"
-              background="#00acc1"
-              className="form_btn"
-              type="submit"
-            >
-              Cadastrar-se
-            </Button>
-          </FormControl>
-        </Flex>
+              </FormLabel>
+              <FormLabel className="form_label-E-mail" htmlFor="email">
+                E-mail:
+                <Input
+                  bg="transparent"
+                  marginTop="10px"
+                  focusBorderColor="#00acc1"
+                  errorBorderColor="red.300"
+                  name="email"
+                  type="text"
+                  placeholder="E-mail"
+                />
+              </FormLabel>
+              <FormLabel className="form_label-E-mail" htmlFor="username">
+                Nome de usuário:
+                <Input
+                  bg="transparent"
+                  marginTop="10px"
+                  focusBorderColor="#00acc1"
+                  errorBorderColor="red.300"
+                  name="username"
+                  type="text"
+                  placeholder="Ex.: @billbulldog"
+                />
+              </FormLabel>
+              <FormLabel className="form_label-Senha" htmlFor="password">
+                Senha:
+                <InputGroup>
+                  <Input
+                    marginTop="10px"
+                    focusBorderColor="#00acc1"
+                    errorBorderColor="red.300"
+                    name="password"
+                    type={show ? "text" : "password"}
+                    placeholder="Senha:"
+                  />
+                  <InputRightElement>
+                    <Button border="none" onClick={handleClick}>
+                      {show ? (
+                        <Icon as={ViewIcon} />
+                      ) : (
+                        <Icon as={ViewOffIcon} />
+                      )}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+              </FormLabel>
+              <Button
+                color="white"
+                w="full"
+                focusBorderColor="#00acc1"
+                border="none"
+                background="#00acc1"
+                className="form_btn"
+                type="submit"
+              >
+                Cadastrar-se
+              </Button>
+            </FormControl>
+          </form>
+        </Box>
 
         {/*   <form className="form">
           <label className="form_label-E-mail">

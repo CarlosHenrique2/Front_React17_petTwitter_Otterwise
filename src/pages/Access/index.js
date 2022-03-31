@@ -22,7 +22,7 @@ import {
   Button,
   InputRightElement,
   InputGroup,
-  Flex,
+  Box,
 } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -37,7 +37,7 @@ function Access() {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/home";
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -63,51 +63,58 @@ function Access() {
       <div className="login-form">
         <h1 className="info_page">Login</h1>
 
-        <Flex>
-          <FormControl gap="15px" className="form" onSubmit={handleSubmit}>
-            <FormLabel className="form_label-E-mail" htmlFor="email">
-              E-mail:
-              <Input
-                bg="transparent"
-                marginTop="10px"
-                focusBorderColor="#00acc1"
-                errorBorderColor="red.300"
-                name="email"
-                type="text"
-                placeholder="E-mail"
-              />
-            </FormLabel>
-            <FormLabel className="form_label-Senha" htmlFor="senha">
-              Senha:
-              <InputGroup>
+        <Box textAlign="start">
+          <form className="form" onSubmit={handleSubmit}>
+            <FormControl gap="15px">
+              <FormLabel className="form_label-E-mail" htmlFor="email">
+                E-mail:
                 <Input
+                  bg="transparent"
                   marginTop="10px"
                   focusBorderColor="#00acc1"
                   errorBorderColor="red.300"
-                  name="password"
-                  type={show ? "text" : "password"}
-                  placeholder="Senha:"
+                  name="email"
+                  type="text"
+                  placeholder="E-mail"
                 />
-                <InputRightElement>
-                  <Button border="none" onClick={handleClick}>
-                    {show ? <Icon as={ViewIcon} /> : <Icon as={ViewOffIcon} />}
-                  </Button>
-                </InputRightElement>
-              </InputGroup>
-            </FormLabel>
-            <Button
-              color="white"
-              focusBorderColor="#00acc1"
-              border="none"
-              background="#00acc1"
-              className="form_btn"
-              type="submit"
-            >
-              Entrar
-              {console.log(handleSubmit)}
-            </Button>
-          </FormControl>
-        </Flex>
+              </FormLabel>
+              <FormLabel className="form_label-Senha" htmlFor="password">
+                Senha:
+                <InputGroup>
+                  <Input
+                    marginTop="10px"
+                    focusBorderColor="#00acc1"
+                    errorBorderColor="red.300"
+                    name="password"
+                    type={show ? "text" : "password"}
+                    placeholder="Senha:"
+                  />
+                  <InputRightElement>
+                    <Button border="none" onClick={handleClick}>
+                      {show ? (
+                        <Icon as={ViewIcon} />
+                      ) : (
+                        <Icon as={ViewOffIcon} />
+                      )}
+                    </Button>
+                  </InputRightElement>
+                </InputGroup>
+              </FormLabel>
+              <Button
+                color="white"
+                colorScheme="teal"
+                isActive="none"
+                w="full"
+                background="#00acc1"
+                className="form_btn"
+                type="submit"
+                borderColor="none"
+              >
+                Entrar
+              </Button>
+            </FormControl>
+          </form>
+        </Box>
 
         {/*   <form className="form">
           <label className="form_label-E-mail">

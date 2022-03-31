@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<Criar />} />
         <Route path="/login" element={<Login />} />
         <Route
-          path="/Home"
+          path="/home"
           element={
             <RequireAuth>
               <Home />

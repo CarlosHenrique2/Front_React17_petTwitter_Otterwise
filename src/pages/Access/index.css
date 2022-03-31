@@ -29,12 +29,6 @@ input:-webkit-autofill {
   z-index: 10;
 }
 
-.icon-input {
-  position: absolute;
-  top: 561px;
-  left: 293px;
-}
-
 .login-img {
   display: flex;
   align-items: center;
