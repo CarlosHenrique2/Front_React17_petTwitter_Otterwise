@@ -1,9 +1,9 @@
-import Teste from "../pages/login";
+import Access from "../pages/Access";
 
 function Login() {
   return (
     <div>
-      <Teste />
+      <Access />
     </div>
   );
 }
