@@ -113,7 +113,13 @@ function Create() {
                     placeholder="Senha:"
                   />
                   <InputRightElement>
-                    <Button border="none" onClick={handleClick}>
+                    <Button
+                      _hover={{ background: "none" }}
+                      _active={{ background: "none" }}
+                      _focus={{ boxShadow: "none" }}
+                      border="none"
+                      onClick={handleClick}
+                    >
                       {show ? (
                         <Icon as={ViewIcon} />
                       ) : (
