@@ -15,3 +15,90 @@ input:focus {
 input:-webkit-autofill {
   transition: background-color 5000s;
 }
+
+@media (min-width: 600px) {
+  .login {
+    display: flex;
+    align-items: center;
+  }
+  .login-form {
+    text-align: start;
+  }
+  .login-img {
+    display: flex;
+  }
+  .imgMobile {
+    display: none;
+  }
+  .login-img-icon {
+    display: none;
+  }
+  .title_img-mobile {
+    display: none;
+  }
+  .iconMobile {
+    display: none;
+  }
+  .feed-mobile {
+    display: none;
+  }
+  .info-desk {
+    text-align: center;
+  }
+  .title_img-desk {
+    text-align: center;
+    /* width: 264px; */
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 49px;
+    color: #00acc1;
+  }
+  .title-Desktop-1 {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 49px;
+    color: white;
+    position: absolute;
+    top: auto;
+    left: auto;
+  }
+  .title-Desktop-2 {
+    font-family: "Open Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 49px;
+    color: white;
+    position: absolute;
+    top: auto;
+    left: 110px;
+  }
+}
+
+@media (max-width: 600px) {
+  .imgDesk {
+    display: none;
+  }
+  .title_img {
+    display: none;
+  }
+  .title_img-desk {
+    display: none;
+  }
+  .title-Desktop {
+    display: none;
+  }
+  .title-Desktop-1 {
+    display: none;
+  }
+  .title-Desktop-2 {
+    display: none;
+  }
+  .info-desk {
+    display: none;
+  }
+}

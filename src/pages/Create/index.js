@@ -6,18 +6,21 @@ import React from "react";
 import { useAuth, register } from "../../context/auth-context";
 
 import img00 from "../../assets/img/background.jpg";
+import img01 from "../../assets/img/backgroundesk.jpg";
 
 import icon00 from "../../assets/svg/icon00.svg";
 import icon02 from "../../assets/svg/icon02.svg";
 import icon03 from "../../assets/svg/icon03.svg";
+import icon04 from "../../assets/svg/icon04.svg";
+import icon05 from "../../assets/svg/icon05.svg";
+import icon06 from "../../assets/svg/icon06.svg";
 
 import "./index.css";
+import "../../global/global.css";
 
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
   Button,
   InputRightElement,
@@ -57,15 +60,17 @@ function Create() {
   return (
     <div className="login">
       <div className="login-img">
-        <img className="img" src={img00}></img>
-        <img className="icon" src={icon00}></img>
-        <h1 className="title_img">Comece agora. Conecte-se já.</h1>
+        <img className="imgMobile" src={img00}></img>
+        <img className="imgDesk" src={img01}></img>
+        <img className="title-Desktop-1" src={icon04}></img>
+        <img className="title-Desktop-2" src={icon05}></img>
+        <img className="iconMobile" src={icon00}></img>
+        <h1 className="title_img-mobile">Comece agora. Conecte-se já.</h1>
       </div>
-      {/*       <p>Você precisa estar logado para ver a página {from}</p> */}
-
       <div className="login-form">
+        <img className="imgDesk" src={icon06}></img>
+        <h1 className="title_img-desk">Comece agora. Conecte-se já.</h1>
         <h1 className="info_page">Cadastro</h1>
-
         <Box>
           <form className="form" onSubmit={handleSubmit}>
             <FormControl gap="15px">
@@ -144,26 +149,6 @@ function Create() {
             </FormControl>
           </form>
         </Box>
-
-        {/*   <form className="form">
-          <label className="form_label-E-mail">
-            E-mail: <input name="email" type="text" placeholder="E-mail" />
-          </label>
-          <label className="form_label-Senha">
-            Senha:
-            <input
-              name="password"
-              type="password"
-              placeholder="Senha"
-              icon01={icon01}
-            />
-            <img className="icon-input" src={icon01}></img>
-          </label>
-          <button className="form_btn" type="submit">
-            Entrar
-          </button>
-        </form> */}
-
         <div className="info_link">
           <p className="info_link_text">
             Já possui cadastro?<br></br>
