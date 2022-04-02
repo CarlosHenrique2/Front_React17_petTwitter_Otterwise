@@ -26,6 +26,7 @@ import {
   InputRightElement,
   InputGroup,
   Box,
+  Img,
 } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -40,7 +41,7 @@ function Access() {
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 
-  const from = location.state?.from?.pathname || "/home";
+  const from = location.state?.from?.pathname || "/Home";
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -57,16 +58,16 @@ function Access() {
   return (
     <div className="login">
       <div className="login-img">
-        <img className="imgMobile" src={img00}></img>
-        <img className="imgDesk" src={img01}></img>
-        <img className="title-Desktop-1" src={icon04}></img>
-        <img className="title-Desktop-2" src={icon05}></img>
-        <img className="iconMobile" src={icon00}></img>
+        <Img className="imgMobile" src={img00} />
+        <Img className="imgDesk" src={img01} />
+        <Img className="title-Desktop-1" src={icon04} />
+        <Img className="title-Desktop-2" src={icon05} />
+        <Img className="iconMobile" src={icon00} />
         <h1 className="title_img-mobile">Comece agora. Conecte-se já.</h1>
       </div>
       <div className="login-form">
         <div className="info-desk">
-          <img className="imgDesk" src={icon06}></img>
+          <Img className="imgDesk" src={icon06} />
           <h1 className="title_img-desk">Comece agora. Conecte-se já.</h1>
         </div>
         <h1 className="info_page">Login</h1>
@@ -135,8 +136,8 @@ function Access() {
           </p>
         </div>
         <div className="login-img">
-          <img className="login-img-icon" src={icon02}></img>
-          <img className="login-img-icon" src={icon03}></img>
+          <Img className="login-img-icon" src={icon02} />
+          <Img className="login-img-icon" src={icon03} />
         </div>
       </div>
     </div>

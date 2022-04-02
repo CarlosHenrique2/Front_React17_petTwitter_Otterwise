@@ -77,6 +77,9 @@ input:-webkit-autofill {
     top: auto;
     left: 110px;
   }
+  .feed-desktop {
+    display: flex;
+  }
 }
 
 @media (max-width: 600px) {
@@ -99,6 +102,9 @@ input:-webkit-autofill {
     display: none;
   }
   .info-desk {
+    display: none;
+  }
+  .feed-desktop {
     display: none;
   }
 }

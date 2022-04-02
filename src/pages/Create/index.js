@@ -26,6 +26,7 @@ import {
   InputRightElement,
   InputGroup,
   Box,
+  FormHelperText,
 } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
@@ -133,6 +134,9 @@ function Create() {
                     </Button>
                   </InputRightElement>
                 </InputGroup>
+                <FormHelperText>
+                  Deve conter no mínimo um número e uma letra maiúscula
+                </FormHelperText>
               </FormLabel>
               <Button
                 _hover={{ background: "#00acc1" }}

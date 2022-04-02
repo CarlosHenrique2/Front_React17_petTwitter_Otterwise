@@ -10,7 +10,7 @@ export function AppRoutes() {
       <Route path="/" element={<Criar />} />
       <Route path="/login" element={<Login />} />
       <Route
-        path="/home"
+        path="/Home"
         element={
           <RequireAuth>
             <Home />
