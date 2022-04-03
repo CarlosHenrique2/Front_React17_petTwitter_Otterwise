@@ -306,10 +306,10 @@ function Feed() {
                 display="flex"
                 alignItems="center"
                 paddingTop="30px"
-                marginLeft="40px"
+                /* marginLeft="40px" */
                 w="full"
               >
-                <Box display="flex" paddingBottom="90px">
+                <Box display="flex" paddingBottom="35px" paddingLeft="25px">
                   <Img src={profile00} />
                 </Box>
                 <Textarea
@@ -317,9 +317,6 @@ function Feed() {
                   _active={{ background: "none" }}
                   _focus={{ boxShadow: "none" }}
                   placeholder="O que está acontecendo?"
-                  paddingLeft="1rem"
-                  paddingBottom="1rem"
-                  height="130px"
                   w="full"
                   border="none"
                   size="lg"
@@ -338,11 +335,11 @@ function Feed() {
                 >
                   <Text marginRight="10px">{value}:140</Text>
                   <Button
-                    w="full"
                     _hover={{ background: "#99DEE6" }}
                     _active={{ background: "#99DEE6" }}
                     _focus={{ boxShadow: "none" }}
                     borderRadius="10"
+                    w="full"
                     bg="#99DEE6"
                     color="white"
                     type="submit"
@@ -355,36 +352,43 @@ function Feed() {
               {/* </from> */}
             </Box>
 
-            <Box>
-              <Box display="flex" alignItems="center">
-                <Img src={profile01} />
-                <Text>Niko Vira-lata</Text> <Text>@doguinhoniko_20</Text>
-                <Text>14s </Text>
+            <Box paddingLeft="25px">
+              <Box borderBottom="1px solid #EBEBEB">
+                <Box display="flex" alignItems="center">
+                  <Img src={profile01} />
+                  <Text fontWeight="bold" paddingLeft="20px" paddingRight="5px">
+                    Niko Vira-lata
+                  </Text>
+                  <Text color="#828282" paddingLeft="5px" paddingRight="5px">
+                    @doguinhoniko_20
+                  </Text>
+                  <Text paddingLeft="5px" paddingRight="5px">
+                    •
+                  </Text>
+                  <Text color="#828282">14s</Text>
+                </Box>
+                <Text textAlign="start" w="500px" paddingLeft="60px">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
+                  dignissim eu lectus cursus. Porttitor viverra vitae tincidunt
+                  et ipsum nibh sed blandit. Ullamcorper scelerisque eget
+                  integer dui eu enim.
+                </Text>
               </Box>
-              <Text
-                textAlign="start"
-                borderBottom="1px solid #EBEBEB"
-                w="500px"
-              >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
-                dignissim eu lectus cursus. Porttitor viverra vitae tincidunt et
-                ipsum nibh sed blandit. Ullamcorper scelerisque eget integer dui
-                eu enim.
-              </Text>
-            </Box>
-            <Box>
-              <Box display="flex" alignItems="center">
-                <Img src={profile01} />
-                <Text>Niko Vira-lata</Text> <Text>@doguinhoniko_20</Text>
-                <Text>14s </Text>
-              </Box>
-              <Text
-                textAlign="start"
+              <Box
+                marginTop="20px"
+                marginBottom="20px"
                 borderBottom="1px solid #EBEBEB"
                 w="684px"
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              </Text>
+                <Box display="flex" alignItems="center">
+                  <Img src={profile01} />
+                  <Text>Niko Vira-lata</Text> <Text>@doguinhoniko_20</Text>
+                  <Text>14s </Text>
+                </Box>
+                <Text textAlign="start">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                </Text>
+              </Box>
             </Box>
           </Box>
         </Flex>
