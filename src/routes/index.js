@@ -1,8 +1,11 @@
 import { Routes, Route } from "react-router-dom";
+
 import { AuthProvider, RequireAuth } from "../context/auth-context";
+
 import Login from "./Login";
 import Criar from "./Criar";
 import Home from "./home";
+import Profile from "./Profile";
 
 export function AppRoutes() {
   return (
@@ -14,6 +17,14 @@ export function AppRoutes() {
         element={
           <RequireAuth>
             <Home />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/Profile"
+        element={
+          <RequireAuth>
+            <Profile />
           </RequireAuth>
         }
       />

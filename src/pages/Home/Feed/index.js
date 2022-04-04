@@ -60,11 +60,7 @@ function Feed() {
   let navigate = useNavigate();
 
   const onSubmit = (event) => {
-    event.preventDefault();
-
-    const post = (data) => console.log(data);
-
-    console.log("teste");
+    console.log(event);
   };
 
   const handleClose = () => {
@@ -316,7 +312,7 @@ function Feed() {
               flexDirection="column"
               borderBottom="15px solid #E7ECF0"
             >
-              <form onSubmit={handleSubmit}>
+              <form onSubmit={handleSubmit(onSubmit)}>
                 <Box
                   display="flex"
                   alignItems="center"
@@ -366,6 +362,7 @@ function Feed() {
                 </Box>
               </form>
             </Box>
+
             <Box
               paddingLeft="30px"
               paddingBottom="10px"
