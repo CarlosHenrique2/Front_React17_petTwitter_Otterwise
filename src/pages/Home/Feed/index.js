@@ -1,11 +1,16 @@
 import { useState } from "react";
 import React from "react";
 
+import { useForm } from "react-hook-form";
+
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../../context/auth-context";
 
 import profile00 from "../../../assets/img/profiledog.jpg";
 import profile01 from "../../../assets/img/profile02.jpg";
+import profile03 from "../../../assets/img/profile03.jpg";
+import profile04 from "../../../assets/img/profile04.jpg";
+import profile05 from "../../../assets/img/profile05.jpg";
 
 import icon02 from "../../../assets/svg/icon02.svg";
 import icon03 from "../../../assets/svg/icon03.svg";
@@ -39,12 +44,7 @@ import {
   HStack,
   Textarea,
   Text,
-  FormControl,
-  FormLabel,
-  FormHelperText,
-  Input,
-  InputGroup,
-  InputRightElement,
+  CircularProgress,
 } from "@chakra-ui/react";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -54,9 +54,18 @@ function Feed() {
   const [showModal, setShowModal] = useState(false);
   const { pathname } = useLocation();
   const [value, setValue] = React.useState(0);
+  const { register, handleSubmit } = useForm();
 
   let auth = useAuth();
   let navigate = useNavigate();
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+
+    const post = (data) => console.log(data);
+
+    console.log("teste");
+  };
 
   const handleClose = () => {
     onClose();
@@ -232,40 +241,41 @@ function Feed() {
             flexDirection="column"
             borderRight="1px solid #EBEBEB"
             h="100vh"
-            paddingX="36px"
-            paddingY="33px"
           >
             <Box
               display="flex"
               align="center"
               justifyContent="center"
               textAlign="center"
+              marginX="36px"
+              marginY="10px"
             >
               <Img marginX="15px" src={icon09} />
               <Img src={icon08} />
             </Box>
-            <Box display="flex" align="center" flexDirection="column" w="full">
+            <Box display="flex" flexDirection="column" w="full">
               <Link
                 _focus={{ background: "#E6F7F9" }}
                 _active={{ borderLeft: "5px solid #00ACC1" }}
                 _hover={{ textStyle: "none" }}
                 display="flex"
-                justifyContent="center"
                 marginTop="16px"
+                padding="10px"
+                paddingLeft="70px"
                 w="full"
                 to="/home"
                 borderLeft={pathname === "/Home" ? "5px solid #00ACC1" : "none"}
                 bg={pathname === "/Home" ? "#E6F7F9" : "none"}
               >
-                <Img src={icon07} /> Home
+                <Img marginRight="5px" src={icon07} /> Home
               </Link>
               <Link
                 _focus={{ background: "#E6F7F9" }}
                 _active={{ borderLeft: "5px solid #00ACC1" }}
                 _hover={{ textStyle: "none" }}
                 display="flex"
-                justifyContent="center"
-                marginTop="16px"
+                padding="10px"
+                paddingLeft="75px"
                 w="full"
                 to="/profile"
                 borderLeft={
@@ -273,22 +283,27 @@ function Feed() {
                 }
                 bg={pathname === "/profile" ? "#E6F7F9" : "none"}
               >
-                <Img src={icon10} /> Meu perfil
+                <Img marginRight="5px" src={icon10} /> Meu perfil
               </Link>
-              <Button
-                _hover={{ background: "none" }}
-                _active={{ background: "none" }}
-                _focus={{ boxShadow: "none" }}
-                focusBorderColor="#00acc1"
-                marginTop="48px"
-                bg="transparent"
-                onClick={handleClose}
-              >
-                <Img src={iconexit} w="30px" /> Sair
-              </Button>
+              <Box display="flex" justifyContent="flex-start">
+                <Button
+                  _hover={{ background: "none" }}
+                  _active={{ background: "none" }}
+                  _focus={{ boxShadow: "none" }}
+                  focusBorderColor="#00acc1"
+                  display="flex"
+                  marginTop="15px"
+                  paddingLeft="75px"
+                  bg="transparent"
+                  onClick={handleClose}
+                >
+                  <Img src={iconexit} w="30px" marginRight="5px" /> Sair
+                </Button>
+              </Box>
             </Box>
           </Box>
         </Flex>
+
         <Flex display="flex">
           <Box
             display="flex"
@@ -301,95 +316,163 @@ function Feed() {
               flexDirection="column"
               borderBottom="15px solid #E7ECF0"
             >
-              {/*  <from> */}
-              <Box
-                display="flex"
-                alignItems="center"
-                paddingTop="30px"
-                /* marginLeft="40px" */
-                w="full"
-              >
-                <Box display="flex" paddingBottom="35px" paddingLeft="25px">
-                  <Img src={profile00} />
-                </Box>
-                <Textarea
-                  _hover={{ background: "none" }}
-                  _active={{ background: "none" }}
-                  _focus={{ boxShadow: "none" }}
-                  placeholder="O que está acontecendo?"
-                  w="full"
-                  border="none"
-                  size="lg"
-                  type="text"
-                  onChange={(e) => setValue(e.target.value.length)}
-                  isInvalid={value > 140}
-                />
-              </Box>
-              <Box display="flex" alignItems="center" w="full">
-                <Box w="full"></Box>
+              <form onSubmit={handleSubmit}>
                 <Box
                   display="flex"
                   alignItems="center"
-                  marginRight="40px"
-                  marginBottom="15px"
+                  paddingTop="30px"
+                  w="full"
                 >
-                  <Text marginRight="10px">{value}:140</Text>
-                  <Button
-                    _hover={{ background: "#99DEE6" }}
-                    _active={{ background: "#99DEE6" }}
+                  <Box display="flex" paddingBottom="45px" paddingLeft="25px">
+                    <Img src={profile00} />
+                  </Box>
+                  <Textarea
+                    _hover={{ background: "none" }}
+                    _active={{ background: "none" }}
                     _focus={{ boxShadow: "none" }}
-                    borderRadius="10"
-                    w="full"
-                    bg="#99DEE6"
-                    color="white"
-                    type="submit"
-                    isDisabled={value > 140}
+                    placeholder="O que está acontecendo?"
+                    border="none"
+                    size="lg"
+                    w="600px"
+                    type="text"
+                    onChange={(e) => setValue(e.target.value.length)}
+                    isInvalid={value > 140}
+                  />
+                </Box>
+                <Box display="flex" alignItems="center" w="full">
+                  <Box w="full"></Box>
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    marginBottom="15px"
+                    marginRight="40px"
+                    marginLeft="40px"
                   >
-                    Petwittar
-                  </Button>
+                    <Text marginRight="10px">{value}:140</Text>
+                    <Button
+                      _hover={{ background: "#99DEE6" }}
+                      _active={{ background: "#99DEE6" }}
+                      _focus={{ boxShadow: "none" }}
+                      borderRadius="10"
+                      w="full"
+                      bg="#99DEE6"
+                      color="white"
+                      type="submit"
+                      isDisabled={value > 140}
+                    >
+                      Petwittar
+                    </Button>
+                  </Box>
                 </Box>
-              </Box>
-              {/* </from> */}
+              </form>
             </Box>
-
-            <Box paddingLeft="25px">
-              <Box borderBottom="1px solid #EBEBEB">
-                <Box display="flex" alignItems="center">
+            <Box
+              paddingLeft="30px"
+              paddingBottom="10px"
+              marginTop="10px"
+              w="700px"
+              borderBottom="1px solid #EBEBEB"
+            >
+              <Box display="flex" alignItems="center">
+                <Box paddingTop="5px">
                   <Img src={profile01} />
-                  <Text fontWeight="bold" paddingLeft="20px" paddingRight="5px">
-                    Niko Vira-lata
-                  </Text>
-                  <Text color="#828282" paddingLeft="5px" paddingRight="5px">
-                    @doguinhoniko_20
-                  </Text>
-                  <Text paddingLeft="5px" paddingRight="5px">
-                    •
-                  </Text>
-                  <Text color="#828282">14s</Text>
                 </Box>
-                <Text textAlign="start" w="500px" paddingLeft="60px">
+                <Text fontWeight="bold" paddingLeft="20px" paddingRight="5px">
+                  Niko Vira-lata
+                </Text>
+                <Text color="#828282" paddingLeft="5px" paddingRight="5px">
+                  @doguinhoniko_20
+                </Text>
+                <Text paddingLeft="5px" paddingRight="5px">
+                  •
+                </Text>
+                <Text color="#828282">14s</Text>
+              </Box>
+
+              <Box textAlign="start" display="flex" paddingLeft="60px">
+                <Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
                   dignissim eu lectus cursus. Porttitor viverra vitae tincidunt
                   et ipsum nibh sed blandit. Ullamcorper scelerisque eget
                   integer dui eu enim.
                 </Text>
               </Box>
-              <Box
-                marginTop="20px"
-                marginBottom="20px"
-                borderBottom="1px solid #EBEBEB"
-                w="684px"
-              >
-                <Box display="flex" alignItems="center">
-                  <Img src={profile01} />
-                  <Text>Niko Vira-lata</Text> <Text>@doguinhoniko_20</Text>
-                  <Text>14s </Text>
+            </Box>
+
+            <Box
+              paddingLeft="30px"
+              paddingBottom="10px"
+              marginTop="10px"
+              w="700px"
+              borderBottom="1px solid #EBEBEB"
+            >
+              <Box display="flex" alignItems="center">
+                <Box paddingTop="5px">
+                  <Img src={profile03} />
                 </Box>
-                <Text textAlign="start">
+                <Text fontWeight="bold" paddingLeft="20px" paddingRight="5px">
+                  Niko Vira-lata
+                </Text>
+                <Text color="#828282" paddingLeft="5px" paddingRight="5px">
+                  @doguinhoniko_20
+                </Text>
+                <Text paddingLeft="5px" paddingRight="5px">
+                  •
+                </Text>
+                <Text color="#828282">14s</Text>
+              </Box>
+
+              <Box textAlign="start" display="flex" paddingLeft="60px">
+                <Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Text>
               </Box>
             </Box>
+
+            <Box
+              paddingLeft="30px"
+              paddingBottom="10px"
+              marginTop="10px"
+              w="700px"
+              borderBottom="1px solid #EBEBEB"
+            >
+              <Box display="flex" alignItems="center">
+                <Box paddingTop="5px">
+                  <Img src={profile04} />
+                </Box>
+                <Text fontWeight="bold" paddingLeft="20px" paddingRight="5px">
+                  Niko Vira-lata
+                </Text>
+                <Text color="#828282" paddingLeft="5px" paddingRight="5px">
+                  @doguinhoniko_20
+                </Text>
+                <Text paddingLeft="5px" paddingRight="5px">
+                  •
+                </Text>
+                <Text color="#828282">14s</Text>
+              </Box>
+
+              <Box textAlign="start" display="flex" paddingLeft="60px">
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Tincidunt quam pellentesque ultrices quam volutpat nulla eros,
+                  tempor. Tristique volutpat euismod nunc eu fusce quis sed.
+                  Odio varius ac dictum sodales sed mauris, hendrerit.
+                  Adipiscing consequat urna nulla sed. Vitae nullam dolor
+                  dignissim orci quis. Vitae, donec lacus orci, suspendisse
+                  enim, neque. Elementum quam nulla at id ultricies ornare id.
+                  Tortor faucibus tellus, turpis consectetur consequat, iaculis
+                  lacinia viverra. Lectus massa mattis tellus libero et
+                  sagittis. Consequat orci cursus nisl aliquet ut in. Nisl quis
+                  ullamcorper phasellus nec. Vestibulum sed augue blandit
+                  integer tempus sit vel. Laoreet accumsan facilisis viverra
+                  molestie aliquam a. Volutpat morbi aliquet hendrerit tincidunt
+                  enim, diam cras. Mi facilisi libero purus nibh pretium. Nibh
+                  lorem ipsum eleifend pellentesque nulla eu aliquam, laoreet.
+                </Text>
+              </Box>
+            </Box>
+            <CircularProgress isIndeterminate color="#99DEE6" />
           </Box>
         </Flex>
       </div>

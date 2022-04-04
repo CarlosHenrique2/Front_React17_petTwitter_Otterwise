@@ -12,11 +12,14 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.24.0",
     "framer-motion": "^6.2.8",
+    "prisma-offset-pagination": "^0.0.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.29.0",
     "react-router-dom": "6",
     "react-scripts": "5.0.0",
-    "styled-components": "^5.3.3"
+    "styled-components": "^5.3.3",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

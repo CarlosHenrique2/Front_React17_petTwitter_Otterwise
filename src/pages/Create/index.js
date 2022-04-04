@@ -72,6 +72,7 @@ function Create() {
         <img className="imgDesk" src={icon06}></img>
         <h1 className="title_img-desk">Comece agora. Conecte-se já.</h1>
         <h1 className="info_page">Cadastro</h1>
+
         <Box>
           <form className="form" onSubmit={handleSubmit}>
             <FormControl gap="15px">
@@ -153,6 +154,7 @@ function Create() {
             </FormControl>
           </form>
         </Box>
+
         <div className="info_link">
           <p className="info_link_text">
             Já possui cadastro?<br></br>
