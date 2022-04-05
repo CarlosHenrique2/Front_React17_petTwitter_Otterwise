@@ -1,3 +1,5 @@
+/* global standards */
+
 * {
   padding: 0;
   margin: 0;
@@ -15,6 +17,85 @@ input:focus {
 input:-webkit-autofill {
   transition: background-color 5000s;
 }
+
+/* style initial */
+
+.imgMobile {
+  position: relative;
+  top: 0;
+  z-index: -1;
+}
+
+.iconMobile {
+  position: absolute;
+  top: 42px;
+  left: 30px;
+  z-index: 10;
+}
+
+.login-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-img-icon {
+  padding-top: 30px;
+}
+
+.title_img-mobile {
+  position: absolute;
+  top: 141px;
+  left: 30px;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 49px;
+  color: white;
+  z-index: 10;
+}
+
+.info_page {
+  font-family: "Open Sans";
+  font-style: normal;
+  margin-left: 32px;
+  margin-top: 32px;
+  margin-bottom: 34px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-left: 32px;
+  margin-right: 32px;
+  margin-bottom: 30px;
+}
+
+.info_link {
+  text-align: start;
+  margin-top: 10px;
+  margin-left: 32px;
+}
+
+.info_link_text {
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  border: none;
+}
+
+.info_link_text-link {
+  color: #00acc1;
+  text-decoration: underline;
+}
+
+/* responsive */
 
 @media (min-width: 600px) {
   .login {
@@ -34,6 +115,9 @@ input:-webkit-autofill {
     display: none;
   }
   .title_img-mobile {
+    display: none;
+  }
+  .info_link-mobile {
     display: none;
   }
   .iconMobile {
@@ -103,6 +187,10 @@ input:-webkit-autofill {
   .info-desk {
     display: none;
   }
+  /* .info_link-mobile {
+    margin-right: 10px;
+    padding-right: 10px;
+  } */
   .feed-desktop {
     display: none;
   }

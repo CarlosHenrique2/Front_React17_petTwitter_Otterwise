@@ -15,7 +15,6 @@ import icon04 from "../../assets/svg/icon04.svg";
 import icon05 from "../../assets/svg/icon05.svg";
 import icon06 from "../../assets/svg/icon06.svg";
 
-import "./index.css";
 import "../../global/global.css";
 
 import Login from "../../components/Form/Login";
@@ -129,7 +128,7 @@ function Access() {
         </Box> */}
         <Box className="info_link">
           <Text className="info_link_text">
-            Ainda não possui uma conta?<br className=""></br>
+            Ainda não possui uma conta?<br className="info_link-mobile"></br>
             <Link className="info_link_text-link" to="/">
               Cadastrar-se
             </Link>

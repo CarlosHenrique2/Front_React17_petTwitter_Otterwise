@@ -20,7 +20,6 @@ import icon09 from "../../../assets/svg/icon09.svg";
 import icon10 from "../../../assets/svg/icon10.svg";
 import iconexit from "../../../assets/svg/iconexit.svg";
 
-import "./index.css";
 import "../../../global/global.css";
 
 import Menudesktop from "../../../components/menu/menu-desktop";

@@ -1,8 +1,23 @@
 import { useState } from "react";
 
-import { Button, Img, Link, Box, Flex, useDisclosure } from "@chakra-ui/react";
+import {
+  Button,
+  Img,
+  Link,
+  Box,
+  Flex,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+} from "@chakra-ui/react";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import { useAuth } from "../../../context/auth-context";
 
 import icon07 from "../../../assets/svg/icon07.svg";
 import icon08 from "../../../assets/svg/icon08.svg";
@@ -10,11 +25,16 @@ import icon09 from "../../../assets/svg/icon09.svg";
 import icon10 from "../../../assets/svg/icon10.svg";
 import iconexit from "../../../assets/svg/iconexit.svg";
 
-const Menudesktop = (props) => {
+import "../../../global/global.css";
+
+const Menudesktop = () => {
   const [showModal, setShowModal] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const { pathname } = useLocation();
+
+  let auth = useAuth();
+  let navigate = useNavigate();
 
   const handleClose = () => {
     onClose();
@@ -50,7 +70,7 @@ const Menudesktop = (props) => {
               display="flex"
               marginTop="16px"
               padding="10px"
-              paddingLeft="70px"
+              paddingLeft="75px"
               w="full"
               to="/Home"
               href="/Home"
@@ -84,7 +104,7 @@ const Menudesktop = (props) => {
                 focusBorderColor="#00acc1"
                 display="flex"
                 marginTop="15px"
-                paddingLeft="75px"
+                paddingLeft="80px"
                 bg="transparent"
                 onClick={handleClose}
               >
@@ -92,6 +112,74 @@ const Menudesktop = (props) => {
               </Button>
             </Box>
           </Box>
+        </Box>
+
+        <Box>
+          <Modal
+            display="flex"
+            alignItems="center"
+            size="xs"
+            w="full"
+            isOpen={showModal}
+            onClose={() => setShowModal(false)}
+          >
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader
+                display="flex"
+                margin="0"
+                padding="0"
+                textAlign="start"
+              >
+                Sair desta conta?
+              </ModalHeader>
+              <ModalBody
+                display="flex"
+                margin="0"
+                padding="0"
+                textAlign="start"
+              >
+                Deseja realmente sair desta conta?
+              </ModalBody>
+              <ModalFooter
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
+                w="full"
+              >
+                <Button
+                  _hover={{ background: "none" }}
+                  _active={{ background: "none" }}
+                  _focus={{ borderColor: "none" }}
+                  border="1px solid #00acc1"
+                  paddingLeft="40px"
+                  paddingRight="40px"
+                  bg="transparent"
+                  color="#00acc1"
+                  onClick={() => {
+                    auth.signout(() => navigate("/"));
+                  }}
+                >
+                  Sair
+                </Button>
+                <Button
+                  _hover={{ background: "#00acc1" }}
+                  _active={{ background: "#00acc1" }}
+                  _focus={{ border: "#00acc1" }}
+                  focusBorderColor="#00acc1"
+                  backgroundColor="#00acc1"
+                  paddingLeft="40px"
+                  paddingRight="40px"
+                  bg="transparent"
+                  color="white"
+                  mr={3}
+                  onClick={() => setShowModal(false)}
+                >
+                  Cancelar
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
         </Box>
       </Flex>
     </div>

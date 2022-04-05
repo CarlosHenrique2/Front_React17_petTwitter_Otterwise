@@ -2,6 +2,8 @@ import { Button, Img, Box, Textarea, Text } from "@chakra-ui/react";
 
 import { useForm } from "react-hook-form";
 
+import "../../../global/global.css";
+
 const Postsform = () => {
   return (
     <Box

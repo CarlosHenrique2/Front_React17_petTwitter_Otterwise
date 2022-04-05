@@ -15,7 +15,6 @@ import icon04 from "../../assets/svg/icon04.svg";
 import icon05 from "../../assets/svg/icon05.svg";
 import icon06 from "../../assets/svg/icon06.svg";
 
-import "./index.css";
 import "../../global/global.css";
 
 import Register from "../../components/Form/Register";
@@ -158,7 +157,7 @@ function Create() {
 
         <Box className="info_link">
           <Text className="info_link_text">
-            Já possui cadastro?<br></br>
+            Já possui cadastro?<br className="info_link-mobile"></br>
             <Link className="info_link_text-link" to="/login">
               Faça login
             </Link>

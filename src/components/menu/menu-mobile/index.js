@@ -1,6 +1,8 @@
 import { useState } from "react";
 
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import { useAuth } from "../../../context/auth-context";
 
 import profile00 from "../../../assets/img/profiledog.jpg";
 
@@ -12,14 +14,18 @@ import iconexit from "../../../assets/svg/iconexit.svg";
 
 import "../../../global/global.css";
 
-import Modalbutton from "../../Modal";
-
 import {
   Drawer,
   DrawerBody,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
   Button,
   Img,
   Link,
@@ -36,6 +42,9 @@ const Menumobile = () => {
 
   const { pathname } = useLocation();
 
+  let auth = useAuth();
+  let navigate = useNavigate();
+
   const handleClose = () => {
     onClose();
     setShowModal(true);
@@ -43,12 +52,7 @@ const Menumobile = () => {
   return (
     <>
       <div className="feed-mobile">
-        <Box
-          className="feed-mobile"
-          display="flex"
-          alignItems="center"
-          boxShadow="0px 0px 1px grey"
-        >
+        <Box display="flex" alignItems="center" boxShadow="0px 0px 1px grey">
           <HStack spacing="50">
             <Box display="flex" alignItems="center" justifyContent="center">
               <Button
@@ -69,7 +73,7 @@ const Menumobile = () => {
               <Img src={icon03} w="80px" />
             </Box>
           </HStack>
-          <Drawer isOpen={isOpen} placement="left" onClose={onClose} size="xs">
+          <Drawer isOpen={isOpen} placement="left" size="xs" onClose={onClose}>
             <DrawerOverlay />
             <DrawerContent maxW="258px">
               <DrawerHeader
@@ -86,60 +90,61 @@ const Menumobile = () => {
                 flexDirection="column"
                 textAlign="center"
                 size="xs"
+                padding="0"
               >
                 <Link
-                  _focus={{ background: "#E6F7F9" }}
+                  _focus={{ background: "none" }}
                   _active={{ borderLeft: "5px solid #00ACC1" }}
                   _hover={{ textStyle: "none" }}
                   display="flex"
-                  justifyContent="center"
                   marginTop="16px"
+                  padding="10px"
+                  paddingLeft="75px"
                   w="full"
-                  to="/Home"
                   href="/Home"
                   borderLeft={
                     pathname === "/Home" ? "5px solid #00ACC1" : "none"
                   }
                   bg={pathname === "/Home" ? "#E6F7F9" : "none"}
                 >
-                  <Img src={icon07} /> Home
+                  <Img src={icon07} marginRight="5px" /> Home
                 </Link>
                 <Link
                   _focus={{ background: "#E6F7F9" }}
                   _active={{ borderLeft: "5px solid #00ACC1" }}
                   _hover={{ textStyle: "none" }}
                   display="flex"
-                  justifyContent="center"
-                  marginTop="16px"
+                  padding="10px"
+                  paddingLeft="70px"
                   w="full"
-                  to="/Profile"
                   href="/Profile"
                   borderLeft={
                     pathname === "/Profile" ? "5px solid #00ACC1" : "none"
                   }
                   bg={pathname === "/Profile" ? "#E6F7F9" : "none"}
                 >
-                  <Img src={icon10} /> Meu perfil
+                  <Img src={icon10} marginRight="5px" /> Meu perfil
                 </Link>
-                <Button
-                  _hover={{ background: "none" }}
-                  _active={{ background: "none" }}
-                  _focus={{ boxShadow: "none" }}
-                  focusBorderColor="#00acc1"
-                  marginTop="48px"
-                  bg="transparent"
-                  w="full"
-                  onClick={handleClose}
-                >
-                  <Img src={iconexit} w="30px" /> Sair
-                </Button>
+                <Box display="flex" justifyContent="flex-start">
+                  <Button
+                    _hover={{ background: "none" }}
+                    _active={{ background: "none" }}
+                    _focus={{ boxShadow: "none" }}
+                    focusBorderColor="#00acc1"
+                    display="flex"
+                    marginTop="15px"
+                    paddingLeft="75px"
+                    bg="transparent"
+                    onClick={handleClose}
+                  >
+                    <Img src={iconexit} w="30px" marginRight="5px" /> Sair
+                  </Button>
+                </Box>
               </DrawerBody>
             </DrawerContent>
           </Drawer>
+
           <Box>
-            <Modalbutton />
-          </Box>
-          {/*     <Box>
             <Modal
               display="flex"
               alignItems="center"
@@ -205,7 +210,7 @@ const Menumobile = () => {
                 </ModalFooter>
               </ModalContent>
             </Modal>
-          </Box> */}
+          </Box>
         </Box>
       </div>
     </>
