@@ -16,8 +16,8 @@ import profile05 from "../../../assets/img/profile05.jpg";
 
 import icon02 from "../../../assets/svg/icon02.svg";
 import icon03 from "../../../assets/svg/icon03.svg";
-import icon08 from "../../../assets/svg/icon08.svg";
 import icon07 from "../../../assets/svg/icon07.svg";
+import icon08 from "../../../assets/svg/icon08.svg";
 import icon09 from "../../../assets/svg/icon09.svg";
 import icon10 from "../../../assets/svg/icon10.svg";
 import iconexit from "../../../assets/svg/iconexit.svg";
@@ -139,7 +139,8 @@ function Feed() {
                   justifyContent="center"
                   marginTop="16px"
                   w="full"
-                  to="/home"
+                  to="/Home"
+                  href="/Home"
                   borderLeft={
                     pathname === "/Home" ? "5px solid #00ACC1" : "none"
                   }
@@ -155,11 +156,12 @@ function Feed() {
                   justifyContent="center"
                   marginTop="16px"
                   w="full"
-                  to="/profile"
+                  to="/Profile"
+                  href="/Profile"
                   borderLeft={
-                    pathname === "/profile" ? "5px solid #00ACC1" : "none"
+                    pathname === "/Profile" ? "5px solid #00ACC1" : "none"
                   }
-                  bg={pathname === "/profile" ? "#E6F7F9" : "none"}
+                  bg={pathname === "/Profile" ? "#E6F7F9" : "none"}
                 >
                   <Img src={icon10} /> Meu perfil
                 </Link>
@@ -245,6 +247,7 @@ function Feed() {
           </Modal>
         </Box>
       </div>
+
       <div className="feed-desktop">
         <Flex display="flex" align="center">
           <Box
@@ -275,7 +278,8 @@ function Feed() {
                 padding="10px"
                 paddingLeft="70px"
                 w="full"
-                to="/home"
+                to="/Home"
+                href="/Home"
                 borderLeft={pathname === "/Home" ? "5px solid #00ACC1" : "none"}
                 bg={pathname === "/Home" ? "#E6F7F9" : "none"}
               >
@@ -289,11 +293,12 @@ function Feed() {
                 padding="10px"
                 paddingLeft="75px"
                 w="full"
-                to="/profile"
+                to="/Profile"
+                href="/Profile"
                 borderLeft={
-                  pathname === "/profile" ? "5px solid #00ACC1" : "none"
+                  pathname === "/Profile" ? "5px solid #00ACC1" : "none"
                 }
-                bg={pathname === "/profile" ? "#E6F7F9" : "none"}
+                bg={pathname === "/Profile" ? "#E6F7F9" : "none"}
               >
                 <Img marginRight="5px" src={icon10} /> Meu perfil
               </Link>
@@ -380,7 +385,7 @@ function Feed() {
               </form>
             </Box>
 
-            <Box>
+            {/* <Box>
               {post?.map((data) => {
                 return (
                   <Box
@@ -411,7 +416,7 @@ function Feed() {
                       <Text paddingLeft="5px" paddingRight="5px">
                         •
                       </Text>
-                      <Text color="#828282">14s</Text>
+                      <Text color="#828282">{data.date}</Text>
                     </Box>
 
                     <Box textAlign="start" display="flex" paddingLeft="60px">
@@ -420,7 +425,7 @@ function Feed() {
                   </Box>
                 );
               })}
-            </Box>
+            </Box> */}
 
             <Box
               paddingLeft="30px"
@@ -455,7 +460,7 @@ function Feed() {
               </Box>
             </Box>
 
-            {/*  <Box
+            <Box
               paddingLeft="30px"
               paddingBottom="10px"
               marginTop="10px"
@@ -483,9 +488,9 @@ function Feed() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Text>
               </Box>
-            </Box> */}
+            </Box>
 
-            {/* <Box
+            <Box
               paddingLeft="30px"
               paddingBottom="10px"
               marginTop="10px"
@@ -527,7 +532,7 @@ function Feed() {
                   lorem ipsum eleifend pellentesque nulla eu aliquam, laoreet.
                 </Text>
               </Box>
-            </Box> */}
+            </Box>
 
             <CircularProgress isIndeterminate color="#99DEE6" />
           </Box>

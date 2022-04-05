@@ -23,6 +23,9 @@ import iconexit from "../../../assets/svg/iconexit.svg";
 import "./index.css";
 import "../../../global/global.css";
 
+import Menudesktop from "../../../components/menu/menu-desktop";
+import Menumobile from "../../../components/menu/menu-mobile";
+
 import {
   Drawer,
   DrawerBody,
@@ -52,7 +55,8 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 function User() {
   return (
     <>
-      <p>teste</p>
+      <Menudesktop />
+      <Menumobile />
     </>
   );
 }
