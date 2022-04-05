@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 
 import { useForm } from "react-hook-form";
 
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../../context/auth-context";
+
+import client from "../../../providers/client";
 
 import profile00 from "../../../assets/img/profiledog.jpg";
 import profile01 from "../../../assets/img/profile02.jpg";
@@ -52,16 +54,30 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 function Feed() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [showModal, setShowModal] = useState(false);
-  const { pathname } = useLocation();
   const [value, setValue] = React.useState(0);
   const { register, handleSubmit } = useForm();
+  const [post, setPost] = useState([]);
+  const [page, setpage] = useState(1);
+
+  useEffect(async () => {
+    await getdata();
+  }, [page]);
+
+  const getdata = async () => {
+    const res = await client.get(`/posts?page=${page}`);
+    setPost([...post, ...res.data]);
+    /* setPost([...post, await client.get(`/posts?page=${page + 1}`).data]); */
+  };
+
+  const onSubmit = (data) => console.log(data);
 
   let auth = useAuth();
   let navigate = useNavigate();
+  const { pathname } = useLocation();
 
-  const onSubmit = (event) => {
+  /* const onSubmit = (event) => {
     console.log(event);
-  };
+  }; */
 
   const handleClose = () => {
     onClose();
@@ -327,6 +343,7 @@ function Feed() {
                     _active={{ background: "none" }}
                     _focus={{ boxShadow: "none" }}
                     placeholder="O que está acontecendo?"
+                    {...register("text")}
                     border="none"
                     size="lg"
                     w="600px"
@@ -363,6 +380,48 @@ function Feed() {
               </form>
             </Box>
 
+            <Box>
+              {post?.map((data) => {
+                return (
+                  <Box
+                    paddingLeft="30px"
+                    paddingBottom="10px"
+                    marginTop="10px"
+                    w="700px"
+                    borderBottom="1px solid #EBEBEB"
+                  >
+                    <Box display="flex" alignItems="center">
+                      <Box paddingTop="5px">
+                        <Img src={profile01} />
+                      </Box>
+                      <Text
+                        fontWeight="bold"
+                        paddingLeft="20px"
+                        paddingRight="5px"
+                      >
+                        Niko Vira-lata
+                      </Text>
+                      <Text
+                        color="#828282"
+                        paddingLeft="5px"
+                        paddingRight="5px"
+                      >
+                        @doguinhoniko_20
+                      </Text>
+                      <Text paddingLeft="5px" paddingRight="5px">
+                        •
+                      </Text>
+                      <Text color="#828282">14s</Text>
+                    </Box>
+
+                    <Box textAlign="start" display="flex" paddingLeft="60px">
+                      <Text>{data.text}</Text>
+                    </Box>
+                  </Box>
+                );
+              })}
+            </Box>
+
             <Box
               paddingLeft="30px"
               paddingBottom="10px"
@@ -396,7 +455,7 @@ function Feed() {
               </Box>
             </Box>
 
-            <Box
+            {/*  <Box
               paddingLeft="30px"
               paddingBottom="10px"
               marginTop="10px"
@@ -424,9 +483,9 @@ function Feed() {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 </Text>
               </Box>
-            </Box>
+            </Box> */}
 
-            <Box
+            {/* <Box
               paddingLeft="30px"
               paddingBottom="10px"
               marginTop="10px"
@@ -468,7 +527,8 @@ function Feed() {
                   lorem ipsum eleifend pellentesque nulla eu aliquam, laoreet.
                 </Text>
               </Box>
-            </Box>
+            </Box> */}
+
             <CircularProgress isIndeterminate color="#99DEE6" />
           </Box>
         </Flex>

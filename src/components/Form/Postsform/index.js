@@ -1,26 +1,4 @@
-import {
-  Drawer,
-  DrawerBody,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
-  useDisclosure,
-  Button,
-  Img,
-  Link,
-  Box,
-  Flex,
-  HStack,
-  Textarea,
-  Text,
-  CircularProgress,
-} from "@chakra-ui/react";
+import { Button, Img, Box, Textarea, Text } from "@chakra-ui/react";
 
 import { useForm } from "react-hook-form";
 

@@ -18,16 +18,9 @@ import icon06 from "../../assets/svg/icon06.svg";
 import "./index.css";
 import "../../global/global.css";
 
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  Button,
-  InputRightElement,
-  InputGroup,
-  Box,
-  Img,
-} from "@chakra-ui/react";
+import Login from "../../components/Form/Login";
+
+import { Box, Img, Heading, Text } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
@@ -56,22 +49,29 @@ function Access() {
   }
 
   return (
-    <div className="login">
-      <div className="login-img">
+    <Box className="login">
+      <Box className="login-img">
         <Img className="imgMobile" src={img00} />
         <Img className="imgDesk" src={img01} />
         <Img className="title-Desktop-1" src={icon04} />
         <Img className="title-Desktop-2" src={icon05} />
         <Img className="iconMobile" src={icon00} />
-        <h1 className="title_img-mobile">Comece agora. Conecte-se já.</h1>
-      </div>
-      <div className="login-form">
-        <div className="info-desk">
+        <Heading className="title_img-mobile">
+          Comece agora. Conecte-se já.
+        </Heading>
+      </Box>
+      <Box className="login-form">
+        <Box className="info-desk">
           <Img className="imgDesk" src={icon06} />
-          <h1 className="title_img-desk">Comece agora. Conecte-se já.</h1>
-        </div>
-        <h1 className="info_page">Login</h1>
-        <Box textAlign="start">
+          <Heading className="title_img-desk">
+            Comece agora. Conecte-se já.
+          </Heading>
+        </Box>
+        <Heading className="info_page">Login</Heading>
+        <Box>
+          <Login />
+        </Box>
+        {/*        <Box textAlign="start">
           <form className="form" onSubmit={handleSubmit}>
             <FormControl>
               <FormLabel className="form_label-E-mail" htmlFor="email">
@@ -126,21 +126,21 @@ function Access() {
               </Button>
             </FormControl>
           </form>
-        </Box>
-        <div className="info_link">
-          <p className="info_link_text">
+        </Box> */}
+        <Box className="info_link">
+          <Text className="info_link_text">
             Ainda não possui uma conta?<br className=""></br>
             <Link className="info_link_text-link" to="/">
               Cadastrar-se
             </Link>
-          </p>
-        </div>
-        <div className="login-img">
+          </Text>
+        </Box>
+        <Box className="login-img">
           <Img className="login-img-icon" src={icon02} />
           <Img className="login-img-icon" src={icon03} />
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 }
 

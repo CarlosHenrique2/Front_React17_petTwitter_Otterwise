@@ -1,3 +1,11 @@
+import { useLocation, useNavigate, Link } from "react-router-dom";
+
+import React from "react";
+
+import { useAuth, register } from "../../../context/auth-context";
+
+import "../../../global/global.css";
+
 import {
   FormControl,
   FormLabel,
@@ -7,14 +15,39 @@ import {
   InputGroup,
   Box,
   FormHelperText,
+  Icon,
 } from "@chakra-ui/react";
+
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 import { useState } from "react";
 
 import { useForm } from "react-hook-form";
 
-const Register = (props) => {
-  const { register, handleSubmit } = useForm();
+const Register = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { register } = useAuth();
+
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
+
+  const from = location.state?.from?.pathname || "/login";
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const name = formData.get("name");
+    const email = formData.get("email");
+    const username = formData.get("email");
+    const password = formData.get("password");
+
+    await register({ name, email, username, password });
+    navigate(from, { replace: true });
+    console.log(formData);
+  }
+  /*  const { register, handleSubmit } = useForm();
   const [show, setShow] = useState(false);
 
   const handleClick = () => {
@@ -23,16 +56,16 @@ const Register = (props) => {
 
   const onsubmit = (data) => {
     console.log(data);
-  };
+  }; */
 
   return (
     <Box>
-      <form className="form" onSubmit={handleSubmit(onsubmit)}>
+      <form className="form" onSubmit={handleSubmit}>
         <FormControl gap="15px">
           <FormLabel className="form_label-E-mail" htmlFor="name">
             Nome:
             <Input
-              {...register("name")}
+              /*    {...register("name")} */
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
@@ -44,7 +77,7 @@ const Register = (props) => {
           <FormLabel className="form_label-E-mail" htmlFor="email">
             E-mail:
             <Input
-              {...register("email")}
+              /* {...register("email")} */
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
@@ -56,7 +89,7 @@ const Register = (props) => {
           <FormLabel className="form_label-E-mail" htmlFor="username">
             Nome de usuário:
             <Input
-              {...register("username")}
+              /* {...register("username")} */
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
@@ -69,7 +102,7 @@ const Register = (props) => {
             Senha:
             <InputGroup>
               <Input
-                {...register("password")}
+                /* {...register("password")} */
                 focusBorderColor="#00acc1"
                 errorBorderColor="red.300"
                 name="password"

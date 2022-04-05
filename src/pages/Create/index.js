@@ -18,16 +18,9 @@ import icon06 from "../../assets/svg/icon06.svg";
 import "./index.css";
 import "../../global/global.css";
 
-import {
-  FormControl,
-  FormLabel,
-  Input,
-  Button,
-  InputRightElement,
-  InputGroup,
-  Box,
-  FormHelperText,
-} from "@chakra-ui/react";
+import Register from "../../components/Form/Register";
+
+import { Box, Img, Heading, Text } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
@@ -59,21 +52,29 @@ function Create() {
   }
 
   return (
-    <div className="login">
-      <div className="login-img">
-        <img className="imgMobile" src={img00}></img>
-        <img className="imgDesk" src={img01}></img>
-        <img className="title-Desktop-1" src={icon04}></img>
-        <img className="title-Desktop-2" src={icon05}></img>
-        <img className="iconMobile" src={icon00}></img>
-        <h1 className="title_img-mobile">Comece agora. Conecte-se já.</h1>
-      </div>
-      <div className="login-form">
-        <img className="imgDesk" src={icon06}></img>
-        <h1 className="title_img-desk">Comece agora. Conecte-se já.</h1>
-        <h1 className="info_page">Cadastro</h1>
+    <Box className="login">
+      <Box className="login-img">
+        <Img className="imgMobile" src={img00} />
+        <Img className="imgDesk" src={img01} />
+        <Img className="title-Desktop-1" src={icon04} />
+        <Img className="title-Desktop-2" src={icon05} />
+        <Img className="iconMobile" src={icon00} />
+        <Heading className="title_img-mobile">
+          Comece agora. Conecte-se já.
+        </Heading>
+      </Box>
+      <Box className="login-form">
+        <Img className="imgDesk" src={icon06} />
+        <Heading className="title_img-desk">
+          Comece agora. Conecte-se já.
+        </Heading>
+        <Heading className="info_page">Cadastro</Heading>
 
         <Box>
+          <Register />
+        </Box>
+
+        {/* <Box>
           <form className="form" onSubmit={handleSubmit}>
             <FormControl gap="15px">
               <FormLabel className="form_label-E-mail" htmlFor="name">
@@ -153,22 +154,22 @@ function Create() {
               </Button>
             </FormControl>
           </form>
-        </Box>
+        </Box> */}
 
-        <div className="info_link">
-          <p className="info_link_text">
+        <Box className="info_link">
+          <Text className="info_link_text">
             Já possui cadastro?<br></br>
             <Link className="info_link_text-link" to="/login">
               Faça login
             </Link>
-          </p>
-        </div>
-        <div className="login-img">
-          <img className="login-img-icon" src={icon02}></img>
-          <img className="login-img-icon" src={icon03}></img>
-        </div>
-      </div>
-    </div>
+          </Text>
+        </Box>
+        <Box className="login-img">
+          <Img className="login-img-icon" src={icon02} />
+          <Img className="login-img-icon" src={icon03} />
+        </Box>
+      </Box>
+    </Box>
   );
 }
 

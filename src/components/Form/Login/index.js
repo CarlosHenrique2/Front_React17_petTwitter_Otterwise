@@ -1,3 +1,10 @@
+import { useLocation, useNavigate, Link } from "react-router-dom";
+
+import { useState } from "react";
+import React from "react";
+
+import { useAuth } from "../../../context/auth-context";
+
 import {
   FormControl,
   FormLabel,
@@ -6,10 +13,33 @@ import {
   InputRightElement,
   InputGroup,
   Box,
-  Img,
+  Icon,
 } from "@chakra-ui/react";
 
+import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
+
 const Login = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { signin } = useAuth();
+
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
+
+  const from = location.state?.from?.pathname || "/Home";
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    await signin({ email, password });
+    navigate(from, { replace: true });
+    console.log(event);
+  }
+
   return (
     <Box textAlign="start">
       <form className="form" onSubmit={handleSubmit}>
