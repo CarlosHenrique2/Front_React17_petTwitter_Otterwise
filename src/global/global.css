@@ -126,6 +126,9 @@ input:-webkit-autofill {
   .feed-mobile {
     display: none;
   }
+  .profile-mobile {
+    display: none;
+  }
   .info-desk {
     text-align: center;
   }
@@ -192,6 +195,9 @@ input:-webkit-autofill {
     padding-right: 10px;
   } */
   .feed-desktop {
+    display: none;
+  }
+  .profile-desktop {
     display: none;
   }
 }

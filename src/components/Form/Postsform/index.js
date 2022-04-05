@@ -1,3 +1,5 @@
+/* import { useState } from "react";
+
 import { Button, Img, Box, Textarea, Text } from "@chakra-ui/react";
 
 import { useForm } from "react-hook-form";
@@ -5,6 +7,15 @@ import { useForm } from "react-hook-form";
 import "../../../global/global.css";
 
 const Postsform = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
+
+  const [value, setValue] = React.useState(0);
   return (
     <Box
       display="flex"
@@ -60,3 +71,4 @@ const Postsform = () => {
 };
 
 export default Postsform;
+ */

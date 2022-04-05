@@ -40,7 +40,7 @@ const Register = () => {
     const formData = new FormData(event.target);
     const name = formData.get("name");
     const email = formData.get("email");
-    const username = formData.get("email");
+    const username = formData.get("username");
     const password = formData.get("password");
 
     await register({ name, email, username, password });
