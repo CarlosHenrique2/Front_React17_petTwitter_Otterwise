@@ -93,7 +93,7 @@ const Menumobile = () => {
                 padding="0"
               >
                 <Link
-                  _focus={{ background: "none" }}
+                  _focus={pathname === "/Home" ? "#E6F7F9" : "none"}
                   _active={{ borderLeft: "5px solid #00ACC1" }}
                   _hover={{ textStyle: "none" }}
                   display="flex"

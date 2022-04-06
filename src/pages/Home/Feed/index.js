@@ -49,7 +49,7 @@ function Feed() {
   }, [page]);
 
   const getdata = async () => {
-    const res = await client.get(`/posts?page=${page}`);
+    const res = await client.get(`/page?page=${page}`);
     setPost([...post, ...res.data]);
   };
 

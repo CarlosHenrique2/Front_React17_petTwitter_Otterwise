@@ -42,6 +42,17 @@ const Login = () => {
     console.log(event);
   }
 
+  /*  const { register, handleSubmit } = useForm();
+  const [show, setShow] = useState(false);
+
+  const handleClick = () => {
+    setShow(!show);
+  };
+
+  const onsubmit = (data) => {
+    console.log(data);
+  }; */
+
   return (
     <Box textAlign="start">
       <form className="form" onSubmit={handleSubmit}>
@@ -49,6 +60,7 @@ const Login = () => {
           <FormLabel className="form_label-E-mail" htmlFor="email">
             E-mail:
             <Input
+              /* {...register("email")} */
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
@@ -61,6 +73,7 @@ const Login = () => {
             Senha:
             <InputGroup>
               <Input
+                /* {...register("password")} */
                 focusBorderColor="#00acc1"
                 errorBorderColor="red.300"
                 name="password"
