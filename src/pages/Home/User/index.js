@@ -1,12 +1,16 @@
 import React from "react";
+import { useState } from "react";
 
 import profile00 from "../../../assets/img/profiledog.jpg";
+import profile01 from "../../../assets/img/profile01.jpg";
 import profile09 from "../../../assets/img/profile09.jpg";
 
 import "../../../global/global.css";
 
 import Menudesktop from "../../../components/menu/menu-desktop";
 import Menumobile from "../../../components/menu/menu-mobile";
+
+import InfiniteScroll from "../../../components/InfiniteScroll";
 
 import {
   Img,
@@ -18,12 +22,17 @@ import {
 } from "@chakra-ui/react";
 
 function User() {
+  const [page, setPage] = useState(1);
+  const [time, setTime] = useState();
   return (
     <>
-      <Flex display="flex" flexDirection="column">
-        <Menumobile />
-        <Menudesktop />
+      <Flex display="flex">
         <div className="profile-desktop">
+          <Flex display="flex">
+            <Menumobile />
+            <Menudesktop />
+          </Flex>
+
           <Box
             display="flex"
             align="center"
@@ -56,6 +65,7 @@ function User() {
                 <Text>@billthebulldog2022</Text>
               </Box>
             </Box>
+
             <Box>
               <Box
                 paddingLeft="30px"
@@ -164,63 +174,95 @@ function User() {
                   </Text>
                 </Box>
               </Box>
-              <CircularProgress isIndeterminate color="#99DEE6" />
             </Box>
+
+            <CircularProgress isIndeterminate color="#99DEE6" />
+            <InfiniteScroll
+              fetchMore={() =>
+                setPage((oldPage) => {
+                  console.log(oldPage);
+                  return oldPage + 1;
+                })
+              }
+            />
           </Box>
         </div>
       </Flex>
+
       {/*  divisão */}
-      <Flex>
+
+      <Flex display="flex" flexDirection="column">
         <div className="profile-mobile">
-          <Box display="flex">
-            <Box>
-              <Box borderBottom="3px solid #00ACC1">
-                <Img src={profile09} />
-                <Box display="flex" align="center">
-                  <Text
-                    fontWeight="700"
-                    fontStyle="normal"
-                    fontSize="18px"
-                    fontFamily="Open Sans"
-                    w="full"
-                  >
+          <Flex display="flex" flexDirection="column">
+            <Menumobile />
+            <Menudesktop />
+          </Flex>
+          <Box marginY="20px">
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="flex-start"
+              borderBottom="1px solid #EBEBEB"
+            >
+              <Box marginX="20px" borderBottom="3px solid #00ACC1">
+                <Img src={profile01} />
+                <Box>
+                  <Text textAlign="center" fontSize="16px">
                     Petposts
                   </Text>
                 </Box>
               </Box>
-              <Box display="flex" alignItems="center" flexDirection="column">
-                <Heading>Bill Bulldog</Heading>
-                <Text>@billthebulldog2022</Text>
+              <Box>
+                <Heading fontSize="22px">Bill Bulldog</Heading>
+                <Text fontSize="16px">@billthebulldog2022</Text>
               </Box>
             </Box>
 
             <Box>
-              {/*  <Box>
-                <Box display="flex" alignItems="center">
-                  <Box paddingTop="5px">
-                    <Img src={profile00} />
+              {/*  divisão */}
+              <Box borderBottom="1px solid #EBEBEB">
+                <Box marginX="20px" marginY="20px" w="full">
+                  <Box display="flex" alignItems="center">
+                    <Box paddingTop="5px">
+                      <Img src={profile00} />
+                    </Box>
+                    <Text
+                      fontFamily="Open Sans"
+                      fontSize="14px"
+                      fontWeight="700"
+                      paddingLeft="5px"
+                    >
+                      Bill Bulldog
+                    </Text>
+                    <Text
+                      fontFamily="Open Sans"
+                      fontSize="12px"
+                      paddingLeft="5px"
+                      color="#828282"
+                    >
+                      @billthebulldog2022
+                    </Text>
+                    <Text paddingLeft="5px">•</Text>
+                    <Text
+                      fontFamily="Open Sans"
+                      fontSize="12px"
+                      paddingLeft="5px"
+                      color="#828282"
+                    >
+                      14s
+                    </Text>
                   </Box>
-                  <Text fontWeight="bold" paddingLeft="20px" paddingRight="5px">
-                    Bill Bulldog
-                  </Text>
-                  <Text color="#828282" paddingLeft="5px" paddingRight="5px">
-                    @billthebulldog2022
-                  </Text>
-                  <Text paddingLeft="5px" paddingRight="5px">
-                    •
-                  </Text>
-                  <Text color="#828282">14s</Text>
-                </Box>
 
-                <Box textAlign="start" display="flex" paddingLeft="60px">
-                  <Text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Arcu dignissim eu lectus cursus. Porttitor viverra vitae
-                    tincidunt et ipsum nibh sed blandit. Ullamcorper scelerisque
-                    eget integer dui eu enim.
-                  </Text>
+                  <Box>
+                    <Text fontSize="14px">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Arcu dignissim eu lectus cursus. Porttitor viverra vitae
+                      tincidunt et ipsum nibh sed blandit. Ullamcorper
+                      scelerisque eget integer dui eu enim.
+                    </Text>
+                  </Box>
                 </Box>
-              </Box> */}
+              </Box>
 
               {/*    <Box borderBottom="1px solid #EBEBEB">
                 <Box display="flex" alignItems="center">
@@ -284,7 +326,7 @@ function User() {
                 </Box>
               </Box> */}
 
-              {/* <CircularProgress isIndeterminate color="#99DEE6" /> */}
+              <CircularProgress isIndeterminate color="#99DEE6" />
             </Box>
           </Box>
         </div>

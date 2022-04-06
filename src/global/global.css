@@ -166,6 +166,9 @@ input:-webkit-autofill {
   .feed-desktop {
     display: flex;
   }
+  .profile-desktop {
+    display: flex;
+  }
 }
 
 @media (max-width: 600px) {
@@ -199,5 +202,13 @@ input:-webkit-autofill {
   }
   .profile-desktop {
     display: none;
+  }
+  .feed-mobile {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile-mobile {
+    display: flex;
+    flex-direction: column;
   }
 }

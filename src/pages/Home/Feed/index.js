@@ -14,42 +14,20 @@ import client from "../../../providers/client";
 
 import profile00 from "../../../assets/img/profiledog.jpg";
 import profile01 from "../../../assets/img/profile02.jpg";
-import profile03 from "../../../assets/img/profile03.jpg";
-import profile04 from "../../../assets/img/profile04.jpg";
-import profile05 from "../../../assets/img/profile05.jpg";
-
-import icon02 from "../../../assets/svg/icon02.svg";
-import icon03 from "../../../assets/svg/icon03.svg";
-import icon07 from "../../../assets/svg/icon07.svg";
-import icon08 from "../../../assets/svg/icon08.svg";
-import icon09 from "../../../assets/svg/icon09.svg";
-import icon10 from "../../../assets/svg/icon10.svg";
-import iconexit from "../../../assets/svg/iconexit.svg";
 
 import "../../../global/global.css";
 
 import Menudesktop from "../../../components/menu/menu-desktop";
 import Menumobile from "../../../components/menu/menu-mobile";
 
+import InfiniteScroll from "../../../components/InfiniteScroll";
+
 import {
-  Drawer,
-  DrawerBody,
-  DrawerHeader,
-  DrawerOverlay,
-  DrawerContent,
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalFooter,
-  ModalBody,
   useDisclosure,
   Button,
   Img,
-  Link,
   Box,
   Flex,
-  HStack,
   Textarea,
   Text,
   CircularProgress,
@@ -63,7 +41,8 @@ function Feed() {
   const [value, setValue] = React.useState(0);
   const { register, handleSubmit } = useForm();
   const [post, setPost] = useState([]);
-  const [page, setpage] = useState(1);
+  const [page, setPage] = useState(1);
+  const [time, setTime] = useState();
 
   useEffect(async () => {
     await getdata();
@@ -172,6 +151,8 @@ function Feed() {
                 </form>
               </Box>
 
+              {/* consume Posts */}
+
               <Box>
                 {post?.map((data) => {
                   return (
@@ -206,7 +187,7 @@ function Feed() {
                         <Text color="#828282">
                           {/* {data.created_at} */}
                           <TimeAgo
-                            date="april 05, 2022"
+                            date={Date.now()}
                             formatador={data.created_at}
                           />
                         </Text>
@@ -220,7 +201,16 @@ function Feed() {
                 })}
                 <CircularProgress isIndeterminate color="#99DEE6" />
               </Box>
-              <Box display="flex" alignItems="center"></Box>
+              {/*        {loading.data && ()} */}
+              <InfiniteScroll
+                fetchMore={() =>
+                  setPage((oldPage) => {
+                    console.log(oldPage);
+                    return oldPage + 1;
+                  })
+                }
+              />
+              {/* consume Posts */}
             </Box>
           </Flex>
         </div>
@@ -228,10 +218,47 @@ function Feed() {
 
       {/*  divisão */}
 
-      <Flex Flex display="flex" flexDirection="column">
+      <Flex display="flex" flexDirection="column">
         <div className="feed-mobile">
-          <Menumobile />
-          <Menudesktop />
+          <Flex display="flex" flexDirection="column">
+            <Menumobile />
+            <Menudesktop />
+          </Flex>
+          {/*  divisão */}
+          <Box>
+            <Box marginX="30px" marginY="20px">
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="flex-start"
+              >
+                <Box marginX="5px" marginY="5px">
+                  <Img src={profile00} />
+                </Box>
+                <Text fontWeight="bold" fontSize="14px">
+                  Bill Bulldog
+                </Text>
+                <Text color="#828282" fontSize="14px">
+                  @billthebulldog2022
+                </Text>
+                <Text>•</Text>
+                <Text color="#828282" fontSize="14px">
+                  14s
+                </Text>
+              </Box>
+
+              <Box>
+                <Text>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
+                  dignissim eu lectus cursus. Porttitor viverra vitae tincidunt
+                  et ipsum nibh sed blandit. Ullamcorper scelerisque eget
+                  integer dui eu enim.
+                </Text>
+              </Box>
+            </Box>
+            <CircularProgress isIndeterminate color="#99DEE6" />
+          </Box>
+          {/*  divisão */}
         </div>
       </Flex>
     </>
