@@ -68,9 +68,15 @@ const Menumobile = () => {
                 <HamburgerIcon bgSize="lg" />
               </Button>
             </Box>
-            <Box display="flex" alignItems="center" justifyContent="center">
-              <Img src={icon02} w="30px" />
-              <Img src={icon03} w="80px" />
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-around"
+            >
+              <HStack spacing="2">
+                <Img src={icon02} w="30px" />
+                <Img src={icon03} w="80px" />
+              </HStack>
             </Box>
           </HStack>
           <Drawer isOpen={isOpen} placement="left" size="xs" onClose={onClose}>

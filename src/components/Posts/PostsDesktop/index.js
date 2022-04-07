@@ -2,17 +2,14 @@ import { useEffect, useState } from "react";
 import React from "react";
 
 import TimeAgo from "react-timeago";
-import frenchStrings from "react-timeago/lib/language-strings/fr";
-import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 
 import client from "../../../providers/client";
 
-import profile00 from "../../../assets/img/profiledog.jpg";
-import profile01 from "../../../assets/img/profile02.jpg";
+import icon13 from "../../../assets/svg/icon13.svg";
 
 import "../../../global/global.css";
 
-import { Img, Box, Flex, Text } from "@chakra-ui/react";
+import { Img, Box, Flex, Text, CircularProgress } from "@chakra-ui/react";
 
 const PostsDesktop = () => {
   const [post, setPost] = useState([]);
@@ -40,56 +37,78 @@ const PostsDesktop = () => {
                   <Box
                     paddingLeft="30px"
                     paddingBottom="10px"
-                    marginTop="10px"
+                    paddingTop="10px"
                     w="700px"
                     borderBottom="1px solid #EBEBEB"
                   >
                     <Box display="flex" alignItems="center">
                       <Box paddingTop="5px">
-                        <Img src={profile01} />
+                        <Img src={icon13} />
                       </Box>
                       <Text
-                        fontWeight="bold"
-                        paddingLeft="20px"
-                        paddingRight="5px"
+                        fontWeight="700"
+                        fontSize="15px"
+                        fontFamily="Open Sans"
+                        fontStyle="normal"
+                        lineHeight="20px"
+                        paddingLeft="10px"
+                        paddingRight="2px"
                       >
                         {data.author.name}
                       </Text>
                       <Text
                         color="#828282"
-                        paddingLeft="5px"
-                        paddingRight="5px"
+                        fontFamily="Open Sans"
+                        fontStyle="normal"
+                        fontWeight="400"
+                        fontSize="15px"
+                        lineHeight="20px"
+                        marginLeft="2px"
+                        marginRight="2px"
                       >
                         {data.author.username}
                       </Text>
-                      <Text paddingLeft="5px" paddingRight="5px">
+                      <Text marginLeft="2px" marginRight="2px">
                         •
                       </Text>
-                      <Text color="#828282">
-                        {/* {data.created_at} */}
-                        <TimeAgo
-                          date={Date.now()}
-                          formatador={data.created_at}
-                        />
+                      <Text
+                        color="#828282"
+                        fontFamily="Open Sans"
+                        fontStyle="normal"
+                        fontWeight="400"
+                        fontSize="15px"
+                        lineHeight="20px"
+                      >
+                        <TimeAgo date={data.created_at} />
                       </Text>
                     </Box>
-
-                    <Box textAlign="start" display="flex" paddingLeft="60px">
-                      <Text>{data.text}</Text>
+                    <Box textAlign="start" display="flex" marginLeft="60px">
+                      <Text
+                        fontWeight="400"
+                        fontStyle="normal"
+                        fontFamily="Open Sans"
+                        fontSize="14px"
+                        lineHeight="22px"
+                      >
+                        {data.text}
+                      </Text>
                     </Box>
                   </Box>
                 );
               })}
             </Box>
+            <Box display="flex" justifyContent="center" paddingTop="10px">
+              <CircularProgress isIndeterminate color="#99DEE6" />
+            </Box>
             {/*        {loading.data && ()} */}
-            <InfiniteScroll
+            {/* <InfiniteScroll
               fetchMore={() =>
                 setPage((oldPage) => {
                   console.log(oldPage);
                   return oldPage + 1;
                 })
               }
-            />
+            /> */}
             {/* consume Posts */}
           </Box>
         </div>

@@ -1,8 +1,11 @@
-/* import { useState } from "react";
+import { useState } from "react";
+import React from "react";
 
 import { Button, Img, Box, Textarea, Text } from "@chakra-ui/react";
 
 import { useForm } from "react-hook-form";
+
+import profile00 from "../../../assets/img/profiledog.jpg";
 
 import "../../../global/global.css";
 
@@ -22,7 +25,7 @@ const Postsform = () => {
       flexDirection="column"
       borderBottom="15px solid #E7ECF0"
     >
-      <form onSubmit={handleSubmit}>
+      <form>
         <Box display="flex" alignItems="center" paddingTop="30px" w="full">
           <Box display="flex" paddingBottom="45px" paddingLeft="25px">
             <Img src={profile00} />
@@ -71,4 +74,3 @@ const Postsform = () => {
 };
 
 export default Postsform;
- */

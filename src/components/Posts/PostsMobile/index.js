@@ -10,11 +10,21 @@ import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 import client from "../../../providers/client";
 
 import profile00 from "../../../assets/img/profiledog.jpg";
-import profile01 from "../../../assets/img/profile02.jpg";
+import profile01 from "../../../assets/img/profile01.jpg";
+
+import icon13 from "../../../assets/svg/icon13.svg";
+import iconModal from "../../../assets/svg/iconmodal.svg";
 
 import "../../../global/global.css";
 
-import { Img, Box, Flex, Text } from "@chakra-ui/react";
+import {
+  Img,
+  Box,
+  Flex,
+  Text,
+  Button,
+  CircularProgress,
+} from "@chakra-ui/react";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
 
@@ -36,35 +46,81 @@ const PostsMobile = () => {
       <Flex display="flex" flexDirection="column">
         <div className="feed-mobile">
           <Box>
-            <Box marginX="30px" marginY="20px">
-              <Box
-                display="flex"
-                alignItems="center"
-                justifyContent="flex-start"
-              >
-                <Box marginX="5px" marginY="5px">
-                  <Img src={profile00} />
-                </Box>
-                <Text fontWeight="bold" fontSize="14px">
-                  Bill Bulldog
-                </Text>
-                <Text color="#828282" fontSize="14px">
-                  @billthebulldog2022
-                </Text>
-                <Text>•</Text>
-                <Text color="#828282" fontSize="14px">
-                  14s
-                </Text>
-              </Box>
+            {/* tt */}
+            {post?.map((data) => {
+              return (
+                <Box marginX="10px" marginY="20px">
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="flex-start"
+                  >
+                    <Box>
+                      <Img src={icon13} />
+                    </Box>
+                    <Text
+                      color="#757575"
+                      fontWeight="700"
+                      fontSize="14px"
+                      fontFamily="Open Sans"
+                      fontStyle="normal"
+                      lineHeight="19px"
+                      paddingLeft="10px"
+                      paddingRight="5px"
+                    >
+                      {data.author.name}
+                    </Text>
+                    <Text
+                      color="#757575"
+                      fontFamily="Open Sans"
+                      fontStyle="normal"
+                      fontWeight="300"
+                      fontSize="12px"
+                      lineHeight="17px"
+                      marginLeft="5px"
+                      marginRight="5px"
+                    >
+                      {data.author.username}
+                    </Text>
+                    <Text>•</Text>
+                    <Text
+                      color="#757575"
+                      fontFamily="Open Sans"
+                      fontStyle="normal"
+                      fontWeight="300"
+                      fontSize="12px"
+                      lineHeight="17px"
+                      marginLeft="5px"
+                      marginRight="5px"
+                    >
+                      <TimeAgo date={data.created_at} />
+                    </Text>
+                  </Box>
 
-              <Box>
-                <Text>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Arcu
-                  dignissim eu lectus cursus. Porttitor viverra vitae tincidunt
-                  et ipsum nibh sed blandit. Ullamcorper scelerisque eget
-                  integer dui eu enim.
-                </Text>
-              </Box>
+                  <Box textAlign="start" display="flex" marginLeft="60px">
+                    <Text
+                      color="#141619"
+                      fontWeight="400"
+                      fontStyle="normal"
+                      fontFamily="Open Sans"
+                      fontSize="14px"
+                      lineHeight="17px"
+                    >
+                      {data.text}
+                    </Text>
+                  </Box>
+                </Box>
+              );
+            })}
+            <Box>
+              <Button>
+                {" "}
+                <Img src={iconModal} />{" "}
+              </Button>
+            </Box>
+            {/* tt */}
+            <Box display="flex" justifyContent="center" paddingTop="10px">
+              <CircularProgress isIndeterminate color="#99DEE6" />
             </Box>
           </Box>
         </div>
