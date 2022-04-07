@@ -187,8 +187,8 @@ function Feed() {
                         <Text color="#828282">
                           {/* {data.created_at} */}
                           <TimeAgo
-                            date={Date.now()}
-                            formatador={data.created_at}
+                            date={data.created_at}
+                            /* formatador={data.created_at} */
                           />
                         </Text>
                       </Box>
