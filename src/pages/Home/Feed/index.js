@@ -7,8 +7,8 @@ import Menumobile from "../../../components/menu/menu-mobile";
 
 import Postsform from "../../../components/Form/Postsform";
 
-import PostsDesktop from "../../../components/Posts/PostsDesktop";
-import PostsMobile from "../../../components/Posts/PostsMobile";
+import PostsDesktop from "../../../components/Posts/PostsFeed/PostsDesktop";
+import PostsMobile from "../../../components/Posts/PostsFeed/PostsMobile";
 
 import { Box, Flex } from "@chakra-ui/react";
 

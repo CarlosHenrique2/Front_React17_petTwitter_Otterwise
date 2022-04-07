@@ -20,6 +20,7 @@ import {
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
+  useDisclosure,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -31,7 +32,6 @@ import {
   Link,
   Box,
   HStack,
-  useDisclosure,
 } from "@chakra-ui/react";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -45,7 +45,7 @@ const Menumobile = () => {
   let auth = useAuth();
   let navigate = useNavigate();
 
-  const handleClose = () => {
+  const handleClose1 = () => {
     onClose();
     setShowModal(true);
   };
@@ -141,7 +141,7 @@ const Menumobile = () => {
                     marginTop="15px"
                     paddingLeft="75px"
                     bg="transparent"
-                    onClick={handleClose}
+                    onClick={handleClose1}
                   >
                     <Img src={iconexit} w="30px" marginRight="5px" /> Sair
                   </Button>
@@ -149,75 +149,86 @@ const Menumobile = () => {
               </DrawerBody>
             </DrawerContent>
           </Drawer>
-
-          <Box>
-            <Modal
-              display="flex"
-              alignItems="center"
-              size="xs"
-              w="full"
-              isOpen={showModal}
-              onClose={() => setShowModal(false)}
-            >
-              <ModalOverlay />
-              <ModalContent>
-                <ModalHeader
-                  display="flex"
-                  margin="0"
-                  padding="0"
-                  textAlign="start"
-                >
-                  Sair desta conta?
-                </ModalHeader>
-                <ModalBody
-                  display="flex"
-                  margin="0"
-                  padding="0"
-                  textAlign="start"
-                >
-                  Deseja realmente sair desta conta?
-                </ModalBody>
-                <ModalFooter
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="space-between"
-                  w="full"
-                >
-                  <Button
-                    _hover={{ background: "none" }}
-                    _active={{ background: "none" }}
-                    _focus={{ borderColor: "none" }}
-                    border="1px solid #00acc1"
-                    paddingLeft="40px"
-                    paddingRight="40px"
-                    bg="transparent"
-                    color="#00acc1"
-                    onClick={() => {
-                      auth.signout(() => navigate("/"));
-                    }}
-                  >
-                    Sair
-                  </Button>
-                  <Button
-                    _hover={{ background: "#00acc1" }}
-                    _active={{ background: "#00acc1" }}
-                    _focus={{ border: "#00acc1" }}
-                    focusBorderColor="#00acc1"
-                    backgroundColor="#00acc1"
-                    paddingLeft="40px"
-                    paddingRight="40px"
-                    bg="transparent"
-                    color="white"
-                    mr={3}
-                    onClick={() => setShowModal(false)}
-                  >
-                    Cancelar
-                  </Button>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
-          </Box>
         </Box>
+        {/*  modal */}
+        <Box>
+          <Modal
+            display="flex"
+            alignItems="center"
+            size="xs"
+            isOpen={showModal}
+            onClose={() => setShowModal(false)}
+          >
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader
+                display="flex"
+                marginLeft="5px"
+                textAlign="star"
+                fontFamily="Open Sans"
+                fontWeight="600"
+                fontSize="24px"
+                lineHeight="40px"
+                color="#616161"
+              >
+                Sair desta conta?
+              </ModalHeader>
+              <ModalBody
+                display="flex"
+                marginLeft="5px"
+                fontFamily="Open Sans"
+                fontWeight="400"
+                fontSize="16px"
+                lineHeight="24px"
+                color="#616161"
+                textAlign="start"
+              >
+                Deseja realmente sair desta conta?
+              </ModalBody>
+              <ModalFooter
+                display="flex"
+                alignItems="center"
+                justifyContent="space-between"
+                w="full"
+              >
+                <Button
+                  _hover={{ background: "none" }}
+                  _active={{ background: "none" }}
+                  _focus={{ borderColor: "none" }}
+                  border="1px solid #00acc1"
+                  padding="10px"
+                  w="146px"
+                  marginLeft="5px"
+                  marginRight="5px"
+                  bg="transparent"
+                  color="#00acc1"
+                  onClick={() => {
+                    auth.signout(() => navigate("/"));
+                  }}
+                >
+                  Sair
+                </Button>
+                <Button
+                  _hover={{ background: "#00acc1" }}
+                  _active={{ background: "#00acc1" }}
+                  _focus={{ border: "#00acc1" }}
+                  focusBorderColor="#00acc1"
+                  backgroundColor="#00acc1"
+                  padding="10px"
+                  w="146px"
+                  marginLeft="5px"
+                  marginRight="5px"
+                  bg="transparent"
+                  color="white"
+                  onClick={() => setShowModal(false)}
+                >
+                  Cancelar
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+        </Box>
+        {/*  modal */}
       </div>
     </>
   );

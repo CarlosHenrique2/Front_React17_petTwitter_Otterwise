@@ -10,6 +10,9 @@ import "../../../global/global.css";
 import Menudesktop from "../../../components/menu/menu-desktop";
 import Menumobile from "../../../components/menu/menu-mobile";
 
+/* import postsDesktop from "../../../components/Posts/PostProfile/PostsDesktop";
+import postsMobile from "../../../components/Posts/PostProfile/PostsMobile";
+ */
 import InfiniteScroll from "../../../components/InfiniteScroll";
 
 import {

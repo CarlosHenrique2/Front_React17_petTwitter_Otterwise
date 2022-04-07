@@ -3,11 +3,11 @@ import React from "react";
 
 import TimeAgo from "react-timeago";
 
-import client from "../../../providers/client";
+import client from "../../../../providers/client";
 
-import icon13 from "../../../assets/svg/icon13.svg";
+import icon13 from "../../../../assets/svg/icon13.svg";
 
-import "../../../global/global.css";
+import "../../../../global/global.css";
 
 import { Img, Box, Flex, Text, CircularProgress } from "@chakra-ui/react";
 

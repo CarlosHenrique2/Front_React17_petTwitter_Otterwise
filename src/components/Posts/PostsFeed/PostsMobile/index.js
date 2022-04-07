@@ -1,21 +1,14 @@
 import { useEffect, useState } from "react";
 import React from "react";
 
-import { useAuth } from "../../../context/auth-context";
-
 import TimeAgo from "react-timeago";
-import frenchStrings from "react-timeago/lib/language-strings/fr";
-import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 
-import client from "../../../providers/client";
+import client from "../../../../providers/client";
 
-import profile00 from "../../../assets/img/profiledog.jpg";
-import profile01 from "../../../assets/img/profile01.jpg";
+import icon13 from "../../../../assets/svg/icon13.svg";
+import iconModal from "../../../../assets/svg/iconmodal.svg";
 
-import icon13 from "../../../assets/svg/icon13.svg";
-import iconModal from "../../../assets/svg/iconmodal.svg";
-
-import "../../../global/global.css";
+import "../../../../global/global.css";
 
 import {
   Img,
@@ -29,14 +22,10 @@ import {
   ModalOverlay,
   ModalContent,
   ModalHeader,
-  ModalFooter,
   ModalBody,
   FormControl,
-  FormLabel,
   Textarea,
 } from "@chakra-ui/react";
-
-import { HamburgerIcon } from "@chakra-ui/icons";
 
 const PostsMobile = () => {
   const [post, setPost] = useState([]);
@@ -137,7 +126,7 @@ const PostsMobile = () => {
               </Button>
             </Box>
             <Box>
-              <Modal isOpen={isOpen} onClose={onClose} size="md">
+              <Modal isOpen={isOpen} onClose={onClose} size="full">
                 <ModalOverlay />
                 <ModalContent>
                   <ModalHeader borderBottom="1px solid #EBEBEB">
@@ -179,20 +168,21 @@ const PostsMobile = () => {
                           color="white"
                           type="submit"
                           isDisabled={value > 140}
+                          mr={1}
                         >
                           Petwittar
                         </Button>
                       </Box>
                     </Box>
                   </ModalHeader>
-                  <ModalBody display="flex" w="400px">
+                  <ModalBody size="lg" w="400px">
                     <Box display="flex">
                       <FormControl
                         display="flex"
                         alignItems="center"
                         justifyContent="center"
                       >
-                        <Box display="flex">
+                        <Box marginBottom="40px">
                           <Img src={icon13} />
                         </Box>
                         <Textarea
@@ -201,9 +191,8 @@ const PostsMobile = () => {
                           _focus={{ boxShadow: "none" }}
                           placeholder="O que está acontecendo?"
                           border="none"
-                          size="lg"
-                          w="300px"
                           type="text"
+                          marginRight="30px"
                           onChange={(e) => setValue(e.target.value.length)}
                           isInvalid={value > 140}
                         />
