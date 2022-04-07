@@ -24,6 +24,16 @@ import {
   Text,
   Button,
   CircularProgress,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  FormControl,
+  FormLabel,
+  Textarea,
 } from "@chakra-ui/react";
 
 import { HamburgerIcon } from "@chakra-ui/icons";
@@ -31,6 +41,9 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 const PostsMobile = () => {
   const [post, setPost] = useState([]);
   const [page, setPage] = useState(1);
+  const [value, setValue] = React.useState(0);
+
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(async () => {
     await getdata();
@@ -46,7 +59,6 @@ const PostsMobile = () => {
       <Flex display="flex" flexDirection="column">
         <div className="feed-mobile">
           <Box>
-            {/* tt */}
             {post?.map((data) => {
               return (
                 <Box marginX="10px" marginY="20px">
@@ -112,13 +124,95 @@ const PostsMobile = () => {
                 </Box>
               );
             })}
-            <Box>
-              <Button>
-                {" "}
-                <Img src={iconModal} />{" "}
+            <Box display="flex" alignItems="center" justifyContent="flex-end">
+              <Button
+                _hover={{ background: "none" }}
+                _active={{ background: "none" }}
+                _focus={{ border: "none" }}
+                bg="transparent"
+                color="white"
+                onClick={onOpen}
+              >
+                <Img src={iconModal} />
               </Button>
             </Box>
-            {/* tt */}
+            <Box>
+              <Modal isOpen={isOpen} onClose={onClose} size="md">
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader borderBottom="1px solid #EBEBEB">
+                    <Box
+                      display="flex"
+                      alignItems="center"
+                      justifyContent="space-between"
+                    >
+                      <Button
+                        _hover={{ background: "none" }}
+                        _active={{ background: "none" }}
+                        _focus={{ boxShadow: "none" }}
+                        bg="transparent"
+                        onClick={onClose}
+                        fontSize="12px"
+                        fontWeight="300"
+                        lineHeight="21px"
+                      >
+                        Cancel
+                      </Button>
+                      <Box display="flex" alignItems="center">
+                        <Text
+                          fontWeight="400"
+                          fontStyle="normal"
+                          fontFamily="Open Sans"
+                          fontSize="14px"
+                          lineHeight="17px"
+                          marginLeft="5px"
+                          marginRight="5px"
+                        >
+                          {value}:140
+                        </Text>
+                        <Button
+                          _hover={{ background: "#99DEE6" }}
+                          _active={{ background: "#99DEE6" }}
+                          _focus={{ boxShadow: "none" }}
+                          borderRadius="10"
+                          bg="#99DEE6"
+                          color="white"
+                          type="submit"
+                          isDisabled={value > 140}
+                        >
+                          Petwittar
+                        </Button>
+                      </Box>
+                    </Box>
+                  </ModalHeader>
+                  <ModalBody display="flex" w="400px">
+                    <Box display="flex">
+                      <FormControl
+                        display="flex"
+                        alignItems="center"
+                        justifyContent="center"
+                      >
+                        <Box display="flex">
+                          <Img src={icon13} />
+                        </Box>
+                        <Textarea
+                          _hover={{ background: "none" }}
+                          _active={{ background: "none" }}
+                          _focus={{ boxShadow: "none" }}
+                          placeholder="O que está acontecendo?"
+                          border="none"
+                          size="lg"
+                          w="300px"
+                          type="text"
+                          onChange={(e) => setValue(e.target.value.length)}
+                          isInvalid={value > 140}
+                        />
+                      </FormControl>
+                    </Box>
+                  </ModalBody>
+                </ModalContent>
+              </Modal>
+            </Box>
             <Box display="flex" justifyContent="center" paddingTop="10px">
               <CircularProgress isIndeterminate color="#99DEE6" />
             </Box>

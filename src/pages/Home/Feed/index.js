@@ -18,7 +18,6 @@ function Feed() {
       <Flex>
         <div className="feed-desktop">
           <Flex display="flex" align="center">
-            <Menumobile />
             <Menudesktop />
           </Flex>
 
@@ -44,7 +43,6 @@ function Feed() {
         <div className="feed-mobile">
           <Flex display="flex" flexDirection="column">
             <Menumobile />
-            <Menudesktop />
           </Flex>
           <Box>
             <PostsMobile />

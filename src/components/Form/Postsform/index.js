@@ -10,6 +10,8 @@ import profile00 from "../../../assets/img/profiledog.jpg";
 import "../../../global/global.css";
 
 const Postsform = () => {
+  const [value, setValue] = React.useState(0);
+
   const {
     register,
     handleSubmit,
@@ -18,7 +20,6 @@ const Postsform = () => {
   } = useForm();
   const onSubmit = (data) => console.log(data);
 
-  const [value, setValue] = React.useState(0);
   return (
     <Box
       display="flex"

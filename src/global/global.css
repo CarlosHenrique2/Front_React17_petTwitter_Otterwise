@@ -18,7 +18,7 @@ input:-webkit-autofill {
   transition: background-color 5000s;
 }
 
-/* style initial */
+/* global styles */
 
 .imgMobile {
   position: relative;
@@ -95,7 +95,7 @@ input:-webkit-autofill {
   text-decoration: underline;
 }
 
-/* responsive */
+/* responsive Desktop */
 
 @media (min-width: 600px) {
   .login {
@@ -171,6 +171,8 @@ input:-webkit-autofill {
   }
 }
 
+/* responsive Mobile */
+
 @media (max-width: 600px) {
   .imgDesk {
     display: none;
@@ -193,10 +195,6 @@ input:-webkit-autofill {
   .info-desk {
     display: none;
   }
-  /* .info_link-mobile {
-    margin-right: 10px;
-    padding-right: 10px;
-  } */
   .feed-desktop {
     display: none;
   }
