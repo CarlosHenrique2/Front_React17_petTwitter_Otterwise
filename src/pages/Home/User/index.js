@@ -3,16 +3,14 @@ import { useState } from "react";
 
 import profile00 from "../../../assets/img/profiledog.jpg";
 import profile01 from "../../../assets/img/profile01.jpg";
-import profile09 from "../../../assets/img/profile09.jpg";
+import profile02 from "../../../assets/img/profile02.jpg";
+import profile03 from "../../../assets/img/profile03.jpg";
 
 import "../../../global/global.css";
 
 import Menudesktop from "../../../components/menu/menu-desktop";
 import Menumobile from "../../../components/menu/menu-mobile";
 
-/* import postsDesktop from "../../../components/Posts/PostProfile/PostsDesktop";
-import postsMobile from "../../../components/Posts/PostProfile/PostsMobile";
- */
 import InfiniteScroll from "../../../components/InfiniteScroll";
 
 import {
@@ -48,26 +46,62 @@ function User() {
               align="center"
               borderBottom="1px solid #EBEBEB"
               textAlign="flex"
+              w="full"
             >
-              <Box borderBottom="3px solid #00ACC1">
-                <Img src={profile09} />
-                <Box display="flex" align="center">
+              <Box
+                display="flex"
+                align="center"
+                flexDirection="column"
+                marginLeft="30px"
+                marginRight="30px"
+                marginTop="34px"
+              >
+                <Img marginBottom="20px" src={profile02} />
+                <Box display="flex" w="79px">
                   <Text
                     fontWeight="700"
                     fontStyle="normal"
-                    fontSize="18px"
                     fontFamily="Open Sans"
-                    w="full"
+                    fontSize="18px"
+                    lineHeight="24px"
+                    borderBottom="3px solid #00ACC1"
+                    marginTop="10px"
+                    padding="6px"
+                    color="#000000"
                   >
                     Petposts
                   </Text>
                 </Box>
               </Box>
-              <Box display="flex" alignItems="center" flexDirection="column">
-                <Heading>Bill Bulldog</Heading>
-                <Text>@billthebulldog2022</Text>
+              <Box
+                display="flex"
+                alignItems="flex-start"
+                flexDirection="column"
+                marginTop="68px"
+              >
+                <Heading
+                  fontFamily="Open Sans"
+                  fontWeight="700"
+                  fontSize="24px"
+                  lineHeight="32px"
+                  color="#424242"
+                  marginBottom="5px"
+                >
+                  Bill Bulldog
+                </Heading>
+                <Text
+                  fontFamily="Open Sans"
+                  fontWeight="400"
+                  fontSize="16px"
+                  lineHeight="21px"
+                  color="#424242"
+                >
+                  @billthebulldog2022
+                </Text>
               </Box>
             </Box>
+
+            {/* separ */}
 
             <Box>
               <Box
@@ -103,7 +137,7 @@ function User() {
                 </Box>
               </Box>
 
-              <Box
+              {/*   <Box
                 paddingLeft="30px"
                 paddingBottom="10px"
                 marginTop="10px"
@@ -131,9 +165,9 @@ function User() {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   </Text>
                 </Box>
-              </Box>
+              </Box> */}
 
-              <Box
+              {/*   <Box
                 paddingLeft="30px"
                 paddingBottom="10px"
                 marginTop="10px"
@@ -176,7 +210,7 @@ function User() {
                     aliquam, laoreet.
                   </Text>
                 </Box>
-              </Box>
+              </Box> */}
             </Box>
 
             <CircularProgress isIndeterminate color="#99DEE6" />
@@ -194,80 +228,130 @@ function User() {
 
       {/*  divisão */}
 
-      <Flex display="flex" flexDirection="column">
+      <Flex display="flex">
         <div className="profile-mobile">
           <Flex display="flex" flexDirection="column">
             <Menumobile />
-            <Menudesktop />
           </Flex>
-          <Box marginY="20px">
-            <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="flex-start"
-              borderBottom="1px solid #EBEBEB"
-            >
-              <Box marginX="20px" borderBottom="3px solid #00ACC1">
-                <Img src={profile01} />
-                <Box>
-                  <Text textAlign="center" fontSize="16px">
-                    Petposts
+          {/*  profile */}
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="flex-start"
+            borderBottom="1px solid #EBEBEB"
+            marginTop="16px"
+            marginLeft="16px"
+          >
+            <Box>
+              <Img marginBottom="12px" marginRight="16px" src={profile03} />
+              <Box>
+                <Text
+                  fontWeight="600"
+                  fontStyle="normal"
+                  fontFamily="Open Sans"
+                  fontSize="16px"
+                  lineHeight="21px"
+                  paddingBottom="4px"
+                  textAlign="center"
+                  borderBottom="3px solid #00ACC1"
+                  color="#424242"
+                >
+                  Petposts
+                </Text>
+              </Box>
+            </Box>
+            <Box marginBottom="40px">
+              <Heading
+                marginBottom="4px"
+                fontFamily="Open Sans"
+                fontSize="22px"
+                fontWeight="700"
+                lineHeight="29px"
+                color="#141619"
+              >
+                Bill Bulldog
+              </Heading>
+              <Text
+                fontSize="16px"
+                fontFamily="Open Sans"
+                lineHeight="21px"
+                fontWeight="400"
+              >
+                @billthebulldog2022
+              </Text>
+            </Box>
+          </Box>
+          {/*  profile */}
+          <Box>
+            <Box borderBottom="1px solid #EBEBEB">
+              <Box marginX="10px" marginY="20px">
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="flex-start"
+                >
+                  <Box>
+                    <Img src={profile00} />
+                  </Box>
+                  <Text
+                    color="#757575"
+                    fontWeight="700"
+                    fontSize="14px"
+                    fontFamily="Open Sans"
+                    fontStyle="normal"
+                    lineHeight="19px"
+                    paddingLeft="10px"
+                    paddingRight="5px"
+                  >
+                    Bill Bulldog
+                  </Text>
+                  <Text
+                    color="#757575"
+                    fontFamily="Open Sans"
+                    fontStyle="normal"
+                    fontWeight="300"
+                    fontSize="12px"
+                    lineHeight="17px"
+                    marginLeft="5px"
+                    marginRight="5px"
+                  >
+                    @billthebulldog2022
+                  </Text>
+                  <Text>•</Text>
+                  <Text
+                    color="#757575"
+                    fontFamily="Open Sans"
+                    fontStyle="normal"
+                    fontWeight="300"
+                    fontSize="12px"
+                    lineHeight="17px"
+                    marginLeft="5px"
+                    marginRight="5px"
+                  >
+                    14s
+                  </Text>
+                </Box>
+
+                <Box textAlign="start" display="flex" marginLeft="60px">
+                  <Text
+                    color="#141619"
+                    fontWeight="400"
+                    fontStyle="normal"
+                    fontFamily="Open Sans"
+                    fontSize="14px"
+                    lineHeight="17px"
+                  >
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Tincidunt quam pellentesque ultrices quam volutpat nulla
+                    eros, tempor. Tristique volutpat euismod nunc eu fusce quis
+                    sed. Odio varius ac dictum sodales sed mauris, hendrerit.
+                    Adipiscing consequat urna nulla sed. Vitae nullam dolor
                   </Text>
                 </Box>
               </Box>
-              <Box>
-                <Heading fontSize="22px">Bill Bulldog</Heading>
-                <Text fontSize="16px">@billthebulldog2022</Text>
-              </Box>
             </Box>
 
-            <Box>
-              {/*  divisão */}
-              <Box borderBottom="1px solid #EBEBEB">
-                <Box marginX="20px" marginY="20px" w="full">
-                  <Box display="flex" alignItems="center">
-                    <Box paddingTop="5px">
-                      <Img src={profile00} />
-                    </Box>
-                    <Text
-                      fontFamily="Open Sans"
-                      fontSize="14px"
-                      fontWeight="700"
-                      paddingLeft="5px"
-                    >
-                      Bill Bulldog
-                    </Text>
-                    <Text
-                      fontFamily="Open Sans"
-                      fontSize="12px"
-                      paddingLeft="5px"
-                      color="#828282"
-                    >
-                      @billthebulldog2022
-                    </Text>
-                    <Text paddingLeft="5px">•</Text>
-                    <Text
-                      fontFamily="Open Sans"
-                      fontSize="12px"
-                      paddingLeft="5px"
-                      color="#828282"
-                    >
-                      14s
-                    </Text>
-                  </Box>
-
-                  <Box>
-                    <Text fontSize="14px">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Arcu dignissim eu lectus cursus. Porttitor viverra vitae
-                      tincidunt et ipsum nibh sed blandit. Ullamcorper
-                      scelerisque eget integer dui eu enim.
-                    </Text>
-                  </Box>
-                </Box>
-              </Box>
-
-              {/*    <Box borderBottom="1px solid #EBEBEB">
+            {/*    <Box borderBottom="1px solid #EBEBEB">
                 <Box display="flex" alignItems="center">
                   <Box paddingTop="5px">
                     <Img src={profile00} />
@@ -290,7 +374,7 @@ function User() {
                 </Box>
               </Box> */}
 
-              {/*  <Box borderBottom="1px solid #EBEBEB">
+            {/*  <Box borderBottom="1px solid #EBEBEB">
                 <Box display="flex" alignItems="center">
                   <Box paddingTop="5px">
                     <Img src={profile00} />
@@ -329,8 +413,7 @@ function User() {
                 </Box>
               </Box> */}
 
-              <CircularProgress isIndeterminate color="#99DEE6" />
-            </Box>
+            <CircularProgress isIndeterminate color="#99DEE6" />
           </Box>
         </div>
       </Flex>
