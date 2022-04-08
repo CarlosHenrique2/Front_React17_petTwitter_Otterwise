@@ -1,4 +1,7 @@
 import React from "react";
+import { useState } from "react";
+
+import InfiniteScroll from "react-infinite-scroll-component";
 
 import "../../../global/global.css";
 
@@ -10,9 +13,21 @@ import Postsform from "../../../components/Form/Postsform";
 import PostsDesktop from "../../../components/Posts/PostsFeed/PostsDesktop";
 import PostsMobile from "../../../components/Posts/PostsFeed/PostsMobile";
 
-import { Box, Flex } from "@chakra-ui/react";
+import { Box, Flex, StatHelpText } from "@chakra-ui/react";
 
 function Feed() {
+  const { state, setState } = useState();
+
+  /*  setState({ items: Array.from({ length: 10 }) });
+
+  const fetchMoreData = () => {
+    setTimeout(() => {
+      this.setState({
+        items: state.items.concat(Array.from({ length: 10 })),
+      });
+    }, 1500);
+  }; */
+
   return (
     <>
       <Flex>
@@ -46,6 +61,15 @@ function Feed() {
           </Flex>
           <Box>
             <PostsMobile />
+            {/*             <InfiniteScroll
+              dataLength={state.items.length}
+              next={fetchMoreData()}
+              loader={<h4>Loading...</h4>}
+            >
+              {state.items.map((i, index) => (
+                <div>div - #{index}</div>
+              ))}
+            </InfiniteScroll> */}
           </Box>
         </div>
       </Flex>

@@ -1,6 +1,10 @@
 import React from "react";
 import { useState } from "react";
 
+import { useParams } from "react-router-dom";
+
+import InfiniteScroll from "react-infinite-scroll-component";
+
 import profile00 from "../../../assets/img/profiledog.jpg";
 import profile01 from "../../../assets/img/profile01.jpg";
 import profile02 from "../../../assets/img/profile02.jpg";
@@ -12,8 +16,6 @@ import Menudesktop from "../../../components/menu/menu-desktop";
 import Menumobile from "../../../components/menu/menu-mobile";
 
 import Profileposts from "../../../components/Posts/PostProfile/PostsDesktop";
-
-import InfiniteScroll from "../../../components/InfiniteScroll";
 
 import {
   Img,
@@ -27,6 +29,10 @@ import {
 function User() {
   const [page, setPage] = useState(1);
   const [time, setTime] = useState();
+
+  const { id } = useParams();
+  console.log(id);
+
   return (
     <>
       <Flex display="flex">
@@ -216,15 +222,9 @@ function User() {
               </Box> */}
             </Box>
 
-            <CircularProgress isIndeterminate color="#99DEE6" />
-            <InfiniteScroll
-              fetchMore={() =>
-                setPage((oldPage) => {
-                  console.log(oldPage);
-                  return oldPage + 1;
-                })
-              }
-            />
+            <Box display="flex" justifyContent="center" paddingTop="10px">
+              <CircularProgress isIndeterminate color="#99DEE6" />
+            </Box>
           </Box>
         </div>
       </Flex>
