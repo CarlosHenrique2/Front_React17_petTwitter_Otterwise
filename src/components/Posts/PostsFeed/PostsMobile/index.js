@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import React from "react";
 
 import TimeAgo from "react-timeago";
-import portuStrings from "react-timeago/lib/language-strings/en-short";
+import Time from "react-timeago/lib/language-strings/en-short";
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 
 import client from "../../../../providers/client";
@@ -33,9 +33,9 @@ const PostsMobile = () => {
   const [post, setPost] = useState([]);
   const [page, setPage] = useState(1);
   const [value, setValue] = React.useState(0);
-
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const formatter = buildFormatter(portuStrings);
+
+  const formatter = buildFormatter(Time);
 
   useEffect(async () => {
     await getdata();

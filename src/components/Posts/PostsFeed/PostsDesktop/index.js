@@ -4,6 +4,8 @@ import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import TimeAgo from "react-timeago";
+import Time from "react-timeago/lib/language-strings/en-short";
+import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
 
 import client from "../../../../providers/client";
 
@@ -17,6 +19,8 @@ const PostsDesktop = () => {
   const [post, setPost] = useState([]);
   const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
+
+  const formatter = buildFormatter(Time);
 
   useEffect(async () => {
     await getdata();
@@ -45,7 +49,7 @@ const PostsDesktop = () => {
                   key={i * Math.random()}
                 >
                   <Box display="flex" alignItems="center">
-                    <Box paddingTop="5px">
+                    <Box>
                       <Img src={icon13} />
                     </Box>
                     <Text
@@ -54,8 +58,7 @@ const PostsDesktop = () => {
                       fontFamily="Open Sans"
                       fontStyle="normal"
                       lineHeight="20px"
-                      paddingLeft="10px"
-                      paddingRight="2px"
+                      paddingLeft="8px"
                     >
                       {data.author.name}
                     </Text>
@@ -66,12 +69,11 @@ const PostsDesktop = () => {
                       fontWeight="400"
                       fontSize="15px"
                       lineHeight="20px"
-                      marginLeft="2px"
-                      marginRight="2px"
+                      marginLeft="4px"
                     >
                       {data.author.username}
                     </Text>
-                    <Text marginLeft="2px" marginRight="2px">
+                    <Text marginLeft="4px" marginRight="4px">
                       •
                     </Text>
                     <Text
@@ -82,10 +84,11 @@ const PostsDesktop = () => {
                       fontSize="15px"
                       lineHeight="20px"
                     >
-                      <TimeAgo date={data.created_at} />
+                      <TimeAgo date={data.created_at} formatter={formatter} />
                     </Text>
                   </Box>
-                  <Box textAlign="start" display="flex" marginLeft="60px">
+                  <Box textAlign="start" display="flex">
+                    <Flex marginLeft="55px"></Flex>
                     <Text
                       fontWeight="400"
                       fontStyle="normal"
