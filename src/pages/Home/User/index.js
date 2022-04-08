@@ -11,6 +11,8 @@ import "../../../global/global.css";
 import Menudesktop from "../../../components/menu/menu-desktop";
 import Menumobile from "../../../components/menu/menu-mobile";
 
+import Profileposts from "../../../components/Posts/PostProfile/PostsDesktop";
+
 import InfiniteScroll from "../../../components/InfiniteScroll";
 
 import {
@@ -137,6 +139,7 @@ function User() {
                 </Box>
               </Box>
 
+              <Profileposts />
               {/*   <Box
                 paddingLeft="30px"
                 paddingBottom="10px"
@@ -413,7 +416,9 @@ function User() {
                 </Box>
               </Box> */}
 
-            <CircularProgress isIndeterminate color="#99DEE6" />
+            <Box display="flex" justifyContent="center" paddingTop="10px">
+              <CircularProgress isIndeterminate color="#99DEE6" />
+            </Box>
           </Box>
         </div>
       </Flex>

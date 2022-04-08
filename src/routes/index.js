@@ -31,3 +31,5 @@ export function AppRoutes() {
     </Routes>
   );
 }
+
+/* /Profile/:id */
