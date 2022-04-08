@@ -15,23 +15,41 @@ import "../../../../global/global.css";
 
 import { Img, Box, Flex, Text, CircularProgress } from "@chakra-ui/react";
 
+import { WarningIcon } from "@chakra-ui/icons";
+
 const PostsDesktop = () => {
   const [post, setPost] = useState([]);
-  const [items, setItems] = useState([]);
   const [page, setPage] = useState(1);
-
+  const [hasMore, setHasMore] = useState(true);
+  const postListLimit = 25;
   const formatter = buildFormatter(Time);
 
+  /* obtendo a Lista na primeira renderização  */
   useEffect(async () => {
-    await getdata();
+    await getData();
   }, [page]);
 
-  const getdata = async () => {
+  /* Fixa um limite para os posts */
+  useEffect(() => {
+    if (post.length >= postListLimit) {
+      setHasMore(false);
+      return;
+    }
+  }, [post]);
+
+  const getDataAndNextPage = () => {
+    setPage(page + 1);
+    getData();
+  };
+
+  const getData = async () => {
+    console.log(page);
     const res = await client.get(`/page?page=${page}`);
+    console.log("res: ", res);
     setPost([...post, ...res.data]);
   };
 
-  const fetchData = async () => {};
+  console.log("post: ", post);
 
   return (
     <>
@@ -105,23 +123,38 @@ const PostsDesktop = () => {
 
             {/*  InfiniteScroll  */}
             <InfiniteScroll
-              dataLength={items.length}
-              key={items.id}
-              next={fetchData}
-              hasMore={true}
+              dataLength={post.length}
+              key={post.id}
+              next={getDataAndNextPage}
+              hasMore={hasMore}
               loader={
                 <Box display="flex" justifyContent="center" paddingTop="10px">
                   <CircularProgress isIndeterminate color="#99DEE6" />
                 </Box>
               }
               endMessage={
-                <p style={{ textAlign: " centro" }}>
-                  <b>Yay! Você já viu tudo </b>
-                </p>
+                <Box
+                  display="flex"
+                  alignItems="center"
+                  flexDirection="column"
+                  paddingTop="10px"
+                >
+                  <Box display="flex">
+                    <Text fontWeight="700" paddingBottom="10px" color="red.500">
+                      Não Temos Mais Posts Para Você
+                    </Text>
+                  </Box>
+                  <Box>
+                    <WarningIcon w={8} h={8} color="red.500" />
+                  </Box>
+                </Box>
               }
+              refreshFunction={(e) => {
+                return console.log("foi", e);
+              }}
             >
               {/*  map  */}
-              {items?.map((data, i) => (
+              {post?.map((data, i) => (
                 <Box
                   paddingLeft="30px"
                   paddingBottom="10px"
@@ -185,7 +218,6 @@ const PostsDesktop = () => {
                 </Box>
               ))}
               {/*  map  */}
-              {console.log(items)}
             </InfiniteScroll>
             {/* InfiniteScrolls */}
           </Box>
