@@ -150,11 +150,12 @@ const PostsDesktop = () => {
                   </Box>
                 </Box>
               }
-              refreshFunction={(e) => {
+              /*  refreshFunction={(e) => {
                 return console.log("foi", e);
-              }}
+              }} */
             >
               {/*  map  */}
+
               {post?.map((data, i) => (
                 <Box
                   paddingLeft="30px"

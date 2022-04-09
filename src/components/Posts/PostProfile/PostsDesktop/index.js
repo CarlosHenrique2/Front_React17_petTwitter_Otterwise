@@ -57,7 +57,7 @@ const ProfileDesktop = () => {
     setPost([...post, ...res.data.data.listPostId]);
   };
 
-  console.log(post);
+  console.log(post, "desk");
 
   return (
     <>
@@ -70,7 +70,6 @@ const ProfileDesktop = () => {
             w="700px"
             borderBottom="1px solid #EBEBEB"
             key={i * Math.random()}
-            data={data}
           >
             <Box display="flex" alignItems="center">
               <Box paddingTop="5px">

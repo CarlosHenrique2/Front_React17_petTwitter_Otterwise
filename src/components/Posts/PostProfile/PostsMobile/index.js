@@ -37,8 +37,8 @@ import { WarningIcon } from "@chakra-ui/icons";
 
 const ProfileMobile = () => {
   const [page, setPage] = useState(1);
-  const [post, setPost] = useState([]);
   const [value, setValue] = React.useState(0);
+  const [post, setPost] = useState([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [hasMore, setHasMore] = useState(true);
 
@@ -75,14 +75,14 @@ const ProfileMobile = () => {
     setPost([...post, ...res.data.data.listPostId]);
   };
 
-  console.log(post);
+  console.log(post, "mobile");
 
   return (
     <>
       <Flex display="flex" flexDirection="column">
         <div className="feed-mobile">
           <Box>
-            {post?.map((data, i) => (
+            {/* {post?.map((data, i) => (
               <Box
                 borderBottom="1px solid #EBEBEB"
                 paddingY="10px"
@@ -155,7 +155,7 @@ const ProfileMobile = () => {
                   </Text>
                 </Box>
               </Box>
-            ))}
+            ))} */}
           </Box>
 
           {/*  InfiniteScroll  */}

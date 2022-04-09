@@ -40,7 +40,9 @@ const PostsMobile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [hasMore, setHasMore] = useState(true);
 
-  const postListLimit = 25;
+  const setInitalPosts = 10;
+  const postListLimit = post.length;
+
   const formatter = buildFormatter(Time);
 
   /* obtendo a Lista na primeira renderização  */
@@ -50,7 +52,7 @@ const PostsMobile = () => {
 
   /* Fixa um limite para os posts */
   useEffect(() => {
-    if (post.length >= postListLimit) {
+    if (setInitalPosts >= postListLimit) {
       setHasMore(false);
       return;
     }

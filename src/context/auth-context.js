@@ -45,16 +45,16 @@ export function AuthProvider({ children }) {
   const PostTwits = async (data) => {
     try {
       const response = await post(data);
-      /*  const user = {
+      const user = {
         accessToken: response.data.accessToken,
         ...response.data.user,
       };
 
       setInStorage("user", user);
-      setUser(user); */
+      setUser(user);
     } catch (error) {
-      /* console.log(error);
-      alert("Usuário já existe"); */
+      console.log(error);
+      alert("erro ao realizar o posttwits");
     }
   };
 
