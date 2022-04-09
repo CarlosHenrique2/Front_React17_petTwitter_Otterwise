@@ -31,7 +31,7 @@ function User() {
   const [time, setTime] = useState();
 
   const { id } = useParams();
-  console.log(id);
+  console.log(id, useParams());
 
   return (
     <>

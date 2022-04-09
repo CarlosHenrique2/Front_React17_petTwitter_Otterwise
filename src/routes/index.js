@@ -21,7 +21,15 @@ export function AppRoutes() {
         }
       />
       <Route
-        path="/Profile"
+        path="/Home?user:id"
+        element={
+          <RequireAuth>
+            <Home />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/profile/:id"
         element={
           <RequireAuth>
             <Profile />
