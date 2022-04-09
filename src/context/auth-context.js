@@ -2,7 +2,7 @@ import { createContext, useState, useContext } from "react";
 
 import { useLocation, Navigate } from "react-router-dom";
 
-import { setInStorage, login, signup } from "../services/auth";
+import { setInStorage, login, signup, post } from "../services/auth";
 
 const AuthContext = createContext(null);
 
@@ -42,13 +42,31 @@ export function AuthProvider({ children }) {
     }
   };
 
+  const PostTwits = async (data) => {
+    try {
+      const response = await post(data);
+      /*  const user = {
+        accessToken: response.data.accessToken,
+        ...response.data.user,
+      };
+
+      setInStorage("user", user);
+      setUser(user); */
+    } catch (error) {
+      /* console.log(error);
+      alert("Usuário já existe"); */
+    }
+  };
+
   const signout = () => {
     localStorage.clear();
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, signin, signout, register }}>
+    <AuthContext.Provider
+      value={{ user, signin, signout, register, PostTwits }}
+    >
       {children}
     </AuthContext.Provider>
   );
