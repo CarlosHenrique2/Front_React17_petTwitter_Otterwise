@@ -29,7 +29,7 @@ import "../../../global/global.css";
 
 const Menudesktop = () => {
   const [showModal, setShowModal] = useState(false);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { onClose } = useDisclosure();
 
   const { pathname } = useLocation();
 
@@ -70,7 +70,7 @@ const Menudesktop = () => {
               display="flex"
               marginTop="16px"
               padding="10px"
-              paddingLeft="75px"
+              paddingLeft={pathname === "/Profile" ? "75px" : "70px"}
               w="full"
               to="/Home"
               href="/Home"
@@ -84,8 +84,9 @@ const Menudesktop = () => {
               _active={{ borderLeft: "5px solid #00ACC1" }}
               _hover={{ textStyle: "none" }}
               display="flex"
-              padding="10px"
-              paddingLeft="75px"
+              paddingTop="10px"
+              paddingBottom="10px"
+              paddingLeft={pathname === "/Profile" ? "70px" : "70px"}
               w="full"
               to="/Profile"
               href="/Profile"
@@ -104,7 +105,7 @@ const Menudesktop = () => {
                 focusBorderColor="#00acc1"
                 display="flex"
                 marginTop="15px"
-                paddingLeft="80px"
+                paddingLeft={pathname === "/Profile" ? "75px" : "75px"}
                 bg="transparent"
                 onClick={handleClose}
               >

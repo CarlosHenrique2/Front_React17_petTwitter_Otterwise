@@ -62,9 +62,7 @@ const PostsMobile = () => {
   };
 
   const getData = async () => {
-    console.log(page);
     const res = await client.get(`/page?page=${page}`);
-    console.log("res: ", res);
     setPost([...post, ...res.data]);
   };
 

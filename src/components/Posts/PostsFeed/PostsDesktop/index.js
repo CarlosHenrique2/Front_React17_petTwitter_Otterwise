@@ -22,7 +22,9 @@ const PostsDesktop = () => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
-  const postListLimit = 25;
+  const setInitalPosts = 10;
+  const postListLimit = post.length;
+
   const formatter = buildFormatter(Time);
 
   /* obtendo a Lista na primeira renderização  */
@@ -32,7 +34,7 @@ const PostsDesktop = () => {
 
   /* Fixa um limite para os posts */
   useEffect(() => {
-    if (post.length >= postListLimit) {
+    if (setInitalPosts >= postListLimit) {
       setHasMore(false);
       return;
     }
@@ -44,9 +46,7 @@ const PostsDesktop = () => {
   };
 
   const getData = async () => {
-    console.log(page);
     const res = await client.get(`/page?page=${page}`);
-    console.log("res: ", res.data);
     setPost([...post, ...res.data]);
   };
 

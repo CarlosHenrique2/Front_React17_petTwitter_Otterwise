@@ -15,7 +15,7 @@ import icon13 from "../../../../assets/svg/icon13.svg";
 
 import "../../../../global/global.css";
 
-import { Img, Box, Flex, Text, CircularProgress } from "@chakra-ui/react";
+import { Img, Box, Text, CircularProgress } from "@chakra-ui/react";
 
 import { WarningIcon } from "@chakra-ui/icons";
 
@@ -24,7 +24,7 @@ const ProfileDesktop = () => {
   const [post, setPost] = useState([]);
   const [hasMore, setHasMore] = useState(true);
 
-  const setInitalPosts = 5;
+  const setInitalPosts = 10;
   const postListLimit = post.length;
 
   const formatter = buildFormatter(Time);
@@ -34,13 +34,9 @@ const ProfileDesktop = () => {
   const userStored = localStorage.getItem("user");
   const getFromStorage = JSON.parse(userStored);
 
-  console.log(getFromStorage.id);
-  console.log(id);
-
   /* obtendo a Lista na primeira renderização  */
   useEffect(async () => {
     await getData();
-    console.log("oi sou o getData", getData());
   }, [id]);
 
   /* Fixa um limite para os posts */

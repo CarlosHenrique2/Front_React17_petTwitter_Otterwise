@@ -24,7 +24,6 @@ function User() {
           <Flex display="flex">
             <Menudesktop />
           </Flex>
-
           <Box
             display="flex"
             align="center"
@@ -91,9 +90,6 @@ function User() {
                 </Text>
               </Box>
             </Box>
-
-            {/* separ */}
-
             <Box>
               <ProfileDesktop />
             </Box>
@@ -108,7 +104,6 @@ function User() {
           <Flex display="flex" flexDirection="column">
             <Menumobile />
           </Flex>
-          {/*  profile */}
           <Box
             display="flex"
             alignItems="center"
@@ -156,7 +151,6 @@ function User() {
               </Text>
             </Box>
           </Box>
-          {/*  profile */}
           <Box>
             <ProfileMobile />
           </Box>

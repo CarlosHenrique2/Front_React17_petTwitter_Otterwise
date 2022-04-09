@@ -104,8 +104,9 @@ const Menumobile = () => {
                   _hover={{ textStyle: "none" }}
                   display="flex"
                   marginTop="16px"
-                  padding="10px"
-                  paddingLeft="75px"
+                  paddingTop="10px"
+                  paddingBottom="10px"
+                  paddingLeft={pathname === "/Profile" ? "60px" : "65px"}
                   w="full"
                   href="/Home"
                   borderLeft={
@@ -120,8 +121,9 @@ const Menumobile = () => {
                   _active={{ borderLeft: "5px solid #00ACC1" }}
                   _hover={{ textStyle: "none" }}
                   display="flex"
-                  padding="10px"
-                  paddingLeft="70px"
+                  paddingTop="10px"
+                  paddingBottom="10px"
+                  paddingLeft={pathname === "/Profile" ? "55px" : "70px"}
                   w="full"
                   href="/Profile"
                   borderLeft={
@@ -139,7 +141,7 @@ const Menumobile = () => {
                     focusBorderColor="#00acc1"
                     display="flex"
                     marginTop="15px"
-                    paddingLeft="75px"
+                    paddingLeft={pathname === "/Profile" ? "60px" : "70px"}
                     bg="transparent"
                     onClick={handleClose1}
                   >

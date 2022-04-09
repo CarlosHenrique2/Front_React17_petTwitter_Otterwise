@@ -42,7 +42,7 @@ const ProfileMobile = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [hasMore, setHasMore] = useState(true);
 
-  const setInitalPosts = 5;
+  const setInitalPosts = 10;
   const postListLimit = post.length;
 
   const { id } = useParams();
@@ -55,7 +55,6 @@ const ProfileMobile = () => {
   /* obtendo a Lista na primeira renderização  */
   useEffect(async () => {
     await getData();
-    console.log("oi sou o getData", getData());
   }, [id]);
 
   /* Fixa um limite para os posts */

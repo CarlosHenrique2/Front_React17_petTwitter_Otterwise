@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 
 import "../../../global/global.css";
 
@@ -14,8 +13,6 @@ import PostsMobile from "../../../components/Posts/PostsFeed/PostsMobile";
 import { Box, Flex } from "@chakra-ui/react";
 
 function Feed() {
-  const { state, setState } = useState();
-
   return (
     <>
       <Flex>
