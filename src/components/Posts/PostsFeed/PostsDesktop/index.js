@@ -21,6 +21,7 @@ const PostsDesktop = () => {
   const [post, setPost] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+
   const postListLimit = 25;
   const formatter = buildFormatter(Time);
 
@@ -45,7 +46,7 @@ const PostsDesktop = () => {
   const getData = async () => {
     console.log(page);
     const res = await client.get(`/page?page=${page}`);
-    console.log("res: ", res);
+    console.log("res: ", res.data);
     setPost([...post, ...res.data]);
   };
 
