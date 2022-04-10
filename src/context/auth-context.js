@@ -44,7 +44,7 @@ export function AuthProvider({ children }) {
 
   const PostTwits = async (data) => {
     try {
-      const response = await post(data);
+      const response = await post(data.data);
       console.log(data);
       console.log(user);
       const user = {

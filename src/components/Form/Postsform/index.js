@@ -54,6 +54,7 @@ const Postsform = () => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data, event) => {
+    event.preventDefault();
     console.log("data", data);
     console.log("event", event);
     await PostTwits({ data });
@@ -80,7 +81,7 @@ const Postsform = () => {
                 border="none"
                 size="lg"
                 w="600px"
-                {...register("firstName")}
+                {...register("text")}
                 type={Date.now()}
                 onChange={(e) => setValue(e.target.value.length)}
                 isInvalid={value > 140}
