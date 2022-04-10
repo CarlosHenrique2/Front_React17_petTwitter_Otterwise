@@ -21,7 +21,7 @@ export function AppRoutes() {
         }
       />
       <Route
-        path="/Profile"
+        path="/Profile/:id"
         element={
           <RequireAuth>
             <Profile />
@@ -29,7 +29,7 @@ export function AppRoutes() {
         }
       />
       <Route
-        path="/Profile/:id"
+        path="/Profile"
         element={
           <RequireAuth>
             <Profile />

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import React from "react";
 
 import { useNavigate } from "react-router-dom";
@@ -8,8 +7,6 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import TimeAgo from "react-timeago";
 import Time from "react-timeago/lib/language-strings/en-short";
 import buildFormatter from "react-timeago/lib/formatters/buildFormatter";
-
-import client from "../../../../providers/client";
 
 import icon13 from "../../../../assets/svg/icon13.svg";
 
@@ -22,115 +19,20 @@ import { WarningIcon } from "@chakra-ui/icons";
 const PostsDesktop = (props) => {
   const { post, page, setPage, hasMore } = props;
 
-  /* const [post, setPost] = useState([]); */
-  /*  const [page, setPage] = useState(1); */
-  /* const [hasMore, setHasMore] = useState(true); */
-
   const navigate = useNavigate();
 
-  const setInitalPosts = 30;
-  const postListLimit = post.length;
-
   const formatter = buildFormatter(Time);
-
-  /* obtendo a Lista na primeira renderização  */
-  /* useEffect(async () => {
-    await getData();
-  }, [page]); */
-
-  /* Fixa um limite para os posts */
-  /*  useEffect(() => {
-    if (setInitalPosts >= postListLimit) {
-      setHasMore(false);
-      return;
-    }
-  }, [post]); */
 
   const getDataAndNextPage = () => {
     console.log("here");
     setPage(page + 1);
-    /* getData(); */
   };
-
-  /*  const getData = async () => {
-    const res = await client.get(`/page?page=${page}`);
-    setPost([...post, ...res.data]);
-  }; */
 
   return (
     <>
       <Flex>
         <div className="feed-desktop">
           <Box>
-            <Box>
-              {/*   {post?.map((data, i) => (
-                <Box
-                  paddingLeft="30px"
-                  paddingBottom="10px"
-                  paddingTop="10px"
-                  w="700px"
-                  borderBottom="1px solid #EBEBEB"
-                  key={i * Math.random()}
-                >
-                  <Box display="flex" alignItems="center">
-                    <Box>
-                      <Img src={icon13} />
-                    </Box>
-                    <Text
-                      fontWeight="700"
-                      fontSize="15px"
-                      fontFamily="Open Sans"
-                      fontStyle="normal"
-                      lineHeight="20px"
-                      paddingLeft="8px"
-                      cursor="pointer"
-                      onClick={() => {
-                        navigate(`/Profile/${data.authorId}`);
-                      }}
-                    >
-                      {data.author.name}
-                    </Text>
-                    <Text
-                      color="#828282"
-                      fontFamily="Open Sans"
-                      fontStyle="normal"
-                      fontWeight="400"
-                      fontSize="15px"
-                      lineHeight="20px"
-                      marginLeft="4px"
-                    >
-                      {data.author.username}
-                    </Text>
-                    <Text marginLeft="4px" marginRight="4px">
-                      •
-                    </Text>
-                    <Text
-                      color="#828282"
-                      fontFamily="Open Sans"
-                      fontStyle="normal"
-                      fontWeight="400"
-                      fontSize="15px"
-                      lineHeight="20px"
-                    >
-                      <TimeAgo date={data.created_at} formatter={formatter} />
-                    </Text>
-                  </Box>
-                  <Box textAlign="start" display="flex">
-                    <Flex marginLeft="55px"></Flex>
-                    <Text
-                      fontWeight="400"
-                      fontStyle="normal"
-                      fontFamily="Open Sans"
-                      fontSize="14px"
-                      lineHeight="22px"
-                    >
-                      {data.text}
-                    </Text>
-                  </Box>
-                </Box>
-              ))} */}
-            </Box>
-
             {/*  InfiniteScroll  */}
             <InfiniteScroll
               dataLength={post.length}
@@ -159,9 +61,6 @@ const PostsDesktop = (props) => {
                   </Box>
                 </Box>
               }
-              /*  refreshFunction={(e) => {
-                return console.log("foi", e);
-              }} */
             >
               {/*  map  */}
 
@@ -216,7 +115,7 @@ const PostsDesktop = (props) => {
                       fontSize="15px"
                       lineHeight="20px"
                     >
-                      <TimeAgo date={data.created_at} />
+                      <TimeAgo date={data.created_at} formatter={formatter} />
                     </Text>
                   </Box>
                   <Box textAlign="start" display="flex" marginLeft="60px">
