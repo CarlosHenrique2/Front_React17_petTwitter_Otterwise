@@ -39,19 +39,8 @@ const Login = () => {
 
     await signin({ email, password });
     navigate(from, { replace: true });
-    console.log(event);
+    console.log(formData);
   }
-
-  /*  const { register, handleSubmit } = useForm();
-  const [show, setShow] = useState(false);
-
-  const handleClick = () => {
-    setShow(!show);
-  };
-
-  const onsubmit = (data) => {
-    console.log(data);
-  }; */
 
   return (
     <Box textAlign="start">

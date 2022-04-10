@@ -22,7 +22,7 @@ const PostsDesktop = () => {
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
 
-  const setInitalPosts = 10;
+  const setInitalPosts = 30;
   const postListLimit = post.length;
 
   const formatter = buildFormatter(Time);

@@ -57,7 +57,7 @@ const ProfileDesktop = () => {
     setPost([...post, ...res.data.data.listPostId]);
   };
 
-  console.log(post, "desk");
+  console.log(post, "mobile");
 
   return (
     <>

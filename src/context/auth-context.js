@@ -45,11 +45,13 @@ export function AuthProvider({ children }) {
   const PostTwits = async (data) => {
     try {
       const response = await post(data);
+      console.log(data);
+      console.log(user);
       const user = {
         accessToken: response.data.accessToken,
         ...response.data.user,
       };
-
+      console.log(user);
       setInStorage("user", user);
       setUser(user);
     } catch (error) {
