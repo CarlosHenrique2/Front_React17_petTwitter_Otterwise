@@ -1,9 +1,13 @@
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { useState } from "react";
 import React from "react";
 
 import { useAuth } from "../../../context/auth-context";
+
+import { useForm } from "react-hook-form";
+
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import "../../../global/global.css";
 
@@ -20,6 +24,11 @@ import {
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
+const schema = yup.object({
+  email: yup.string().required(),
+  password: yup.string().required().min(5).max(10),
+});
+
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -30,26 +39,23 @@ const Login = () => {
 
   const from = location.state?.from?.pathname || "/Home";
 
-  async function handleSubmit(event) {
-    event.preventDefault();
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-    const formData = new FormData(event.currentTarget);
-    const email = formData.get("email");
-    const password = formData.get("password");
-
-    await signin({ email, password });
+  const onSubmit = async (data) => {
+    await signin(data);
     navigate(from, { replace: true });
-    console.log(formData);
-  }
+  };
 
   return (
     <Box textAlign="start">
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <FormControl>
           <FormLabel className="form_label-E-mail" htmlFor="email">
             E-mail:
             <Input
-              /* {...register("email")} */
+              {...register("email")}
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
@@ -62,7 +68,7 @@ const Login = () => {
             Senha:
             <InputGroup>
               <Input
-                /* {...register("password")} */
+                {...register("password")}
                 focusBorderColor="#00acc1"
                 errorBorderColor="red.300"
                 name="password"
