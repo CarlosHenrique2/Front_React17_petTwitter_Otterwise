@@ -1,8 +1,9 @@
 import React from "react";
 
-import { useNavigate, useLocation } from "react-router-dom";
-
 import { useForm } from "react-hook-form";
+
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import { useAuth } from "../../../context/auth-context";
 
@@ -19,7 +20,12 @@ import {
 import profile00 from "../../../assets/img/profiledog.jpg";
 
 import "../../../global/global.css";
-import { post } from "../../../services/auth";
+
+const schema = yup
+  .object({
+    text: yup.string().max(140),
+  })
+  .required();
 
 const Postsform = (props) => {
   const { setPost, setPage, setRefresh } = props;
@@ -27,41 +33,14 @@ const Postsform = (props) => {
   const [value, setValue] = React.useState(0);
 
   const { PostTwits } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
 
-  const from = location.state?.from?.pathname || "/Home";
-
-  /* async function handleSubmit(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-    const value1 = formData.get("text");
-
-    await PostTwits({ value1 });
-    navigate(from, { replace: true });
-    console.log(formData);
-  } */
-
-  /* async function onSubmit(data) {
-    console.log(data);
-    try {
-      const response = await PostTwits({ data });
-      navigate(from, { replace: true });
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  } */
-
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, resetField } = useForm({
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = async (data, event) => {
-    event.preventDefault();
-    console.log("data", data);
-    console.log("event", event);
     const newPost = await PostTwits(data);
-    console.log(newPost);
+    resetField("text");
     if (newPost) {
       setPost([]);
       setPage(1);
