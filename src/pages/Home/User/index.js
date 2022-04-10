@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import { useParams } from "react-router-dom";
 
 import profile02 from "../../../assets/img/profile02.jpg";
 import profile03 from "../../../assets/img/profile03.jpg";
 
 import "../../../global/global.css";
+
+import client from "../../../providers/client";
 
 import Menudesktop from "../../../components/menu/menu-desktop";
 import Menumobile from "../../../components/menu/menu-mobile";
@@ -14,8 +18,29 @@ import ProfileMobile from "../../../components/Posts/PostProfile/PostsMobile";
 import { Img, Box, Flex, Text, Heading } from "@chakra-ui/react";
 
 function User() {
+  const [user, setUser] = useState({
+    name: "",
+    id: "",
+    email: "",
+    username: "",
+  });
+  const params = useParams();
+
   const userStored = localStorage.getItem("user");
   const getFromStorage = JSON.parse(userStored);
+
+  const id = params.id || getFromStorage.id;
+
+  const getUser = async () => {
+    const res = await client.get(`/user?id=${id}`);
+    setUser(res.data);
+  };
+
+  useEffect(() => {
+    if (id) {
+      getUser();
+    }
+  }, [id]);
 
   return (
     <>
@@ -77,7 +102,7 @@ function User() {
                   color="#424242"
                   marginBottom="5px"
                 >
-                  {getFromStorage.name}
+                  {user.name}
                 </Heading>
                 <Text
                   fontFamily="Open Sans"
@@ -86,7 +111,7 @@ function User() {
                   lineHeight="21px"
                   color="#424242"
                 >
-                  {getFromStorage.username}
+                  {user.username}
                 </Text>
               </Box>
             </Box>
@@ -139,7 +164,7 @@ function User() {
                 lineHeight="29px"
                 color="#141619"
               >
-                {getFromStorage.name}
+                {user.name}
               </Heading>
               <Text
                 fontSize="16px"
@@ -147,7 +172,7 @@ function User() {
                 lineHeight="21px"
                 fontWeight="400"
               >
-                {getFromStorage.username}
+                {user.username}
               </Text>
             </Box>
           </Box>

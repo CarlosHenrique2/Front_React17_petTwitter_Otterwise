@@ -52,7 +52,7 @@ const PostsMobile = () => {
 
   /* Fixa um limite para os posts */
   useEffect(() => {
-    if (setInitalPosts >= postListLimit) {
+    if (post.length >= 30) {
       setHasMore(false);
       return;
     }
@@ -73,7 +73,7 @@ const PostsMobile = () => {
       <Flex display="flex" flexDirection="column">
         <div className="feed-mobile">
           <Box>
-            {post?.map((data, i) => (
+            {/*  {post?.map((data, i) => (
               <Box
                 borderBottom="1px solid #EBEBEB"
                 paddingY="10px"
@@ -146,7 +146,7 @@ const PostsMobile = () => {
                   </Text>
                 </Box>
               </Box>
-            ))}
+            ))} */}
           </Box>
 
           {/*  InfiniteScroll  */}

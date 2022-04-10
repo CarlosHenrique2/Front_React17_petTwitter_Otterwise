@@ -44,16 +44,9 @@ export function AuthProvider({ children }) {
 
   const PostTwits = async (data) => {
     try {
-      const response = await post(data.data);
-      console.log(data);
-      console.log(user);
-      const user = {
-        accessToken: response.data.accessToken,
-        ...response.data.user,
-      };
-      console.log(user);
-      setInStorage("user", user);
-      setUser(user);
+      const response = await post(data);
+      return response.data;
+      alert("Post Realizado com sucesso");
     } catch (error) {
       console.log(error);
       alert("erro ao realizar o posttwits");

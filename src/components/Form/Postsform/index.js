@@ -19,8 +19,11 @@ import {
 import profile00 from "../../../assets/img/profiledog.jpg";
 
 import "../../../global/global.css";
+import { post } from "../../../services/auth";
 
-const Postsform = () => {
+const Postsform = (props) => {
+  const { setPost, setPage, setRefresh } = props;
+
   const [value, setValue] = React.useState(0);
 
   const { PostTwits } = useAuth();
@@ -57,7 +60,13 @@ const Postsform = () => {
     event.preventDefault();
     console.log("data", data);
     console.log("event", event);
-    await PostTwits({ data });
+    const newPost = await PostTwits(data);
+    console.log(newPost);
+    if (newPost) {
+      setPost([]);
+      setPage(1);
+      setRefresh((refresh) => !refresh);
+    }
   };
 
   return (

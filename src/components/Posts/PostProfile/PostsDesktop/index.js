@@ -22,21 +22,37 @@ import { WarningIcon } from "@chakra-ui/icons";
 const ProfileDesktop = () => {
   const [page, setPage] = useState(1);
   const [post, setPost] = useState([]);
+
   const [hasMore, setHasMore] = useState(true);
+  const [user, setUser] = useState({
+    name: "",
+    id: "",
+    email: "",
+    username: "",
+  });
 
   const setInitalPosts = 10;
   const postListLimit = post.length;
 
   const formatter = buildFormatter(Time);
 
-  const { id } = useParams();
+  const params = useParams();
 
   const userStored = localStorage.getItem("user");
   const getFromStorage = JSON.parse(userStored);
 
+  const id = params.id || getFromStorage.id;
+
   /* obtendo a Lista na primeira renderização  */
   useEffect(async () => {
     await getData();
+  }, [id]);
+
+  /* obtendo informações pelo id  */
+  useEffect(() => {
+    if (id) {
+      getData();
+    }
   }, [id]);
 
   /* Fixa um limite para os posts */
@@ -47,14 +63,17 @@ const ProfileDesktop = () => {
     }
   }, [post]);
 
+  /* controlando a paginação  */
   const getDataAndNextPage = () => {
     setPage(page + 1);
     getData();
   };
 
+  /* pegando informações do usuário e posts relacionados a sua id  */
   const getData = async () => {
-    const res = await client.get(`/pages?id=${getFromStorage.id}`);
-    setPost([...post, ...res.data.data.listPostId]);
+    const res = await client.get(`/pages?id=${id}`);
+    setUser(res.data);
+    setPost([...post, ...res.data]);
   };
 
   console.log(post, "mobile");

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import React from "react";
 
+import { useNavigate } from "react-router-dom";
+
 import InfiniteScroll from "react-infinite-scroll-component";
 
 import TimeAgo from "react-timeago";
@@ -17,10 +19,14 @@ import { Img, Box, Flex, Text, CircularProgress } from "@chakra-ui/react";
 
 import { WarningIcon } from "@chakra-ui/icons";
 
-const PostsDesktop = () => {
-  const [post, setPost] = useState([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+const PostsDesktop = (props) => {
+  const { post, page, setPage, hasMore } = props;
+
+  /* const [post, setPost] = useState([]); */
+  /*  const [page, setPage] = useState(1); */
+  /* const [hasMore, setHasMore] = useState(true); */
+
+  const navigate = useNavigate();
 
   const setInitalPosts = 30;
   const postListLimit = post.length;
@@ -28,29 +34,28 @@ const PostsDesktop = () => {
   const formatter = buildFormatter(Time);
 
   /* obtendo a Lista na primeira renderização  */
-  useEffect(async () => {
+  /* useEffect(async () => {
     await getData();
-  }, [page]);
+  }, [page]); */
 
   /* Fixa um limite para os posts */
-  useEffect(() => {
+  /*  useEffect(() => {
     if (setInitalPosts >= postListLimit) {
       setHasMore(false);
       return;
     }
-  }, [post]);
+  }, [post]); */
 
   const getDataAndNextPage = () => {
+    console.log("here");
     setPage(page + 1);
-    getData();
+    /* getData(); */
   };
 
-  const getData = async () => {
+  /*  const getData = async () => {
     const res = await client.get(`/page?page=${page}`);
     setPost([...post, ...res.data]);
-  };
-
-  console.log("post: ", post);
+  }; */
 
   return (
     <>
@@ -58,7 +63,7 @@ const PostsDesktop = () => {
         <div className="feed-desktop">
           <Box>
             <Box>
-              {post?.map((data, i) => (
+              {/*   {post?.map((data, i) => (
                 <Box
                   paddingLeft="30px"
                   paddingBottom="10px"
@@ -78,6 +83,10 @@ const PostsDesktop = () => {
                       fontStyle="normal"
                       lineHeight="20px"
                       paddingLeft="8px"
+                      cursor="pointer"
+                      onClick={() => {
+                        navigate(`/Profile/${data.authorId}`);
+                      }}
                     >
                       {data.author.name}
                     </Text>
@@ -119,7 +128,7 @@ const PostsDesktop = () => {
                     </Text>
                   </Box>
                 </Box>
-              ))}
+              ))} */}
             </Box>
 
             {/*  InfiniteScroll  */}
@@ -177,6 +186,10 @@ const PostsDesktop = () => {
                       lineHeight="20px"
                       paddingLeft="10px"
                       paddingRight="2px"
+                      cursor="pointer"
+                      onClick={() => {
+                        navigate(`/Profile/${data.authorId}`);
+                      }}
                     >
                       {data.author.name}
                     </Text>

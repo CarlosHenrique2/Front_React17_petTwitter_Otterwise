@@ -28,6 +28,14 @@ export function AppRoutes() {
           </RequireAuth>
         }
       />
+      <Route
+        path="/Profile/:id"
+        element={
+          <RequireAuth>
+            <Profile />
+          </RequireAuth>
+        }
+      />
     </Routes>
   );
 }
