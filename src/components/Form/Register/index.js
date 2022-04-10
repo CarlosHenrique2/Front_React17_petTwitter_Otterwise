@@ -1,8 +1,13 @@
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import React from "react";
 
-import { useAuth, register } from "../../../context/auth-context";
+import { useAuth } from "../../../context/auth-context";
+
+import { useForm } from "react-hook-form";
+
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 import "../../../global/global.css";
 
@@ -20,52 +25,40 @@ import {
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
-import { useState } from "react";
-
-import { useForm } from "react-hook-form";
+const schema = yup.object({
+  name: yup.string().required(),
+  email: yup.string().required(),
+  username: yup.string().min(5).required(),
+  password: yup.string().min(5).max(10).required(),
+});
 
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { register } = useAuth();
+  const { regisTer } = useAuth();
 
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 
   const from = location.state?.from?.pathname || "/login";
 
-  async function handleSubmit(event) {
-    event.preventDefault();
+  const { register, handleSubmit } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-    const formData = new FormData(event.target);
-    const name = formData.get("name");
-    const email = formData.get("email");
-    const username = formData.get("username");
-    const password = formData.get("password");
-
-    await register({ name, email, username, password });
+  const onSubmit = async (data) => {
+    await regisTer(data);
     navigate(from, { replace: true });
-    console.log(formData);
-  }
-  /*  const { register, handleSubmit } = useForm();
-  const [show, setShow] = useState(false);
-
-  const handleClick = () => {
-    setShow(!show);
   };
-
-  const onsubmit = (data) => {
-    console.log(data);
-  }; */
 
   return (
     <Box>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         <FormControl gap="15px">
           <FormLabel className="form_label-E-mail" htmlFor="name">
             Nome:
             <Input
-              /*    {...register("name")} */
+              {...register("name")}
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
@@ -77,7 +70,7 @@ const Register = () => {
           <FormLabel className="form_label-E-mail" htmlFor="email">
             E-mail:
             <Input
-              /* {...register("email")} */
+              {...register("email")}
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
@@ -89,7 +82,7 @@ const Register = () => {
           <FormLabel className="form_label-E-mail" htmlFor="username">
             Nome de usuário:
             <Input
-              /* {...register("username")} */
+              {...register("username")}
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
@@ -102,7 +95,7 @@ const Register = () => {
             Senha:
             <InputGroup>
               <Input
-                /* {...register("password")} */
+                {...register("password")}
                 focusBorderColor="#00acc1"
                 errorBorderColor="red.300"
                 name="password"

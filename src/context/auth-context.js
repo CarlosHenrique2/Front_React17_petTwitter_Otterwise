@@ -26,7 +26,7 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const register = async (data) => {
+  const regisTer = async (data) => {
     try {
       const response = await signup(data);
       const user = {
@@ -60,7 +60,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, signin, signout, register, PostTwits }}
+      value={{ user, signin, signout, regisTer, PostTwits }}
     >
       {children}
     </AuthContext.Provider>
