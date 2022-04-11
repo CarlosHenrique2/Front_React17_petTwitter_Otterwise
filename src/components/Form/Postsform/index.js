@@ -38,7 +38,7 @@ const Postsform = (props) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data, event) => {
+  const onSubmit = async (data) => {
     const newPost = await PostTwits(data);
     resetField("text");
     if (newPost) {

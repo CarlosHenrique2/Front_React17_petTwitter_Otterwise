@@ -79,7 +79,14 @@ function Feed() {
             <Menumobile />
           </Flex>
           <Box>
-            <PostsMobile />
+            <PostsMobile
+              post={post}
+              setPage={setPage}
+              page={page}
+              hasMore={hasMore}
+              setRefresh={setRefresh}
+              setPost={setPost}
+            />
           </Box>
         </div>
       </Flex>
