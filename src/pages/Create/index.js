@@ -7,6 +7,7 @@ import { useAuth, register } from "../../context/auth-context";
 
 import img00 from "../../assets/img/background.jpg";
 import img01 from "../../assets/img/backgroundesk.jpg";
+import img02 from "../../assets/img/background01.jpg";
 
 import icon00 from "../../assets/svg/icon00.svg";
 import icon02 from "../../assets/svg/icon02.svg";
@@ -19,7 +20,7 @@ import "../../global/global.css";
 
 import Register from "../../components/Form/Register";
 
-import { Box, Img, Heading, Text } from "@chakra-ui/react";
+import { Box, Img, Heading, Text, HStack, Flex } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
@@ -51,124 +52,105 @@ function Create() {
   }
 
   return (
-    <Box className="login">
-      <Box className="login-img">
-        <Img className="imgMobile" src={img00} />
-        <Img className="imgDesk" src={img01} />
-        <Img className="title-Desktop-1" src={icon04} />
-        <Img className="title-Desktop-2" src={icon05} />
-        <Img className="iconMobile" src={icon00} />
-        <Heading className="title_img-mobile">
-          Comece agora. Conecte-se já.
-        </Heading>
-      </Box>
-      <Box className="login-form">
-        <Img className="imgDesk" src={icon06} />
-        <Heading className="title_img-desk">
-          Comece agora. Conecte-se já.
-        </Heading>
-        <Heading className="info_page">Cadastro</Heading>
+    <>
+      <Flex>
+        <div className="profile-desktop">
+          <Box className="login">
+            <Box className="login-img">
+              <Img className="imgMobile" src={img00} />
+              <Img className="imgDesk" src={img02} />
+              <Img className="title-Desktop-1" src={icon04} />
+              <Img className="title-Desktop-2" src={icon05} />
+              <Img className="iconMobile" src={icon00} />
+              <Heading className="title_img-mobile">
+                Comece agora. Conecte-se já.
+              </Heading>
+            </Box>
 
-        <Box>
-          <Register />
-        </Box>
+            <Box /* paddingX="66px" */ /* className="login-form" */>
+              <HStack>
+                <Img className="imgDesk" src={icon06} />
+                <HStack>
+                  <Heading className="title_img-desk">
+                    Comece agora. Conecte-se já.
+                  </Heading>
+                </HStack>
+              </HStack>
 
-        {/* <Box>
-          <form className="form" onSubmit={handleSubmit}>
-            <FormControl gap="15px">
-              <FormLabel className="form_label-E-mail" htmlFor="name">
-                Nome:
-                <Input
-                  bg="transparent"
-                  focusBorderColor="#00acc1"
-                  errorBorderColor="red.300"
-                  name="name"
-                  type="text"
-                  placeholder="Nome"
-                />
-              </FormLabel>
-              <FormLabel className="form_label-E-mail" htmlFor="email">
-                E-mail:
-                <Input
-                  bg="transparent"
-                  focusBorderColor="#00acc1"
-                  errorBorderColor="red.300"
-                  name="email"
-                  type="text"
-                  placeholder="E-mail"
-                />
-              </FormLabel>
-              <FormLabel className="form_label-E-mail" htmlFor="username">
-                Nome de usuário:
-                <Input
-                  bg="transparent"
-                  focusBorderColor="#00acc1"
-                  errorBorderColor="red.300"
-                  name="username"
-                  type="text"
-                  placeholder="Ex.: @billbulldog"
-                />
-              </FormLabel>
-              <FormLabel className="form_label-Senha" htmlFor="password">
-                Senha:
-                <InputGroup>
-                  <Input
-                    focusBorderColor="#00acc1"
-                    errorBorderColor="red.300"
-                    name="password"
-                    type={show ? "text" : "password"}
-                    placeholder="Senha:"
-                  />
-                  <InputRightElement>
-                    <Button
-                      _hover={{ background: "none" }}
-                      _active={{ background: "none" }}
-                      _focus={{ boxShadow: "none" }}
-                      border="none"
-                      onClick={handleClick}
-                    >
-                      {show ? (
-                        <Icon as={ViewIcon} />
-                      ) : (
-                        <Icon as={ViewOffIcon} />
-                      )}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-                <FormHelperText>
-                  Deve conter no mínimo um número e uma letra maiúscula
-                </FormHelperText>
-              </FormLabel>
-              <Button
-                _hover={{ background: "#00acc1" }}
-                _active={{ background: "#00acc1" }}
-                _focus={{ boxShadow: "none" }}
-                backgroundColor="#00acc1"
-                color="white"
-                className="form_btn"
-                type="submit"
-                w="full"
-              >
-                Cadastrar-se
-              </Button>
-            </FormControl>
-          </form>
-        </Box> */}
+              <Heading /* paddingX="72px" */ /* className="info_page" */>
+                Cadastro
+              </Heading>
 
-        <Box className="info_link">
-          <Text className="info_link_text">
-            Já possui cadastro?<br className="info_link-mobile"></br>
-            <Link className="info_link_text-link" to="/login">
-              Faça login
-            </Link>
-          </Text>
-        </Box>
-        <Box className="login-img">
-          <Img className="login-img-icon" src={icon02} />
-          <Img className="login-img-icon" src={icon03} />
-        </Box>
-      </Box>
-    </Box>
+              <Box>
+                <Register />
+              </Box>
+              <Box /* paddingX="72px" */ /* className="info_link" */>
+                <Text /* className="info_link_text" */>
+                  Já possui cadastro?<br className="info_link-mobile"></br>
+                  <Link /* className="info_link_text-link" */ to="/login">
+                    Faça login
+                  </Link>
+                </Text>
+              </Box>
+              <Box className="login-img">
+                <Img className="login-img-icon" src={icon02} />
+                <Img className="login-img-icon" src={icon03} />
+              </Box>
+            </Box>
+          </Box>
+        </div>
+      </Flex>
+
+      {/*  divisão */}
+
+      <Flex>
+        <div className="profile-mobile">
+          <Box className="login">
+            <Box className="login-img">
+              <Img className="imgMobile" src={img00} />
+              <Img className="imgDesk" src={img02} />
+              <Img className="title-Desktop-1" src={icon04} />
+              <Img className="title-Desktop-2" src={icon05} />
+              <Img className="iconMobile" src={icon00} />
+              <Heading className="title_img-mobile">
+                Comece agora. Conecte-se já.
+              </Heading>
+            </Box>
+
+            <Box /* paddingX="66px" */ /* className="login-form" */>
+              <HStack>
+                <Img className="imgDesk" src={icon06} />
+                <HStack>
+                  <Heading className="title_img-desk">
+                    Comece agora. Conecte-se já.
+                  </Heading>
+                </HStack>
+              </HStack>
+
+              <Heading /* paddingX="72px" */ /* className="info_page" */>
+                Cadastro
+              </Heading>
+
+              <Box>
+                <Register />
+              </Box>
+              <Box /* paddingX="72px" */ /* className="info_link" */>
+                <Text /* className="info_link_text" */>
+                  Já possui cadastro?<br className="info_link-mobile"></br>
+                  <Link /* className="info_link_text-link" */ to="/login">
+                    Faça login
+                  </Link>
+                </Text>
+              </Box>
+              <Box className="login-img">
+                <Img className="login-img-icon" src={icon02} />
+                <Img className="login-img-icon" src={icon03} />
+              </Box>
+            </Box>
+          </Box>
+        </div>
+      </Flex>
+    </>
   );
 }
 

@@ -20,18 +20,27 @@ import {
   InputGroup,
   Box,
   Icon,
+  useToast,
 } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const schema = yup.object({
-  email: yup.string().required(),
-  password: yup.string().required().min(5).max(10),
+  email: yup
+    .string()
+    .required("Email é obrigatório")
+    .min(5, "Precisa ter no mínimo 5 caracteres"),
+  password: yup
+    .string()
+    .required("Senha é obrigatório")
+    .min(5, "Precisa ter no mínimo 5 caracteres"),
 });
 
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const toast = useToast();
+
   const { signin } = useAuth();
 
   const [show, setShow] = React.useState(false);
@@ -49,10 +58,10 @@ const Login = () => {
   };
 
   return (
-    <Box textAlign="start">
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        <FormControl>
-          <FormLabel className="form_label-E-mail" htmlFor="email">
+    <Box textAlign="start" w="full">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl /* paddingX="72px" */>
+          <FormLabel paddingBottom="22px" htmlFor="email">
             E-mail:
             <Input
               {...register("email")}
@@ -64,7 +73,7 @@ const Login = () => {
               placeholder="E-mail"
             />
           </FormLabel>
-          <FormLabel className="form_label-Senha" htmlFor="password">
+          <FormLabel paddingBottom="22px" htmlFor="password">
             Senha:
             <InputGroup>
               <Input
@@ -97,6 +106,14 @@ const Login = () => {
             className="form_btn"
             type="submit"
             w="full"
+            onChange={() => {
+              toast({
+                title: "Login Realizado Com Sucesso",
+                status: "success",
+                duration: 3000,
+                isClosable: true,
+              });
+            }}
           >
             Entrar
           </Button>

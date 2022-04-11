@@ -18,6 +18,11 @@ input:-webkit-autofill {
   transition: background-color 5000s;
 }
 
+/* -webkit-padding-start: 72px; */
+/* padding-inline-start: 72px; */
+/* -webkit-padding-end: 72px; */
+/* padding-inline-end: 72px; */
+
 /* global styles */
 
 .imgMobile {
@@ -39,10 +44,6 @@ input:-webkit-autofill {
   justify-content: center;
 }
 
-.login-img-icon {
-  padding-top: 30px;
-}
-
 .title_img-mobile {
   position: absolute;
   top: 141px;
@@ -54,40 +55,6 @@ input:-webkit-autofill {
   line-height: 49px;
   color: white;
   z-index: 10;
-}
-
-.info_page {
-  font-family: "Open Sans";
-  font-style: normal;
-  margin-left: 32px;
-  margin-top: 32px;
-  margin-bottom: 34px;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 40px;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  margin-left: 32px;
-  margin-right: 32px;
-  margin-bottom: 30px;
-}
-
-.info_link {
-  text-align: start;
-  margin-top: 10px;
-  margin-left: 32px;
-}
-
-.info_link_text {
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  border: none;
 }
 
 .info_link_text-link {
@@ -131,15 +98,6 @@ input:-webkit-autofill {
   }
   .info-desk {
     text-align: center;
-  }
-  .title_img-desk {
-    text-align: center;
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 49px;
-    color: #00acc1;
   }
   .title-Desktop-1 {
     font-family: "Open Sans";

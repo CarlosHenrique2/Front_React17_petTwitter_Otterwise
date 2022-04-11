@@ -21,20 +21,29 @@ import {
   Box,
   FormHelperText,
   Icon,
+  useToast,
 } from "@chakra-ui/react";
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const schema = yup.object({
-  name: yup.string().required(),
-  email: yup.string().required(),
-  username: yup.string().min(5).required(),
-  password: yup.string().min(5).max(10).required(),
+  name: yup.string().required("Nome é obrigatório"),
+  email: yup.string().required("Email é obrigatório"),
+  username: yup
+    .string()
+    .min(5, "Precisa ter no mínimo 5 caracteres")
+    .required("Nome de Usuário é obrigatório"),
+  password: yup
+    .string()
+    .min(5, "Precisa ter no mínimo 5 caracteres")
+    .required("Senha é obrigatório"),
 });
 
 const Register = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const toast = useToast();
+
   const { regisTer } = useAuth();
 
   const [show, setShow] = React.useState(false);
@@ -53,9 +62,9 @@ const Register = () => {
 
   return (
     <Box>
-      <form className="form" onSubmit={handleSubmit(onSubmit)}>
-        <FormControl gap="15px">
-          <FormLabel className="form_label-E-mail" htmlFor="name">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl /* paddingX="72px" */>
+          <FormLabel htmlFor="name" paddingBottom="10px">
             Nome:
             <Input
               {...register("name")}
@@ -67,7 +76,7 @@ const Register = () => {
               placeholder="Nome"
             />
           </FormLabel>
-          <FormLabel className="form_label-E-mail" htmlFor="email">
+          <FormLabel htmlFor="email" paddingBottom="10px">
             E-mail:
             <Input
               {...register("email")}
@@ -79,7 +88,7 @@ const Register = () => {
               placeholder="E-mail"
             />
           </FormLabel>
-          <FormLabel className="form_label-E-mail" htmlFor="username">
+          <FormLabel htmlFor="username" paddingBottom="10px">
             Nome de usuário:
             <Input
               {...register("username")}
@@ -91,7 +100,7 @@ const Register = () => {
               placeholder="Ex.: @billbulldog"
             />
           </FormLabel>
-          <FormLabel className="form_label-Senha" htmlFor="password">
+          <FormLabel htmlFor="password" paddingBottom="10px">
             Senha:
             <InputGroup>
               <Input
@@ -126,6 +135,16 @@ const Register = () => {
             color="white"
             className="form_btn"
             type="submit"
+            onClick={() =>
+              toast({
+                title: "Usuário Criado Com Sucesso.",
+                description:
+                  "Por Favor agora faça o login com seu E-mail e Senha.",
+                status: "success",
+                duration: 9000,
+                isClosable: true,
+              })
+            }
             w="full"
           >
             Cadastrar-se

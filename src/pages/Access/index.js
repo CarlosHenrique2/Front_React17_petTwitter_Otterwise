@@ -1,12 +1,10 @@
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import { useState } from "react";
 import React from "react";
-
-import { useAuth } from "../../context/auth-context";
 
 import img00 from "../../assets/img/background.jpg";
 import img01 from "../../assets/img/backgroundesk.jpg";
+import img02 from "../../assets/img/background01.jpg";
 
 import icon00 from "../../assets/svg/icon00.svg";
 import icon02 from "../../assets/svg/icon02.svg";
@@ -19,127 +17,155 @@ import "../../global/global.css";
 
 import Login from "../../components/Form/Login";
 
-import { Box, Img, Heading, Text } from "@chakra-ui/react";
-
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-
-import { Icon } from "@chakra-ui/react";
+import { Box, Img, Heading, Text, HStack, Flex } from "@chakra-ui/react";
 
 function Access() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { signin } = useAuth();
-
-  const [show, setShow] = React.useState(false);
-  const handleClick = () => setShow(!show);
-
-  const from = location.state?.from?.pathname || "/Home";
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.currentTarget);
-    const email = formData.get("email");
-    const password = formData.get("password");
-
-    await signin({ email, password });
-    navigate(from, { replace: true });
-    console.log(event);
-  }
-
   return (
-    <Box className="login">
-      <Box className="login-img">
-        <Img className="imgMobile" src={img00} />
-        <Img className="imgDesk" src={img01} />
-        <Img className="title-Desktop-1" src={icon04} />
-        <Img className="title-Desktop-2" src={icon05} />
-        <Img className="iconMobile" src={icon00} />
-        <Heading className="title_img-mobile">
-          Comece agora. Conecte-se já.
-        </Heading>
-      </Box>
-      <Box className="login-form">
-        <Box className="info-desk">
-          <Img className="imgDesk" src={icon06} />
-          <Heading className="title_img-desk">
-            Comece agora. Conecte-se já.
-          </Heading>
-        </Box>
-        <Heading className="info_page">Login</Heading>
-        <Box>
-          <Login />
-        </Box>
-        {/*        <Box textAlign="start">
-          <form className="form" onSubmit={handleSubmit}>
-            <FormControl>
-              <FormLabel className="form_label-E-mail" htmlFor="email">
-                E-mail:
-                <Input
-                  bg="transparent"
-                  focusBorderColor="#00acc1"
-                  errorBorderColor="red.300"
-                  name="email"
-                  type="text"
-                  placeholder="E-mail"
-                />
-              </FormLabel>
-              <FormLabel className="form_label-Senha" htmlFor="password">
-                Senha:
-                <InputGroup>
-                  <Input
-                    focusBorderColor="#00acc1"
-                    errorBorderColor="red.300"
-                    name="password"
-                    type={show ? "text" : "password"}
-                    placeholder="Senha:"
+    <>
+      <Flex>
+        <div className="profile-desktop">
+          <Box className="login" w="full">
+            <Box className="login-img">
+              <Img className="imgMobile" src={img00} />
+              <Img className="imgDesk" objectFit="cover" src={img02} />
+              <Img className="title-Desktop-1" src={icon04} />
+              <Img className="title-Desktop-2" src={icon05} />
+              <Img className="iconMobile" src={icon00} />
+              <Heading className="title_img-mobile">
+                Comece agora. Conecte-se já.
+              </Heading>
+            </Box>
+            <Box /* className="login-form" */>
+              <Box className="info-desk">
+                <HStack
+                  display="flex"
+                  alignItems="flex-start"
+                  textAlign="start"
+                  flexDirection="column"
+                >
+                  <Img
+                    className="imgDesk"
+                    /* paddingX="72px" */
+                    /* paddingBottom="30px" */
+                    src={icon06}
                   />
-                  <InputRightElement>
-                    <Button
-                      _hover={{ background: "none" }}
-                      _active={{ background: "none" }}
-                      _focus={{ boxShadow: "none" }}
-                      border="none"
-                      onClick={handleClick}
+                  <HStack>
+                    <Heading
+                      className="title_img-desk"
+                      /*  paddingX="72px" */
+                      textAlign="start"
+                      color="#00ACC1"
                     >
-                      {show ? (
-                        <Icon as={ViewIcon} />
-                      ) : (
-                        <Icon as={ViewOffIcon} />
-                      )}
-                    </Button>
-                  </InputRightElement>
-                </InputGroup>
-              </FormLabel>
-              <Button
-                _hover={{ background: "#00acc1" }}
-                _active={{ background: "#00acc1" }}
-                _focus={{ boxShadow: "none" }}
-                backgroundColor="#00acc1"
-                color="white"
-                className="form_btn"
-                type="submit"
-                w="full"
+                      Comece agora. Conecte-se já.
+                    </Heading>
+                  </HStack>
+                </HStack>
+              </Box>
+
+              <Heading
+                className="info_page"
+                /*  paddingX="72px" */
+                /*  paddingTop="26px" */
+                /*    paddingBottom="32px" */
               >
-                Entrar
-              </Button>
-            </FormControl>
-          </form>
-        </Box> */}
-        <Box className="info_link">
-          <Text className="info_link_text">
-            Ainda não possui uma conta?<br className="info_link-mobile"></br>
-            <Link className="info_link_text-link" to="/">
-              Cadastrar-se
-            </Link>
-          </Text>
-        </Box>
-        <Box className="login-img">
-          <Img className="login-img-icon" src={icon02} />
-          <Img className="login-img-icon" src={icon03} />
-        </Box>
-      </Box>
-    </Box>
+                Login
+              </Heading>
+              <Box w="full">
+                <Login />
+              </Box>
+              <Box className="info_link">
+                <Box /* paddingX="72px" */ /* paddingTop="15px" */>
+                  <Text className="info_link_text">
+                    Ainda não possui uma conta?
+                    <br className="info_link-mobile"></br>
+                    <Link className="info_link_text-link " to="/">
+                      Cadastrar-se
+                    </Link>
+                  </Text>
+                </Box>
+              </Box>
+              <Box className="login-img">
+                <Img className="login-img-icon" src={icon02} />
+                <Img className="login-img-icon" src={icon03} />
+              </Box>
+            </Box>
+          </Box>
+        </div>
+      </Flex>
+
+      {/*  divisão */}
+
+      <Flex>
+        <div className="profile-mobile">
+          <Box className="login feed-desktop feed-mobile" w="full">
+            <Box className="login-img">
+              <Img className="imgMobile" src={img00} />
+              <Img className="imgDesk" objectFit="cover" src={img02} />
+              <Img className="title-Desktop-1" src={icon04} />
+              <Img className="title-Desktop-2" src={icon05} />
+              <Img className="iconMobile" src={icon00} />
+              <Heading className="title_img-mobile">
+                Comece agora. Conecte-se já.
+              </Heading>
+            </Box>
+            <Box /* className="login-form" */>
+              <Box className="info-desk">
+                <HStack
+                  display="flex"
+                  alignItems="flex-start"
+                  textAlign="start"
+                  flexDirection="column"
+                >
+                  <Img
+                    className="imgDesk"
+                    /* paddingX="72px" */
+                    /* paddingBottom="30px" */
+                    src={icon06}
+                  />
+                  <HStack>
+                    <Heading
+                      className="title_img-desk"
+                      /*  paddingX="72px" */
+                      textAlign="start"
+                      color="#00ACC1"
+                    >
+                      Comece agora. Conecte-se já.
+                    </Heading>
+                  </HStack>
+                </HStack>
+              </Box>
+
+              <Heading
+                className="info_page"
+                /*  paddingX="72px" */
+                /*  paddingTop="26px" */
+                /*    paddingBottom="32px" */
+              >
+                Login
+              </Heading>
+              <Box w="full">
+                <Login />
+              </Box>
+              <Box className="info_link">
+                <Box /* paddingX="72px" */ /* paddingTop="15px" */>
+                  <Text className="info_link_text">
+                    Ainda não possui uma conta?
+                    <br className="info_link-mobile"></br>
+                    <Link className="info_link_text-link " to="/">
+                      Cadastrar-se
+                    </Link>
+                  </Text>
+                </Box>
+              </Box>
+              <Box className="login-img">
+                <Img className="login-img-icon" src={icon02} />
+                <Img className="login-img-icon" src={icon03} />
+              </Box>
+            </Box>
+          </Box>
+        </div>
+      </Flex>
+    </>
   );
 }
 

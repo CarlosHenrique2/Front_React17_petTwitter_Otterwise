@@ -15,6 +15,7 @@ import {
   Text,
   FormControl,
   FormLabel,
+  useToast,
 } from "@chakra-ui/react";
 
 import profile00 from "../../../assets/img/profiledog.jpg";
@@ -23,7 +24,9 @@ import "../../../global/global.css";
 
 const schema = yup
   .object({
-    text: yup.string().max(140),
+    text: yup
+      .string()
+      .max(140, "Você só pode postar PostTwits de até 140 caracteres. "),
   })
   .required();
 
@@ -33,6 +36,7 @@ const Postsform = (props) => {
   const [value, setValue] = React.useState(0);
 
   const { PostTwits } = useAuth();
+  const toast = useToast();
 
   const { register, handleSubmit, resetField } = useForm({
     resolver: yupResolver(schema),
@@ -95,6 +99,14 @@ const Postsform = (props) => {
                 bg="#99DEE6"
                 color="white"
                 type="submit"
+                onClick={() =>
+                  toast({
+                    title: "PostTwits Enviado Com sucesso",
+                    status: "success",
+                    duration: 9000,
+                    isClosable: true,
+                  })
+                }
                 isDisabled={value > 140}
               >
                 Petwittar
