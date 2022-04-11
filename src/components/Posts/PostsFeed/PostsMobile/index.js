@@ -159,6 +159,10 @@ const PostsMobile = (props) => {
                       fontStyle="normal"
                       lineHeight="19px"
                       paddingLeft="8px"
+                      cursor="pointer"
+                      onClick={() => {
+                        navigate(`/Profile/${data.authorId}`);
+                      }}
                     >
                       {data.author.name}
                     </Text>

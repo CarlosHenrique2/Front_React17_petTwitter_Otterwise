@@ -35,7 +35,6 @@ function Feed() {
 
   useEffect(() => {
     getData();
-    console.log(page);
   }, [page, refresh]);
 
   return (

@@ -24,7 +24,6 @@ const PostsDesktop = (props) => {
   const formatter = buildFormatter(Time);
 
   const getDataAndNextPage = () => {
-    console.log("here");
     setPage(page + 1);
   };
 

@@ -74,12 +74,12 @@ const Menudesktop = () => {
               w="full"
               to="/Home"
               href="/Home"
-              borderLeft={
-                pathname === "/Profile/" || "/Home"
-                  ? "5px solid #00ACC1"
-                  : "none"
+              borderLeft={pathname === "/Home" ? "5px solid #00ACC1" : "none"}
+              bg={pathname === "/Home" ? "#E6F7F9" : "none"}
+              /*  borderLeft={
+                pathname === "/Profile/" ? "5px solid #00ACC1" : "none"
               }
-              bg={pathname === "/Profile/" || "/Home" ? "#E6F7F9" : "none"}
+              bg={pathname === "/Profile/" ? "#E6F7F9" : "none"} */
             >
               <Img marginRight="5px" src={icon07} /> Home
             </Link>
