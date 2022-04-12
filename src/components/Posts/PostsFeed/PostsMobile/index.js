@@ -35,6 +35,7 @@ import {
   ModalBody,
   FormControl,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
 
 import { WarningIcon } from "@chakra-ui/icons";
@@ -56,6 +57,8 @@ const PostsMobile = (props) => {
   const { register, handleSubmit, resetField } = useForm({
     resolver: yupResolver(schema),
   });
+
+  const toast = useToast();
 
   const onSubmit = async (data) => {
     const newPost = await PostTwits(data);
@@ -256,6 +259,14 @@ const PostsMobile = (props) => {
                           bg="#99DEE6"
                           color="white"
                           type="submit"
+                          onClick={() =>
+                            toast({
+                              title: "PostTwits Enviado Com sucesso",
+                              status: "success",
+                              duration: 9000,
+                              isClosable: true,
+                            })
+                          }
                           isDisabled={value > 140}
                           mr={1}
                         >

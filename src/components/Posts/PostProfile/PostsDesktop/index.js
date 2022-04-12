@@ -145,7 +145,6 @@ const ProfileDesktop = () => {
           </Box>
         ))}
 
-        {/*  InfiniteScroll  */}
         <InfiniteScroll
           dataLength={post.length}
           key={post.id}
@@ -177,7 +176,6 @@ const ProfileDesktop = () => {
             return console.log("foi", e);
           }}
         >
-          {/*  map  */}
           {post?.map((data, i) => (
             <Box
               paddingLeft="30px"
@@ -241,9 +239,7 @@ const ProfileDesktop = () => {
               </Box>
             </Box>
           ))}
-          {/*  map  */}
         </InfiniteScroll>
-        {/* InfiniteScrolls */}
       </Box>
     </>
   );

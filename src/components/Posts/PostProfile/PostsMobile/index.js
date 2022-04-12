@@ -31,6 +31,7 @@ import {
   FormControl,
   Textarea,
   Button,
+  useToast,
 } from "@chakra-ui/react";
 
 import { WarningIcon } from "@chakra-ui/icons";
@@ -49,6 +50,8 @@ const ProfileMobile = () => {
     email: "",
     username: "",
   });
+
+  const toast = useToast();
 
   const setInitalPosts = 10;
   const postListLimit = post.length;
@@ -156,7 +159,6 @@ const ProfileMobile = () => {
               return console.log("foi", e);
             }}
           >
-            {/*  map  */}
             {post?.map((data, i) => (
               <Box
                 borderBottom="1px solid #EBEBEB"
@@ -231,9 +233,7 @@ const ProfileMobile = () => {
                 </Box>
               </Box>
             ))}
-            {/*  map  */}
           </InfiniteScroll>
-          {/* InfiniteScrolls */}
 
           <Box>
             <Modal isOpen={isOpen} onClose={onClose} size="full">
@@ -277,6 +277,14 @@ const ProfileMobile = () => {
                         bg="#99DEE6"
                         color="white"
                         type="submit"
+                        onClick={() =>
+                          toast({
+                            title: "PostTwits Enviado Com sucesso",
+                            status: "success",
+                            duration: 9000,
+                            isClosable: true,
+                          })
+                        }
                         isDisabled={value > 140}
                         mr={1}
                       >
