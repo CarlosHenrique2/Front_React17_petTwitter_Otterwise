@@ -1,9 +1,8 @@
-import { useLocation, useNavigate, Link } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { useState } from "react";
 import React from "react";
 
-import { useAuth, register } from "../../context/auth-context";
+import { useAuth } from "../../context/auth-context";
 
 import img00 from "../../assets/img/background.jpg";
 import img01 from "../../assets/img/backgroundesk.jpg";
@@ -20,11 +19,7 @@ import "../../global/global.css";
 
 import Register from "../../components/Form/Register";
 
-import { Box, Img, Heading, Text, HStack, Flex } from "@chakra-ui/react";
-
-import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
-
-import { Icon } from "@chakra-ui/react";
+import { Box, Img, Heading, Text, HStack, Flex, Link } from "@chakra-ui/react";
 
 function Create() {
   const navigate = useNavigate();
@@ -105,46 +100,50 @@ function Create() {
 
       <Flex>
         <div className="profile-mobile">
-          <Box className="login">
-            <Box className="login-img">
-              <Img className="imgMobile" src={img00} />
-              <Img className="imgDesk" src={img02} />
-              <Img className="title-Desktop-1" src={icon04} />
-              <Img className="title-Desktop-2" src={icon05} />
-              <Img className="iconMobile" src={icon00} />
-              <Heading className="title_img-mobile">
+          <Box w="full">
+            <Box>
+              <Img position="relative" top="0" zIndex="-1" src={img00} />
+              <Img position="absolute" top="45" left="31" src={icon00} />
+              <Heading
+                position="absolute"
+                top="139px"
+                left="26px"
+                color="white"
+              >
                 Comece agora. Conecte-se já.
               </Heading>
             </Box>
 
-            <Box /* paddingX="66px" */ /* className="login-form" */>
-              <HStack>
-                <Img className="imgDesk" src={icon06} />
-                <HStack>
-                  <Heading className="title_img-desk">
-                    Comece agora. Conecte-se já.
-                  </Heading>
-                </HStack>
-              </HStack>
-
-              <Heading /* paddingX="72px" */ /* className="info_page" */>
+            <Box paddingX="32px">
+              <Heading
+                marginTop="30px"
+                marginBottom="32px"
+                fontFamily="Open Sans"
+                fontWeight="600"
+                fontSize="24px"
+                lineHeight="40px"
+                color="#212121"
+              >
                 Cadastro
               </Heading>
 
               <Box>
                 <Register />
               </Box>
-              <Box /* paddingX="72px" */ /* className="info_link" */>
-                <Text /* className="info_link_text" */>
-                  Já possui cadastro?<br className="info_link-mobile"></br>
-                  <Link /* className="info_link_text-link" */ to="/login">
-                    Faça login
-                  </Link>
-                </Text>
+              <Box marginTop="24px">
+                <Text>Já possui cadastro?</Text>
+                <Link textDecoration="underline" color="#00ACC1" href="/login">
+                  Faça login
+                </Link>
               </Box>
-              <Box className="login-img">
-                <Img className="login-img-icon" src={icon02} />
-                <Img className="login-img-icon" src={icon03} />
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                marginTop="64px"
+              >
+                <Img src={icon02} />
+                <Img src={icon03} />
               </Box>
             </Box>
           </Box>
