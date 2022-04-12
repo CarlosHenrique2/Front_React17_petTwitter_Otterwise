@@ -63,7 +63,15 @@ function Access() {
                   <HStack>
                     <Img src={icon06} />
                   </HStack>
-                  <Heading display="flex" marginTop="26px" color="#00ACC1">
+                  <Heading
+                    display="flex"
+                    marginTop="26px"
+                    fontFamily="Open Sans"
+                    fontWeight="700"
+                    fontSize="36px"
+                    lineHeight="49px"
+                    color="#00ACC1"
+                  >
                     Comece agora.
                     <br /> Conecte-se já.
                   </Heading>

@@ -24,7 +24,6 @@ function Feed() {
 
   const getData = async () => {
     const res = await client.get(`/page?page=${page}`);
-    console.log(res.data);
     setPost([...post, ...res.data]);
     if (!res.data.length) {
       setHasMore(false);

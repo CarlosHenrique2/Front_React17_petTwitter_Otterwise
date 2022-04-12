@@ -57,7 +57,7 @@ const PostsMobile = (props) => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data, event) => {
+  const onSubmit = async (data) => {
     const newPost = await PostTwits(data);
     resetField("text");
     if (newPost) {
@@ -72,7 +72,6 @@ const PostsMobile = (props) => {
   const formatter = buildFormatter(Time);
 
   const getDataAndNextPage = () => {
-    console.log("here");
     setPage(page + 1);
   };
 
@@ -80,7 +79,6 @@ const PostsMobile = (props) => {
     <>
       <Flex display="flex" flexDirection="column">
         <div className="feed-mobile">
-          {/*  InfiniteScroll  */}
           <InfiniteScroll
             dataLength={post.length}
             key={post.id}
@@ -135,7 +133,6 @@ const PostsMobile = (props) => {
               return console.log("foi", e);
             }}
           >
-            {/*  map  */}
             {post?.map((data, i) => (
               <Box
                 borderBottom="1px solid #EBEBEB"
@@ -214,9 +211,7 @@ const PostsMobile = (props) => {
                 </Box>
               </Box>
             ))}
-            {/*  map  */}
           </InfiniteScroll>
-          {/* InfiniteScrolls */}
 
           <Box>
             <Modal isOpen={isOpen} onClose={onClose} size="full">

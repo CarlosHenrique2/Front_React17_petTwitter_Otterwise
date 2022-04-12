@@ -15,7 +15,7 @@ import "../../global/global.css";
 
 import Register from "../../components/Form/Register";
 
-import { Box, Img, Heading, Text, HStack, Flex, Link } from "@chakra-ui/react";
+import { Box, Img, Heading, Text, Flex, Link } from "@chakra-ui/react";
 
 function Create() {
   return (

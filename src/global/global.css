@@ -18,56 +18,11 @@ input:-webkit-autofill {
   transition: background-color 5000s;
 }
 
-/* -webkit-padding-start: 72px; */
-/* padding-inline-start: 72px; */
-/* -webkit-padding-end: 72px; */
-/* padding-inline-end: 72px; */
-
-/* global styles */
-
-.imgMobile {
-  position: relative;
-  top: 0;
-  z-index: -1;
-}
-
-.iconMobile {
-  position: absolute;
-  top: 42px;
-  left: 30px;
-  z-index: 10;
-}
-
-.login-img {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.title_img-mobile {
-  position: absolute;
-  top: 141px;
-  left: 30px;
-  font-family: "Open Sans";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 49px;
-  color: white;
-  z-index: 10;
-}
-
-.info_link_text-link {
-  color: #00acc1;
-  text-decoration: underline;
-}
-
 /* responsive Desktop */
 
 @media (min-width: 600px) {
   .login {
     display: flex;
-    align-items: center;
   }
   .login-form {
     text-align: start;
@@ -98,28 +53,6 @@ input:-webkit-autofill {
   }
   .info-desk {
     text-align: center;
-  }
-  .title-Desktop-1 {
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 49px;
-    color: white;
-    position: absolute;
-    top: auto;
-    left: auto;
-  }
-  .title-Desktop-2 {
-    font-family: "Open Sans";
-    font-style: normal;
-    font-weight: 700;
-    font-size: 36px;
-    line-height: 49px;
-    color: white;
-    position: absolute;
-    top: auto;
-    left: 110px;
   }
   .feed-desktop {
     display: flex;
