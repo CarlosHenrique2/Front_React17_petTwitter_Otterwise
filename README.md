@@ -1,5 +1,5 @@
 <h1 align="center" style="color:#00ACC1">
-    <img  src="" />
+    <img  src="https://github.com/CarlosHenrique2/Project-Final-Otterwise-Front/blob/main/src/assets/git/login.jpg" />
     <br>
     Projeto Rede Social PETWITER
 </h1>
@@ -28,10 +28,10 @@ $ yarn dev
 
 ## Tecnologias Utilizadas
 
-- [React.js]()
-- [React-Dom]()
-- [React-Router-Dom]()
-- [React-Hook-Form]()
-- [React-Timeago]()
-- [Yup]()
-- [Chakra-ui]()
+- [React.js](https://pt-br.reactjs.org/)
+- [React-Dom](https://pt-br.reactjs.org/docs/react-dom.html)
+- [React-Router-Dom](https://v5.reactrouter.com/web/guides/quick-start)
+- [React-Hook-Form](https://react-hook-form.com/)
+- [React-Timeago](https://www.npmjs.com/package/react-timeago)
+- [Yup](https://www.npmjs.com/package/yup)
+- [Chakra-ui](https://chakra-ui.com/)
