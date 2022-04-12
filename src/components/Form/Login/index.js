@@ -106,7 +106,7 @@ const Login = () => {
             className="form_btn"
             type="submit"
             w="full"
-            onChange={() => {
+            onClick={() => {
               toast({
                 title: "Login Realizado Com Sucesso",
                 status: "success",

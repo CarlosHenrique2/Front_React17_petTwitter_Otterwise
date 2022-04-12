@@ -45,7 +45,7 @@ const Menumobile = () => {
   let auth = useAuth();
   let navigate = useNavigate();
 
-  const handleClose1 = () => {
+  const handleClose = () => {
     onClose();
     setShowModal(true);
   };
@@ -143,7 +143,7 @@ const Menumobile = () => {
                     marginTop="15px"
                     paddingLeft={pathname === "/Profile" ? "60px" : "70px"}
                     bg="transparent"
-                    onClick={handleClose1}
+                    onClick={handleClose}
                   >
                     <Img src={iconexit} w="30px" marginRight="5px" /> Sair
                   </Button>
@@ -152,7 +152,6 @@ const Menumobile = () => {
             </DrawerContent>
           </Drawer>
         </Box>
-        {/*  modal */}
         <Box>
           <Modal
             display="flex"
@@ -230,7 +229,6 @@ const Menumobile = () => {
             </ModalContent>
           </Modal>
         </Box>
-        {/*  modal */}
       </div>
     </>
   );
