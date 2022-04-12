@@ -63,55 +63,91 @@ const Register = () => {
   return (
     <Box>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl /* paddingX="72px" */>
-          <FormLabel htmlFor="name" paddingBottom="10px">
+        <FormControl>
+          <FormLabel
+            htmlFor="name"
+            paddingBottom="24px"
+            fontFamily="Open Sans"
+            fontWeight="600"
+            fontSize="14px"
+            lineHeight="16px"
+            color="#424242"
+          >
             Nome:
             <Input
               {...register("name")}
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
+              marginTop="8px"
               name="name"
               type="text"
               placeholder="Nome"
             />
           </FormLabel>
-          <FormLabel htmlFor="email" paddingBottom="10px">
+          <FormLabel
+            htmlFor="email"
+            paddingBottom="24px"
+            fontFamily="Open Sans"
+            fontWeight="600"
+            fontSize="14px"
+            lineHeight="16px"
+            color="#424242"
+          >
             E-mail:
             <Input
               {...register("email")}
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
+              marginTop="8px"
               name="email"
               type="text"
               placeholder="E-mail"
             />
           </FormLabel>
-          <FormLabel htmlFor="username" paddingBottom="10px">
+          <FormLabel
+            htmlFor="username"
+            paddingBottom="24px"
+            fontFamily="Open Sans"
+            fontWeight="600"
+            fontSize="14px"
+            lineHeight="16px"
+            color="#424242"
+          >
             Nome de usuário:
             <Input
               {...register("username")}
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
+              marginTop="8px"
               name="username"
               type="text"
               placeholder="Ex.: @billbulldog"
             />
           </FormLabel>
-          <FormLabel htmlFor="password" paddingBottom="10px">
+          <FormLabel
+            htmlFor="password"
+            paddingBottom="24px"
+            fontFamily="Open Sans"
+            fontWeight="600"
+            fontSize="14px"
+            lineHeight="16px"
+            color="#424242"
+          >
             Senha:
-            <InputGroup>
+            <InputGroup marginTop="8px">
               <Input
                 {...register("password")}
                 focusBorderColor="#00acc1"
                 errorBorderColor="red.300"
+                marginTop="8px"
                 name="password"
                 type={show ? "text" : "password"}
                 placeholder="Senha:"
               />
-              <InputRightElement>
+              <InputRightElement marginTop="8px">
                 <Button
                   _hover={{ background: "none" }}
                   _active={{ background: "none" }}
@@ -123,7 +159,13 @@ const Register = () => {
                 </Button>
               </InputRightElement>
             </InputGroup>
-            <FormHelperText>
+            <FormHelperText
+              fontFamily="Open Sans"
+              fontWeight="400"
+              fontSize="12px"
+              lineHeight="16px"
+              color="#424242"
+            >
               Deve conter no mínimo um número e uma letra maiúscula
             </FormHelperText>
           </FormLabel>
@@ -132,7 +174,11 @@ const Register = () => {
             _active={{ background: "#00acc1" }}
             _focus={{ boxShadow: "none" }}
             backgroundColor="#00acc1"
-            color="white"
+            fontFamily="Open Sans"
+            fontWeight="600"
+            fontSize="14px"
+            lineHeight="24px"
+            color="#FFFFFF"
             className="form_btn"
             type="submit"
             onClick={() =>

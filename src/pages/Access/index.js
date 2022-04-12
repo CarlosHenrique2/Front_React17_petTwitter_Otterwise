@@ -24,7 +24,6 @@ function Access() {
         <Flex w="full" h="100vh">
           <Box
             position="relative"
-            backgroundColor="red"
             overflow="hidden"
             display="flex"
             alignItems="center"
@@ -60,7 +59,7 @@ function Access() {
           >
             <Box w="full">
               <Box>
-                <Box /* paddingX="72px" */>
+                <Box>
                   <HStack>
                     <Img src={icon06} />
                   </HStack>
@@ -71,7 +70,7 @@ function Access() {
                 </Box>
               </Box>
 
-              <Box /* paddingX="72px" */>
+              <Box>
                 <Heading
                   marginY="32px"
                   fontFamily="Open Sans"
@@ -106,8 +105,8 @@ function Access() {
 
       {/*  divisão */}
 
-      <Flex>
-        <div className="profile-mobile">
+      <div className="profile-mobile">
+        <Flex>
           <Box w="full">
             <Box>
               <Img position="relative" top="0" zIndex="-1" src={img00} />
@@ -155,8 +154,8 @@ function Access() {
               </Box>
             </Box>
           </Box>
-        </div>
-      </Flex>
+        </Flex>
+      </div>
     </>
   );
 }
