@@ -3,6 +3,9 @@ import React from "react";
 import img00 from "../../assets/img/background.jpg";
 import img02 from "../../assets/img/background01.jpg";
 
+import pata from "../../assets/svg/pets.svg";
+import titulo from "../../assets/svg/PETWITTER.svg";
+
 import icon00 from "../../assets/svg/icon00.svg";
 import icon02 from "../../assets/svg/icon02.svg";
 import icon03 from "../../assets/svg/icon03.svg";
@@ -17,24 +20,58 @@ import { Box, Img, Heading, Text, HStack, Flex, Link } from "@chakra-ui/react";
 function Access() {
   return (
     <>
-      <Flex>
-        <div className="profile-desktop">
-          <Box display="flex" alignItems="center">
-            <Box>
-              <Img src={img02} />
-              <Img src={icon00} />
-            </Box>
-            <Box>
-              <Box paddingX="72px">
-                <HStack>
-                  <Img src={icon06} />
-                </HStack>
-                <Heading display="flex" marginTop="26px" color="#00ACC1">
-                  Comece agora.Conecte-se já.
-                </Heading>
+      <div className="profile-desktop">
+        <Flex w="full" h="100vh">
+          <Box
+            position="relative"
+            backgroundColor="red"
+            overflow="hidden"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            w="60%"
+          >
+            <img
+              style={{
+                position: "absolute",
+                left: "0",
+                top: "-150px",
+                width: "100%",
+                objectFit: "cover",
+                objectPosition: "bottom",
+                zIndex: "0",
+              }}
+              src={img02}
+            />
+            <Flex gap="40px" zIndex="100">
+              <Img src={pata} />
+              <Img src={titulo} />
+            </Flex>
+          </Box>
+
+          <Box
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+            paddingX="72px"
+            h="100vh"
+            w="40%"
+          >
+            <Box w="full">
+              <Box>
+                <Box /* paddingX="72px" */>
+                  <HStack>
+                    <Img src={icon06} />
+                  </HStack>
+                  <Heading display="flex" marginTop="26px" color="#00ACC1">
+                    Comece agora.
+                    <br /> Conecte-se já.
+                  </Heading>
+                </Box>
               </Box>
 
-              <Box paddingX="72px">
+              <Box /* paddingX="72px" */>
                 <Heading
                   marginY="32px"
                   fontFamily="Open Sans"
@@ -45,7 +82,7 @@ function Access() {
                 >
                   Login
                 </Heading>
-                <Box w="full">
+                <Box sx={{ width: "100%" }}>
                   <Login />
                 </Box>
                 <Box>
@@ -64,8 +101,8 @@ function Access() {
               </Box>
             </Box>
           </Box>
-        </div>
-      </Flex>
+        </Flex>
+      </div>
 
       {/*  divisão */}
 

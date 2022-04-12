@@ -61,7 +61,7 @@ const Login = () => {
     <Box textAlign="start" w="full">
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl /* paddingX="72px" */>
-          <FormLabel paddingBottom="22px" htmlFor="email">
+          <FormLabel w="full" paddingBottom="22px" htmlFor="email">
             E-mail:
             <Input
               {...register("email")}
@@ -73,7 +73,7 @@ const Login = () => {
               placeholder="E-mail"
             />
           </FormLabel>
-          <FormLabel paddingBottom="22px" htmlFor="password">
+          <FormLabel w="full" paddingBottom="22px" htmlFor="password">
             Senha:
             <InputGroup>
               <Input
