@@ -123,9 +123,8 @@ function User() {
       </Flex>
 
       {/*  divisão */}
-
-      <Flex display="flex">
-        <div className="profile-mobile">
+      <div className="profile-mobile">
+        <Flex display="flex">
           <Flex display="flex" flexDirection="column">
             <Menumobile />
           </Flex>
@@ -179,8 +178,8 @@ function User() {
           <Box>
             <ProfileMobile />
           </Box>
-        </div>
-      </Flex>
+        </Flex>
+      </div>
     </>
   );
 }
