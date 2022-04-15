@@ -120,27 +120,6 @@ const ProfileMobile = () => {
                 <Box
                   display="flex"
                   alignItems="center"
-                  justifyContent="flex-end"
-                >
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="flex-end"
-                  ></Box>
-                  <Button
-                    _hover={{ background: "none" }}
-                    _active={{ background: "none" }}
-                    _focus={{ border: "none" }}
-                    bg="transparent"
-                    color="white"
-                    onClick={onOpen}
-                  >
-                    <Img src={iconModal} />
-                  </Button>
-                </Box>
-                <Box
-                  display="flex"
-                  alignItems="center"
                   flexDirection="column"
                   paddingTop="10px"
                 >
@@ -161,18 +140,24 @@ const ProfileMobile = () => {
           >
             {post?.map((data, i) => (
               <Box
+                display="flex"
+                flexDirection="row"
                 borderBottom="1px solid #EBEBEB"
                 paddingY="10px"
+                paddingLeft="1rem"
+                gap="1rem"
                 key={i * Math.random()}
               >
+                <Box w="48px">
+                  <Img src={icon13} />
+                </Box>
+
                 <Box
                   display="flex"
-                  alignItems="center"
-                  justifyContent="flex-start"
+                  alignItems="flex-start"
+                  flexDirection="column"
+                  flex="1"
                 >
-                  <Box>
-                    <Img marginLeft="16px" src={icon13} />
-                  </Box>
                   <Box display="flex" alignItems="center">
                     <Text
                       color="#757575"
@@ -181,7 +166,6 @@ const ProfileMobile = () => {
                       fontFamily="Open Sans"
                       fontStyle="normal"
                       lineHeight="19px"
-                      paddingLeft="8px"
                     >
                       {data.author.name}
                     </Text>
@@ -212,27 +196,46 @@ const ProfileMobile = () => {
                       <TimeAgo date={data.created_at} formatter={formatter} />
                     </Text>
                   </Box>
-                </Box>
-
-                <Box
-                  textAlign="start"
-                  display="flex"
-                  justifyContent="flex-start"
-                >
-                  <Flex paddingLeft="72px"></Flex>
-                  <Text
-                    color="#141619"
-                    fontWeight="400"
-                    fontStyle="normal"
-                    fontFamily="Open Sans"
-                    fontSize="14px"
-                    lineHeight="17px"
+                  <Box
+                    textAlign="start"
+                    display="flex"
+                    justifyContent="flex-start"
                   >
-                    {data.text}
-                  </Text>
+                    <Text
+                      color="#141619"
+                      fontWeight="400"
+                      fontStyle="normal"
+                      fontFamily="Open Sans"
+                      fontSize="14px"
+                      lineHeight="17px"
+                    >
+                      {data.text}
+                    </Text>
+                  </Box>
                 </Box>
               </Box>
             ))}
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="flex-end"
+              ></Box>
+              <Button
+                _hover={{ background: "none" }}
+                _active={{ background: "none" }}
+                _focus={{ border: "none" }}
+                bg="transparent"
+                color="white"
+                onClick={onOpen}
+              >
+                <Img src={iconModal} />
+              </Button>
+            </Box>
           </InfiniteScroll>
 
           <Box>

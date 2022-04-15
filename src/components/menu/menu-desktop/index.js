@@ -70,16 +70,14 @@ const Menudesktop = () => {
               display="flex"
               marginTop="16px"
               padding="10px"
-              paddingLeft={pathname === "/Profile" ? "75px" : "70px"}
+              paddingLeft={pathname.includes("Profile") ? "75px" : "70px"}
               w="full"
               to="/Home"
               href="/Home"
-              borderLeft={pathname === "/Home" ? "5px solid #00ACC1" : "none"}
-              bg={pathname === "/Home" ? "#E6F7F9" : "none"}
-              /*  borderLeft={
-                pathname === "/Profile/" ? "5px solid #00ACC1" : "none"
+              borderLeft={
+                pathname.includes("/Home") ? "5px solid #00ACC1" : "none"
               }
-              bg={pathname === "/Profile/" ? "#E6F7F9" : "none"} */
+              bg={pathname.includes("/Home") ? "#E6F7F9" : "none"}
             >
               <Img marginRight="5px" src={icon07} /> Home
             </Link>
@@ -90,14 +88,14 @@ const Menudesktop = () => {
               display="flex"
               paddingTop="10px"
               paddingBottom="10px"
-              paddingLeft={pathname === "/Profile" ? "70px" : "70px"}
+              paddingLeft={pathname.includes("Profile") ? "70px" : "70px"}
               w="full"
               to="/Profile"
               href="/Profile"
               borderLeft={
-                pathname === "/Profile" ? "5px solid #00ACC1" : "none"
+                pathname.includes("Profile") ? "5px solid #00ACC1" : "none"
               }
-              bg={pathname === "/Profile" ? "#E6F7F9" : "none"}
+              bg={pathname.includes("Profile") ? "#E6F7F9" : "none"}
             >
               <Img marginRight="5px" src={icon10} /> Meu perfil
             </Link>

@@ -106,13 +106,13 @@ const Menumobile = () => {
                   marginTop="16px"
                   paddingTop="10px"
                   paddingBottom="10px"
-                  paddingLeft={pathname === "/Profile" ? "60px" : "65px"}
+                  paddingLeft={pathname.includes("Profile") ? "60px" : "65px"}
                   w="full"
                   href="/Home"
                   borderLeft={
-                    pathname === "/Home" ? "5px solid #00ACC1" : "none"
+                    pathname.includes("/Home") ? "5px solid #00ACC1" : "none"
                   }
-                  bg={pathname === "/Home" ? "#E6F7F9" : "none"}
+                  bg={pathname.includes("/Home") ? "#E6F7F9" : "none"}
                 >
                   <Img src={icon07} marginRight="5px" /> Home
                 </Link>
@@ -123,13 +123,13 @@ const Menumobile = () => {
                   display="flex"
                   paddingTop="10px"
                   paddingBottom="10px"
-                  paddingLeft={pathname === "/Profile" ? "55px" : "70px"}
+                  paddingLeft={pathname.includes("Profile") ? "55px" : "70px"}
                   w="full"
                   href="/Profile"
                   borderLeft={
-                    pathname === "/Profile" ? "5px solid #00ACC1" : "none"
+                    pathname.includes("Profile") ? "5px solid #00ACC1" : "none"
                   }
-                  bg={pathname === "/Profile" ? "#E6F7F9" : "none"}
+                  bg={pathname.includes("Profile") ? "#E6F7F9" : "none"}
                 >
                   <Img src={icon10} marginRight="5px" /> Meu perfil
                 </Link>

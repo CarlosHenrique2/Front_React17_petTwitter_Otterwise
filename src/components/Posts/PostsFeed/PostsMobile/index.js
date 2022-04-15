@@ -98,23 +98,7 @@ const PostsMobile = (props) => {
                   display="flex"
                   alignItems="center"
                   justifyContent="flex-end"
-                >
-                  <Box
-                    display="flex"
-                    alignItems="center"
-                    justifyContent="flex-end"
-                  ></Box>
-                  <Button
-                    _hover={{ background: "none" }}
-                    _active={{ background: "none" }}
-                    _focus={{ border: "none" }}
-                    bg="transparent"
-                    color="white"
-                    onClick={onOpen}
-                  >
-                    <Img src={iconModal} /> teste
-                  </Button>
-                </Box>
+                ></Box>
                 <Box
                   display="flex"
                   alignItems="center"
@@ -138,16 +122,27 @@ const PostsMobile = (props) => {
           >
             {post?.map((data, i) => (
               <Box
+                display="flex"
+                flexDirection="row"
                 borderBottom="1px solid #EBEBEB"
                 paddingY="10px"
+                paddingRight="1rem"
+                paddingLeft="1rem"
+                gap="1rem"
+                flex="1"
                 key={i * Math.random()}
               >
+                <Box w="48px">
+                  <Img src={icon13} />
+                </Box>
+
                 <Box
                   display="flex"
-                  alignItems="center"
-                  justifyContent="flex-start"
+                  alignItems="flex-start"
+                  flexDirection="column"
+                  flex="1"
                 >
-                  <Box display="flex" alignItems="center" paddingLeft="72px">
+                  <Box display="flex" alignItems="center">
                     <Text
                       color="#757575"
                       fontWeight="700"
@@ -155,7 +150,6 @@ const PostsMobile = (props) => {
                       fontFamily="Open Sans"
                       fontStyle="normal"
                       lineHeight="19px"
-                      paddingLeft="8px"
                       cursor="pointer"
                       onClick={() => {
                         navigate(`/Profile/${data.authorId}`);
@@ -190,30 +184,60 @@ const PostsMobile = (props) => {
                       <TimeAgo date={data.created_at} formatter={formatter} />
                     </Text>
                   </Box>
-                </Box>
-
-                <Box
-                  textAlign="start"
-                  display="flex"
-                  justifyContent="flex-start"
-                >
-                  <Box marginBottom="">
-                    <Img src={icon13} />
-                  </Box>
-                  <Text
-                    color="#141619"
-                    fontWeight="400"
-                    fontStyle="normal"
-                    fontFamily="Open Sans"
-                    fontSize="14px"
-                    lineHeight="17px"
+                  <Box
+                    textAlign="start"
+                    display="flex"
+                    justifyContent="flex-start"
                   >
-                    {data.text}
-                  </Text>
+                    <Text
+                      color="#141619"
+                      fontWeight="400"
+                      fontStyle="normal"
+                      fontFamily="Open Sans"
+                      fontSize="14px"
+                      lineHeight="17px"
+                    >
+                      {data.text}
+                    </Text>
+                  </Box>
                 </Box>
               </Box>
             ))}
+            <Box
+              display="flex"
+              alignItems="center"
+              justifyContent="space-between"
+            >
+              <Box
+                display="flex"
+                alignItems="center"
+                justifyContent="flex-end"
+              ></Box>
+              <Button
+                _hover={{ background: "none" }}
+                _active={{ background: "none" }}
+                _focus={{ border: "none" }}
+                bg="transparent"
+                color="white"
+                onClick={onOpen}
+              >
+                <Img src={iconModal} />
+              </Button>
+            </Box>
           </InfiniteScroll>
+
+          {/*  <Box position="relative" bottom="250px" right="0">
+            <Button
+              _hover={{ background: "none" }}
+              _active={{ background: "none" }}
+              _focus={{ border: "none" }}
+              bg="transparent"
+              color="white"
+              onClick={onOpen}
+            >
+              <Img src={iconModal} />
+            </Button>
+          </Box> */}
 
           <Box>
             <Modal isOpen={isOpen} onClose={onClose} size="full">

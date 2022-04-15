@@ -75,7 +75,7 @@ const Postsform = (props) => {
                 w="600px"
                 {...register("text")}
                 type={Date.now()}
-                onChange={(e) => setValue(e.target.value)}
+                onChange={(e) => setValue(e.target.value.length)}
                 isInvalid={value > 140}
               />
             </FormLabel>
