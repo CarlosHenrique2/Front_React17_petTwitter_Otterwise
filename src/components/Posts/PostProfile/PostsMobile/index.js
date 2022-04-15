@@ -144,6 +144,7 @@ const ProfileMobile = () => {
                 flexDirection="row"
                 borderBottom="1px solid #EBEBEB"
                 paddingY="10px"
+                paddingRight="1rem"
                 paddingLeft="1rem"
                 gap="1rem"
                 key={i * Math.random()}
@@ -202,6 +203,7 @@ const ProfileMobile = () => {
                     justifyContent="flex-start"
                   >
                     <Text
+                      wordBreak="break-word"
                       color="#141619"
                       fontWeight="400"
                       fontStyle="normal"

@@ -190,6 +190,7 @@ const PostsMobile = (props) => {
                     justifyContent="flex-start"
                   >
                     <Text
+                      wordBreak="break-word"
                       color="#141619"
                       fontWeight="400"
                       fontStyle="normal"
