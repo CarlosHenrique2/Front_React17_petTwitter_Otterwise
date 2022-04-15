@@ -102,8 +102,8 @@ const ProfileMobile = () => {
 
   return (
     <>
-      <Flex display="flex" flexDirection="column">
-        <div className="feed-mobile">
+      <div className="feed-mobile">
+        <Flex display="flex" flexDirection="column">
           {/*  InfiniteScroll  */}
           <InfiniteScroll
             dataLength={post.length}
@@ -320,8 +320,8 @@ const ProfileMobile = () => {
               </ModalContent>
             </Modal>
           </Box>
-        </div>
-      </Flex>
+        </Flex>
+      </div>
     </>
   );
 };

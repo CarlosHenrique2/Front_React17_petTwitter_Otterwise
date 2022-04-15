@@ -186,9 +186,6 @@ const ProfileDesktop = () => {
               key={i * Math.random()}
             >
               <Box display="flex" alignItems="center">
-                <Box paddingTop="5px">
-                  <Img src={icon13} />
-                </Box>
                 <Text
                   fontWeight="700"
                   fontSize="15px"
@@ -226,7 +223,11 @@ const ProfileDesktop = () => {
                   <TimeAgo date={data.created_at} formatter={formatter} />
                 </Text>
               </Box>
+
               <Box textAlign="start" display="flex" marginLeft="60px">
+                <Box>
+                  <Img src={icon13} />
+                </Box>
                 <Text
                   fontWeight="400"
                   fontStyle="normal"

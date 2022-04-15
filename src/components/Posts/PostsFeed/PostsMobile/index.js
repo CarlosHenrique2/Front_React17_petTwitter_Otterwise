@@ -80,8 +80,8 @@ const PostsMobile = (props) => {
 
   return (
     <>
-      <Flex display="flex" flexDirection="column">
-        <div className="feed-mobile">
+      <div className="feed-mobile">
+        <Flex display="flex" flexDirection="column">
           <InfiniteScroll
             dataLength={post.length}
             key={post.id}
@@ -112,7 +112,7 @@ const PostsMobile = (props) => {
                     color="white"
                     onClick={onOpen}
                   >
-                    <Img src={iconModal} />
+                    <Img src={iconModal} /> teste
                   </Button>
                 </Box>
                 <Box
@@ -147,10 +147,7 @@ const PostsMobile = (props) => {
                   alignItems="center"
                   justifyContent="flex-start"
                 >
-                  <Box>
-                    <Img marginLeft="16px" src={icon13} />
-                  </Box>
-                  <Box display="flex" alignItems="center">
+                  <Box display="flex" alignItems="center" paddingLeft="72px">
                     <Text
                       color="#757575"
                       fontWeight="700"
@@ -200,7 +197,9 @@ const PostsMobile = (props) => {
                   display="flex"
                   justifyContent="flex-start"
                 >
-                  <Flex paddingLeft="72px"></Flex>
+                  <Box marginBottom="">
+                    <Img src={icon13} />
+                  </Box>
                   <Text
                     color="#141619"
                     fontWeight="400"
@@ -304,8 +303,8 @@ const PostsMobile = (props) => {
               </form>
             </Modal>
           </Box>
-        </div>
-      </Flex>
+        </Flex>
+      </div>
     </>
   );
 };

@@ -124,7 +124,7 @@ function User() {
 
       {/*  divisão */}
       <div className="profile-mobile">
-        <Flex display="flex">
+        <Flex display="flex" flexDirection="column">
           <Flex display="flex" flexDirection="column">
             <Menumobile />
           </Flex>
