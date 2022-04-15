@@ -32,7 +32,6 @@ const PostsDesktop = (props) => {
       <Flex>
         <div className="feed-desktop">
           <Box w="50vw">
-            {/*  InfiniteScroll  */}
             <InfiniteScroll
               dataLength={post.length}
               key={post.id}
@@ -61,8 +60,6 @@ const PostsDesktop = (props) => {
                 </Box>
               }
             >
-              {/*  map  */}
-
               {post?.map((data, i) => (
                 <Box
                   display="flex"
@@ -145,9 +142,7 @@ const PostsDesktop = (props) => {
                   </Box>
                 </Box>
               ))}
-              {/*  map  */}
             </InfiniteScroll>
-            {/* InfiniteScrolls */}
           </Box>
         </div>
       </Flex>

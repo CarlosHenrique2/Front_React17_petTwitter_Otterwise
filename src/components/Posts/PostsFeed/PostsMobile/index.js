@@ -227,19 +227,6 @@ const PostsMobile = (props) => {
             </Box>
           </InfiniteScroll>
 
-          {/*  <Box position="relative" bottom="250px" right="0">
-            <Button
-              _hover={{ background: "none" }}
-              _active={{ background: "none" }}
-              _focus={{ border: "none" }}
-              bg="transparent"
-              color="white"
-              onClick={onOpen}
-            >
-              <Img src={iconModal} />
-            </Button>
-          </Box> */}
-
           <Box>
             <Modal isOpen={isOpen} onClose={onClose} size="full">
               <form onSubmit={handleSubmit(onSubmit)}>
