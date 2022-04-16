@@ -60,22 +60,37 @@ const PostsMobile = (props) => {
 
   const toast = useToast();
 
-  const onSubmit = async (data) => {
-    const newPost = await PostTwits(data);
-    resetField("text");
-    if (newPost) {
-      setPost([]);
-      setPage(1);
-      setRefresh((refresh) => !refresh);
-    }
-  };
-
   const navigate = useNavigate();
 
   const formatter = buildFormatter(Time);
 
   const getDataAndNextPage = () => {
     setPage(page + 1);
+  };
+
+  const onSubmit = async (data) => {
+    if (data.text.trim().length === 0) return;
+    try {
+      await PostTwits(data);
+      resetField("text");
+      setPost([]);
+      setPage(1);
+      setRefresh((refresh) => !refresh);
+      setValue(0);
+      toast({
+        title: "PostTwits Enviado Com sucesso",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar PostTwits",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
@@ -270,14 +285,7 @@ const PostsMobile = (props) => {
                           bg="#99DEE6"
                           color="white"
                           type="submit"
-                          onClick={() =>
-                            toast({
-                              title: "PostTwits Enviado Com sucesso",
-                              status: "success",
-                              duration: 9000,
-                              isClosable: true,
-                            })
-                          }
+                          onClick={onClose}
                           isDisabled={value > 140}
                           mr={1}
                         >

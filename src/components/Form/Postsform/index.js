@@ -52,7 +52,7 @@ const Postsform = (props) => {
   const onSubmit = async (data) => {
     if (data.text.trim().length === 0) return;
     try {
-      const newPost = await PostTwits(data);
+      await PostTwits(data);
       resetField("text");
       setPost([]);
       setPage(1);
