@@ -4,12 +4,9 @@ import { useLocation, Navigate } from "react-router-dom";
 
 import { setInStorage, login, signup, post } from "../services/auth";
 
-import { useToast } from "@chakra-ui/react";
-
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const toast = useToast();
   const userStored = localStorage.getItem("user");
   const [user, setUser] = useState(userStored ? JSON.parse(userStored) : null);
 
@@ -20,17 +17,10 @@ export function AuthProvider({ children }) {
         accessToken: response.data.accessToken,
         ...response.data.user,
       };
-
       setInStorage("user", user);
       setUser(user);
     } catch (error) {
       console.log(error);
-      toast({
-        title: "Falha.",
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
     }
   };
 
@@ -41,12 +31,10 @@ export function AuthProvider({ children }) {
         accessToken: response.data.accessToken,
         ...response.data.user,
       };
-
       setInStorage("user", user);
       setUser(user);
     } catch (error) {
       console.log(error);
-      alert("Usuário já existe");
     }
   };
 
@@ -54,10 +42,8 @@ export function AuthProvider({ children }) {
     try {
       const response = await post(data);
       return response.data;
-      alert("Post Realizado com sucesso");
     } catch (error) {
       console.log(error);
-      alert("erro ao realizar o posttwits");
     }
   };
 

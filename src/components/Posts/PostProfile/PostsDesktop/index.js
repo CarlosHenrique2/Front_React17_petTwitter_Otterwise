@@ -76,8 +76,6 @@ const ProfileDesktop = () => {
     setPost([...post, ...res.data]);
   };
 
-  console.log(post, "mobile");
-
   return (
     <>
       <Box w="50vw">

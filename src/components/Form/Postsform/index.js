@@ -16,6 +16,7 @@ import {
   FormControl,
   FormLabel,
   useToast,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 
 import profile00 from "../../../assets/img/profiledog.jpg";
@@ -36,19 +37,40 @@ const Postsform = (props) => {
   const [value, setValue] = React.useState(0);
 
   const { PostTwits } = useAuth();
+
   const toast = useToast();
 
-  const { register, handleSubmit, resetField } = useForm({
+  const {
+    register,
+    handleSubmit,
+    resetField,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
   const onSubmit = async (data) => {
-    const newPost = await PostTwits(data);
-    resetField("text");
-    if (newPost) {
+    if (data.text.trim().length === 0) return;
+    try {
+      const newPost = await PostTwits(data);
+      resetField("text");
       setPost([]);
       setPage(1);
       setRefresh((refresh) => !refresh);
+      setValue(0);
+      toast({
+        title: "PostTwits Enviado Com sucesso",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar PostTwits",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
     }
   };
 
@@ -59,7 +81,10 @@ const Postsform = (props) => {
       borderBottom="15px solid #E7ECF0"
     >
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl>
+        <FormControl
+          isInvalid={!!errors?.email?.message}
+          errortext={errors?.email?.message}
+        >
           <Box display="flex" alignItems="center" paddingTop="30px" w="full">
             <Box display="flex" paddingBottom="45px" paddingLeft="25px">
               <Img src={profile00} />
@@ -78,6 +103,9 @@ const Postsform = (props) => {
                 onChange={(e) => setValue(e.target.value.length)}
                 isInvalid={value > 140}
               />
+              <FormErrorMessage fontSize="10px">
+                {errors?.email?.message}
+              </FormErrorMessage>
             </FormLabel>
           </Box>
           <Box display="flex" alignItems="center" w="full">
@@ -99,14 +127,6 @@ const Postsform = (props) => {
                 bg="#99DEE6"
                 color="white"
                 type="submit"
-                onClick={() =>
-                  toast({
-                    title: "PostTwits Enviado Com sucesso",
-                    status: "success",
-                    duration: 9000,
-                    isClosable: true,
-                  })
-                }
                 isDisabled={value > 140}
               >
                 Petwittar

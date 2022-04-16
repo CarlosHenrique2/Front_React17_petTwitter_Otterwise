@@ -16,6 +16,7 @@ import {
   InputGroup,
   Box,
   Icon,
+  useToast
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
@@ -33,7 +34,10 @@ const schema = yup.object({
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
   const { signin } = useAuth();
+
+  const toast = useToast();
 
   const handleClick = () => setShow(!show);
   const [show, setShow] = React.useState(false);
@@ -49,8 +53,23 @@ const Login = () => {
   });
 
   const onSubmit = async (data) => {
-    await signin(data);
-    navigate(from, { replace: true });
+    try {
+      await signin(data);
+      toast({
+        title: "Login realizado com sucesso",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      navigate(from, { replace: true });
+    } catch (error) {
+      toast({
+        title: "Erro ao enviar PostTwits",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
 
   return (

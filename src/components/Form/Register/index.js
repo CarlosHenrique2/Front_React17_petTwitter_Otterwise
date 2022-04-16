@@ -61,8 +61,23 @@ const Register = () => {
   });
 
   const onSubmit = async (data) => {
-    await regisTer(data);
-    navigate(from, { replace: true });
+    try {
+      await regisTer(data);
+      toast({
+        title: "Usuário cadastrado com suecsso",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      navigate(from, { replace: true });
+    } catch (error) {
+      toast({
+        title: "Erro ao cadastrar usuário",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
   };
 
   return (
