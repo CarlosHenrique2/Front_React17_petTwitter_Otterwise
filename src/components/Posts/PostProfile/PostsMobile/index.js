@@ -98,8 +98,6 @@ const ProfileMobile = () => {
     setPost([...post, ...res.data]);
   };
 
-  console.log(post, "mobile");
-
   return (
     <>
       <div className="feed-mobile">
