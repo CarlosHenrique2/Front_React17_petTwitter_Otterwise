@@ -14,6 +14,7 @@ import "../../../global/global.css";
 import {
   FormControl,
   FormLabel,
+  FormErrorMessage,
   Input,
   Button,
   InputRightElement,
@@ -51,7 +52,11 @@ const Register = () => {
 
   const from = location.state?.from?.pathname || "/login";
 
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -63,7 +68,10 @@ const Register = () => {
   return (
     <Box>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl>
+        <FormControl
+          isInvalid={!!errors?.email?.message}
+          errortext={errors?.email?.message}
+        >
           <FormLabel
             htmlFor="name"
             paddingBottom="24px"
@@ -84,6 +92,9 @@ const Register = () => {
               type="text"
               placeholder="Nome"
             />
+            <FormErrorMessage fontSize="10px">
+              {errors?.email?.message}
+            </FormErrorMessage>
           </FormLabel>
           <FormLabel
             htmlFor="email"
@@ -105,6 +116,9 @@ const Register = () => {
               type="text"
               placeholder="E-mail"
             />
+            <FormErrorMessage fontSize="10px">
+              {errors?.email?.message}
+            </FormErrorMessage>
           </FormLabel>
           <FormLabel
             htmlFor="username"
@@ -126,6 +140,9 @@ const Register = () => {
               type="text"
               placeholder="Ex.: @billbulldog"
             />
+            <FormErrorMessage fontSize="10px">
+              {errors?.email?.message}
+            </FormErrorMessage>
           </FormLabel>
           <FormLabel
             htmlFor="password"
@@ -159,15 +176,9 @@ const Register = () => {
                 </Button>
               </InputRightElement>
             </InputGroup>
-            <FormHelperText
-              fontFamily="Open Sans"
-              fontWeight="400"
-              fontSize="12px"
-              lineHeight="16px"
-              color="#424242"
-            >
-              Deve conter no mínimo um número e uma letra maiúscula
-            </FormHelperText>
+            <FormErrorMessage fontSize="10px">
+              {errors?.email?.message}
+            </FormErrorMessage>
           </FormLabel>
           <Button
             _hover={{ background: "#00acc1" }}

@@ -1,28 +1,22 @@
 import { useLocation, useNavigate } from "react-router-dom";
-
 import React from "react";
-
 import { useAuth } from "../../../context/auth-context";
-
 import { useForm } from "react-hook-form";
-
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-
 import "../../../global/global.css";
 
 import {
   FormControl,
   FormLabel,
+  FormErrorMessage,
   Input,
   Button,
   InputRightElement,
   InputGroup,
   Box,
   Icon,
-  useToast,
 } from "@chakra-ui/react";
-
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
 const schema = yup.object({
@@ -39,16 +33,18 @@ const schema = yup.object({
 const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const toast = useToast();
-
   const { signin } = useAuth();
 
-  const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
+  const [show, setShow] = React.useState(false);
 
   const from = location.state?.from?.pathname || "/Home";
 
-  const { register, handleSubmit } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -60,7 +56,10 @@ const Login = () => {
   return (
     <Box textAlign="start" w="full">
       <form onSubmit={handleSubmit(onSubmit)}>
-        <FormControl /* paddingX="72px" */>
+        <FormControl
+          isInvalid={!!errors?.email?.message}
+          errortext={errors?.email?.message}
+        >
           <FormLabel w="full" paddingBottom="22px" htmlFor="email">
             E-mail:
             <Input
@@ -72,6 +71,9 @@ const Login = () => {
               type="text"
               placeholder="E-mail"
             />
+            <FormErrorMessage fontSize="10px">
+              {errors?.email?.message}
+            </FormErrorMessage>
           </FormLabel>
           <FormLabel w="full" paddingBottom="22px" htmlFor="password">
             Senha:
@@ -84,6 +86,7 @@ const Login = () => {
                 type={show ? "text" : "password"}
                 placeholder="Senha:"
               />
+
               <InputRightElement>
                 <Button
                   _hover={{ background: "none" }}
@@ -96,6 +99,9 @@ const Login = () => {
                 </Button>
               </InputRightElement>
             </InputGroup>
+            <FormErrorMessage fontSize="10px">
+              {errors?.email?.message}
+            </FormErrorMessage>
           </FormLabel>
           <Button
             _hover={{ background: "#00acc1" }}
@@ -106,14 +112,6 @@ const Login = () => {
             className="form_btn"
             type="submit"
             w="full"
-            onClick={() => {
-              toast({
-                title: "Login Realizado Com Sucesso",
-                status: "success",
-                duration: 3000,
-                isClosable: true,
-              });
-            }}
           >
             Entrar
           </Button>

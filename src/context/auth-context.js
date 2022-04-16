@@ -4,9 +4,12 @@ import { useLocation, Navigate } from "react-router-dom";
 
 import { setInStorage, login, signup, post } from "../services/auth";
 
+import { useToast } from "@chakra-ui/react";
+
 const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
+  const toast = useToast();
   const userStored = localStorage.getItem("user");
   const [user, setUser] = useState(userStored ? JSON.parse(userStored) : null);
 
@@ -22,7 +25,12 @@ export function AuthProvider({ children }) {
       setUser(user);
     } catch (error) {
       console.log(error);
-      alert("Email ou senha inválidos");
+      toast({
+        title: "Falha.",
+        status: "error",
+        duration: 9000,
+        isClosable: true,
+      });
     }
   };
 
