@@ -20,7 +20,6 @@ import {
   InputRightElement,
   InputGroup,
   Box,
-  FormHelperText,
   Icon,
   useToast,
 } from "@chakra-ui/react";
@@ -152,7 +151,7 @@ const Register = () => {
               errorBorderColor="red.300"
               marginTop="8px"
               name="username"
-              type="text"
+              type="email"
               placeholder="Ex.: @billbulldog"
             />
             <FormErrorMessage fontSize="10px">

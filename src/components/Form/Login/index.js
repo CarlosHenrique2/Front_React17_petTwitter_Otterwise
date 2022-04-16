@@ -16,7 +16,7 @@ import {
   InputGroup,
   Box,
   Icon,
-  useToast
+  useToast,
 } from "@chakra-ui/react";
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
@@ -86,8 +86,7 @@ const Login = () => {
               bg="transparent"
               focusBorderColor="#00acc1"
               errorBorderColor="red.300"
-              name="email"
-              type="text"
+              type="email"
               placeholder="E-mail"
             />
             <FormErrorMessage fontSize="10px">
