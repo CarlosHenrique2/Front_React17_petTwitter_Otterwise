@@ -207,16 +207,6 @@ const Register = () => {
             color="#FFFFFF"
             className="form_btn"
             type="submit"
-            onClick={() =>
-              toast({
-                title: "Usuário Criado Com Sucesso.",
-                description:
-                  "Por Favor agora faça o login com seu E-mail e Senha.",
-                status: "success",
-                duration: 9000,
-                isClosable: true,
-              })
-            }
             w="full"
           >
             Cadastrar-se
