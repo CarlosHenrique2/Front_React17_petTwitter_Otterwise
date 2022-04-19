@@ -26,20 +26,19 @@ import {
 
 import { ViewIcon, ViewOffIcon } from "@chakra-ui/icons";
 
-const schema = yup
-  .object({
-    name: yup.string().required("Nome é obrigatório"),
-    email: yup.string().required("Email é obrigatório"),
-    username: yup
-      .string()
-      .min(5, "Precisa ter no mínimo 5 caracteres")
-      .required("Nome de Usuário é obrigatório"),
-    password: yup
-      .string()
-      .min(5, "Precisa ter no mínimo 5 caracteres")
-      .required("Senha é obrigatório"),
-  })
-  .validate({ name: "jimmy", email: "jimmy@", username: "@jimmy" });
+const schema = yup.object({
+  name: yup.string().required("Nome é obrigatório"),
+  email: yup.string().required("Email é obrigatório"),
+  username: yup
+    .string()
+    .min(5, "Precisa ter no mínimo 5 caracteres")
+    .required("Nome de Usuário é obrigatório"),
+  password: yup
+    .string()
+    .min(5, "Precisa ter no mínimo 5 caracteres")
+    .required("Senha é obrigatório"),
+});
+/* .validate({ name: "jimmy", email: "jimmy@", username: "@jimmy" }); */
 
 const Register = () => {
   const navigate = useNavigate();
