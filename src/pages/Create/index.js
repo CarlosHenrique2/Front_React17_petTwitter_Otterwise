@@ -97,13 +97,21 @@ function Create() {
         <Flex>
           <Box w="full">
             <Box>
-              <Img position="relative" top="0" zIndex="-1" src={img00} />
+              <Img
+                w="full"
+                position="relative"
+                top="0"
+                zIndex="-1"
+                src={img00}
+              />
               <Img position="absolute" top="45" left="31" src={icon00} />
               <Heading
                 position="absolute"
                 top="139px"
                 left="26px"
                 color="white"
+                fontSize="2rem"
+                textAlign="start"
               >
                 Comece agora. Conecte-se já.
               </Heading>
