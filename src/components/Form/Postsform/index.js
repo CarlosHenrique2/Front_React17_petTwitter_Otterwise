@@ -82,8 +82,8 @@ const Postsform = (props) => {
     >
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl
-          isInvalid={!!errors?.email?.message}
-          errortext={errors?.email?.message}
+          isInvalid={!!errors?.text?.message}
+          errortext={errors?.text?.message}
         >
           <Box display="flex" alignItems="center" paddingTop="30px" w="full">
             <Box display="flex" paddingBottom="45px" paddingLeft="25px">
@@ -104,7 +104,7 @@ const Postsform = (props) => {
                 isInvalid={value > 140}
               />
               <FormErrorMessage fontSize="10px">
-                {errors?.email?.message}
+                {errors?.text?.message}
               </FormErrorMessage>
             </FormLabel>
           </Box>

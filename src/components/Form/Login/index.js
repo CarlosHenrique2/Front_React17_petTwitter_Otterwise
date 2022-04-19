@@ -93,6 +93,11 @@ const Login = () => {
               {errors?.email?.message}
             </FormErrorMessage>
           </FormLabel>
+        </FormControl>
+        <FormControl
+          isInvalid={!!errors?.password?.message}
+          errortext={errors?.password?.message}
+        >
           <FormLabel w="full" paddingBottom="22px" htmlFor="password">
             Senha:
             <InputGroup>
@@ -118,22 +123,22 @@ const Login = () => {
               </InputRightElement>
             </InputGroup>
             <FormErrorMessage fontSize="10px">
-              {errors?.email?.message}
+              {errors?.password?.message}
             </FormErrorMessage>
           </FormLabel>
-          <Button
-            _hover={{ background: "#00acc1" }}
-            _active={{ background: "#00acc1" }}
-            _focus={{ boxShadow: "none" }}
-            backgroundColor="#00acc1"
-            color="white"
-            className="form_btn"
-            type="submit"
-            w="full"
-          >
-            Entrar
-          </Button>
         </FormControl>
+        <Button
+          _hover={{ background: "#00acc1" }}
+          _active={{ background: "#00acc1" }}
+          _focus={{ boxShadow: "none" }}
+          backgroundColor="#00acc1"
+          color="white"
+          className="form_btn"
+          type="submit"
+          w="full"
+        >
+          Entrar
+        </Button>
       </form>
     </Box>
   );

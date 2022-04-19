@@ -32,13 +32,13 @@ const schema = yup.object({
   username: yup
     .string()
     .min(5, "Precisa ter no mínimo 5 caracteres")
-    .required("Nome de Usuário é obrigatório"),
+    .required("Nome de Usuário é obrigatório")
+    .matches(/^(@)/, "Nome de usuário deve começar com @"),
   password: yup
     .string()
     .min(5, "Precisa ter no mínimo 5 caracteres")
     .required("Senha é obrigatório"),
 });
-/* .validate({ name: "jimmy", email: "jimmy@", username: "@jimmy" }); */
 
 const Register = () => {
   const navigate = useNavigate();
@@ -58,6 +58,7 @@ const Register = () => {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
+    mode: "onChange",
   });
 
   const onSubmit = async (data) => {
@@ -84,8 +85,8 @@ const Register = () => {
     <Box>
       <form onSubmit={handleSubmit(onSubmit)}>
         <FormControl
-          isInvalid={!!errors?.email?.message}
-          errortext={errors?.email?.message}
+          isInvalid={!!errors?.name?.message}
+          errortext={errors?.name?.message}
         >
           <FormLabel
             htmlFor="name"
@@ -108,9 +109,14 @@ const Register = () => {
               placeholder="Nome"
             />
             <FormErrorMessage fontSize="10px">
-              {errors?.email?.message}
+              {errors?.name?.message}
             </FormErrorMessage>
           </FormLabel>
+        </FormControl>
+        <FormControl
+          isInvalid={!!errors?.email?.message}
+          errortext={errors?.email?.message}
+        >
           <FormLabel
             htmlFor="email"
             paddingBottom="24px"
@@ -135,6 +141,11 @@ const Register = () => {
               {errors?.email?.message}
             </FormErrorMessage>
           </FormLabel>
+        </FormControl>
+        <FormControl
+          isInvalid={!!errors?.username?.message}
+          errortext={errors?.username?.message}
+        >
           <FormLabel
             htmlFor="username"
             paddingBottom="24px"
@@ -156,9 +167,14 @@ const Register = () => {
               placeholder="Ex.: @billbulldog"
             />
             <FormErrorMessage fontSize="10px">
-              {errors?.email?.message}
+              {errors?.username?.message}
             </FormErrorMessage>
           </FormLabel>
+        </FormControl>
+        <FormControl
+          isInvalid={!!errors?.password?.message}
+          errortext={errors?.password?.message}
+        >
           <FormLabel
             htmlFor="password"
             paddingBottom="24px"
@@ -192,26 +208,26 @@ const Register = () => {
               </InputRightElement>
             </InputGroup>
             <FormErrorMessage fontSize="10px">
-              {errors?.email?.message}
+              {errors?.password?.message}
             </FormErrorMessage>
           </FormLabel>
-          <Button
-            _hover={{ background: "#00acc1" }}
-            _active={{ background: "#00acc1" }}
-            _focus={{ boxShadow: "none" }}
-            backgroundColor="#00acc1"
-            fontFamily="Open Sans"
-            fontWeight="600"
-            fontSize="14px"
-            lineHeight="24px"
-            color="#FFFFFF"
-            className="form_btn"
-            type="submit"
-            w="full"
-          >
-            Cadastrar-se
-          </Button>
         </FormControl>
+        <Button
+          _hover={{ background: "#00acc1" }}
+          _active={{ background: "#00acc1" }}
+          _focus={{ boxShadow: "none" }}
+          backgroundColor="#00acc1"
+          fontFamily="Open Sans"
+          fontWeight="600"
+          fontSize="14px"
+          lineHeight="24px"
+          color="#FFFFFF"
+          className="form_btn"
+          type="submit"
+          w="full"
+        >
+          Cadastrar-se
+        </Button>
       </form>
     </Box>
   );
