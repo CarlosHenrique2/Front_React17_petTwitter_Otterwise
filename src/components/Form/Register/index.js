@@ -153,7 +153,7 @@ const Register = () => {
               errorBorderColor="red.300"
               marginTop="8px"
               name="username"
-              type="email"
+              type="text"
               placeholder="Ex.: @billbulldog"
             />
             <FormErrorMessage fontSize="10px">
