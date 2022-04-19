@@ -39,17 +39,7 @@ const schema = yup
       .min(5, "Precisa ter no mínimo 5 caracteres")
       .required("Senha é obrigatório"),
   })
-  .validate()
-  .required();
-
-schema
-  .validate({ name: "jimmy", email: "jimmy@", username: "@jimmy" })
-  .catch(function (err) {
-    err.name;
-    err.email;
-    err.username;
-    err.errors;
-  });
+  .validate({ name: "jimmy", email: "jimmy@", username: "@jimmy" });
 
 const Register = () => {
   const navigate = useNavigate();
