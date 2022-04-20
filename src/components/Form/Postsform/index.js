@@ -89,7 +89,7 @@ const Postsform = (props) => {
             <Box display="flex" paddingBottom="45px" paddingLeft="25px">
               <Img src={profile00} />
             </Box>
-            <FormLabel htmlFor="text">
+            <FormLabel w="full" htmlFor="text">
               <Textarea
                 _hover={{ background: "none" }}
                 _active={{ background: "none" }}
@@ -97,7 +97,8 @@ const Postsform = (props) => {
                 placeholder="O que está acontecendo?"
                 border="none"
                 size="lg"
-                w="600px"
+                w="full"
+                maxHeight="auto"
                 {...register("text")}
                 type={Date.now()}
                 onChange={(e) => setValue(e.target.value.length)}

@@ -23,6 +23,8 @@ import icon07 from "../../../assets/svg/icon07.svg";
 import icon08 from "../../../assets/svg/icon08.svg";
 import icon09 from "../../../assets/svg/icon09.svg";
 import icon10 from "../../../assets/svg/icon10.svg";
+import user from "../../../assets/svg/user.svg";
+import house from "../../../assets/svg/house.svg";
 import iconexit from "../../../assets/svg/iconexit.svg";
 
 import "../../../global/global.css";
@@ -70,16 +72,24 @@ const Menudesktop = () => {
               display="flex"
               marginTop="16px"
               padding="10px"
+              fontWeight="700"
+              fontSize="16px"
+              lineHeight="24px"
               paddingLeft={pathname.includes("Profile") ? "75px" : "70px"}
               w="full"
               to="/Home"
               href="/Home"
+              color={pathname.includes("/Home") ? "#00ACC1" : "#424242"}
               borderLeft={
                 pathname.includes("/Home") ? "5px solid #00ACC1" : "none"
               }
               bg={pathname.includes("/Home") ? "#E6F7F9" : "none"}
             >
-              <Img marginRight="5px" src={icon07} /> Home
+              <Img
+                marginRight="5px"
+                src={pathname.includes("Profile") ? house : icon07}
+              />{" "}
+              Home
             </Link>
             <Link
               _focus={{ background: "#E6F7F9" }}
@@ -89,15 +99,23 @@ const Menudesktop = () => {
               paddingTop="10px"
               paddingBottom="10px"
               paddingLeft={pathname.includes("Profile") ? "70px" : "70px"}
+              fontWeight="700"
+              fontSize="16px"
+              lineHeight="24px"
               w="full"
               to="/Profile"
               href="/Profile"
+              color={pathname.includes("Profile") ? "#00ACC1" : "#424242"}
               borderLeft={
                 pathname.includes("Profile") ? "5px solid #00ACC1" : "none"
               }
               bg={pathname.includes("Profile") ? "#E6F7F9" : "none"}
             >
-              <Img marginRight="5px" src={icon10} /> Meu perfil
+              <Img
+                marginRight="5px"
+                src={pathname.includes("Profile") ? user : icon10}
+              />
+              Meu perfil
             </Link>
             <Box display="flex" justifyContent="flex-start">
               <Button

@@ -10,6 +10,8 @@ import icon02 from "../../../assets/svg/icon02.svg";
 import icon03 from "../../../assets/svg/icon03.svg";
 import icon07 from "../../../assets/svg/icon07.svg";
 import icon10 from "../../../assets/svg/icon10.svg";
+import house from "../../../assets/svg/house.svg";
+import user from "../../../assets/svg/user.svg";
 import iconexit from "../../../assets/svg/iconexit.svg";
 
 import "../../../global/global.css";
@@ -106,15 +108,23 @@ const Menumobile = () => {
                   marginTop="16px"
                   paddingTop="10px"
                   paddingBottom="10px"
+                  fontWeight="700"
+                  fontSize="16px"
+                  lineHeight="24px"
                   paddingLeft={pathname.includes("Profile") ? "60px" : "65px"}
                   w="full"
                   href="/Home"
+                  color={pathname.includes("Profile") ? " #424242" : "#00ACC1"}
                   borderLeft={
                     pathname.includes("/Home") ? "5px solid #00ACC1" : "none"
                   }
                   bg={pathname.includes("/Home") ? "#E6F7F9" : "none"}
                 >
-                  <Img src={icon07} marginRight="5px" /> Home
+                  <Img
+                    src={pathname.includes("Profile") ? house : icon07}
+                    marginRight="5px"
+                  />{" "}
+                  Home
                 </Link>
                 <Link
                   _focus={{ background: "#E6F7F9" }}
@@ -123,15 +133,23 @@ const Menumobile = () => {
                   display="flex"
                   paddingTop="10px"
                   paddingBottom="10px"
+                  fontWeight="700"
+                  fontSize="16px"
+                  lineHeight="24px"
                   paddingLeft={pathname.includes("Profile") ? "55px" : "70px"}
                   w="full"
                   href="/Profile"
+                  color={pathname.includes("Profile") ? "#00ACC1" : "#424242"}
                   borderLeft={
                     pathname.includes("Profile") ? "5px solid #00ACC1" : "none"
                   }
                   bg={pathname.includes("Profile") ? "#E6F7F9" : "none"}
                 >
-                  <Img src={icon10} marginRight="5px" /> Meu perfil
+                  <Img
+                    src={pathname.includes("Profile") ? user : icon10}
+                    marginRight="5px"
+                  />{" "}
+                  Meu perfil
                 </Link>
                 <Box display="flex" justifyContent="flex-start">
                   <Button

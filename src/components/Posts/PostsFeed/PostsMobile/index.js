@@ -235,6 +235,9 @@ const PostsMobile = (props) => {
                 _focus={{ border: "none" }}
                 bg="transparent"
                 color="white"
+                position="fixed"
+                bottom="24px"
+                right="16px"
                 onClick={onOpen}
               >
                 <Img src={iconModal} />
@@ -312,7 +315,10 @@ const PostsMobile = (props) => {
                           {...register("text")}
                           border="none"
                           type="text"
+                          maxWidth="auto"
+                          maxHeight="auto"
                           marginRight="30px"
+                          resize="none"
                           onChange={(e) => setValue(e.target.value.length)}
                           isInvalid={value > 140}
                         />

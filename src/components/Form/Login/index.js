@@ -116,6 +116,7 @@ const Login = () => {
                   _active={{ background: "none" }}
                   _focus={{ boxShadow: "none" }}
                   border="none"
+                  bg="none"
                   onClick={handleClick}
                 >
                   {show ? <Icon as={ViewIcon} /> : <Icon as={ViewOffIcon} />}
