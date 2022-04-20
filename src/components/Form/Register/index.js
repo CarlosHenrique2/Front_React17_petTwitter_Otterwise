@@ -73,7 +73,7 @@ const Register = () => {
       navigate(from, { replace: true });
     } catch (error) {
       toast({
-        title: "Erro ao cadastrar usuário",
+        title: error.response.data.error,
         status: "error",
         duration: 3000,
         isClosable: true,

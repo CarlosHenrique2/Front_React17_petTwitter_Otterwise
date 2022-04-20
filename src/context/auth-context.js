@@ -25,17 +25,13 @@ export function AuthProvider({ children }) {
   };
 
   const regisTer = async (data) => {
-    try {
-      const response = await signup(data);
-      const user = {
-        accessToken: response.data.accessToken,
-        ...response.data.user,
-      };
-      setInStorage("user", user);
-      setUser(user);
-    } catch (error) {
-      console.log(error);
-    }
+    const response = await signup(data);
+    const user = {
+      accessToken: response.data.accessToken,
+      ...response.data.user,
+    };
+    setInStorage("user", user);
+    setUser(user);
   };
 
   const PostTwits = async (data) => {
